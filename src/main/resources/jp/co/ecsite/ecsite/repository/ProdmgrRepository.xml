@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ecsite.ecsite.repository.ProdmgrRepository">
+
+<!-- 商品検索結果処理 -->
+<resultMap type="ProductSearchResultsEntity" id="findResultMap">
+<result column="product_id" property="product_id"/>
+<result column="product_name" property="product_name"/>
+<result column="maker" property="maker"/>
+<result column="price" property="price"/>
+</resultMap>
+
+<!--  商品詳細結果処理 --><!-- 豊泉担当 -->
+<resultMap type="ProductEntity" id="detailResultMap">
+<result column="product_id" property="product_id"/>
+<result column="product_name" property="product_name"/>
+<result column="maker" property="maker"/>
+<result column="price" property="price"/>
+<result column="size" property="size"/>
+<result column="color" property="color"/>
+<result column="sale_point" property="sale_point"/>
+<result column="image" property="image"/>
+<result column="stock_quantity" property="stock_quantity"/>
+<result column="similar_product_id" property="similar_product_id"/>
+</resultMap>
+
+<!-- 口コミ処理 --><!-- 豊泉担当 -->
+<resultMap type="ReviewEntity" id="reviewResultMap">
+<result column="product_id" property="product_id"/>
+<result column="review_no" property="review_no"/>
+<result column="user_id" property="user_id"/>
+<result column="evaluation" property="evaluation"/>
+<result column="review_content" property="review_content"/>
+<result column="review_dt" property="review"/>
+<result column="nickname" property="nickname"/>
+</resultMap>
+
+
+<select id="productSearch" resultMap="findResultMap">
+	<![CDATA[
+		SELECT
+			product_id, product_name, maker, price
+		FROM
+			product
+		WHERE
+		price BETWEEN #{minprice} AND #{maxprice}
+	]]>
+		<if test="product_name != null">
+		AND product_name = #{product_name}
+		</if>
+		<if test="maker != null">
+		AND maker = #{maker}
+		</if>
+</select>
+
+<select id="productDetail" resultMap="detailResultMap"> <!-- 豊泉担当 -->
+	<![CDATA[
+		SELECT *
+		FROM
+			product
+		WHERE
+			product_id = #{product_id}
+	]]>
+</select>
+
+<select id="productReview" resultMap="reviewResultMap"> <!-- 豊泉担当 -->
+	<![CDATA[
+		SELECT
+			product_id, review_no, r.user_id, evaluation, review_content, review_dt, nickname
+		FROM
+			review r
+		LEFT JOIN
+			user u
+		ON
+			r.user_id = u.user_id
+		WHERE
+			r.product_id = #{product_id}
+	]]>
+</select>
+
+</mapper>
