@@ -1,5 +1,6 @@
 package jp.co.ecsite.ecsite.controller;
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -127,8 +128,10 @@ public class ProductmgrController {
 		//model.addAttribute("productentity", productentity);
 		//model.addAttribute("reviewentity", reviewentity);
 
-		//List<String> colorlist =Arrays.asList(productentity.getColor().split(","));
-		//model.addAttribute("colorlist", colorlist);
+		List<String> colorlist =Arrays.asList(productentity.getColor().split(","));
+		model.addAttribute("colorlist", colorlist);
+		List<String> sizelist =Arrays.asList(productentity.getSize().split(","));
+		model.addAttribute("sizelist", sizelist);
 
 		return "detail";
 	}
