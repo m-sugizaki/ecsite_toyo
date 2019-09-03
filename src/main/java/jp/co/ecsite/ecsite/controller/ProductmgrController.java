@@ -18,6 +18,7 @@ import jp.co.ecsite.ecsite.model.ProdmgrModel;
 import jp.co.ecsite.ecsite.model.ProductCartModel;
 import jp.co.ecsite.ecsite.model.UserModel;
 import jp.co.ecsite.ecsite.service.ProdmgrService;
+//テスト
 
 @Controller
 public class ProductmgrController {
