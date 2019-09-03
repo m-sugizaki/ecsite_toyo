@@ -15,6 +15,28 @@
 <meta charset="UTF-8">
 <title>アカウント新規登録</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
+<style type="text/css">
+/*支払い方法,お届け先登録完了ボタン*/
+	.finish{
+		margin-top: 8px;
+		padding: 3px;
+		cursor: pointer;
+		border: solid 1px black;
+	}
+
+	.popup_content2 {
+		position: relative;
+		align-self: center;
+		width: 90%;
+		max-width: 40%;
+		height: 45%;
+		padding: 30px 30px 15px;
+		box-sizing: border-box;
+		background: #fff;
+		line-height: 1.4em;
+		transition: 0.5s;
+	}
+</style>
 </head>
 <body>
 		<div align="center">
@@ -77,7 +99,6 @@
 		<div class="popup_overlay">
 		<label for="trigger" class="popup_trigger"></label>
 		<div class="popup_content">
-		<label for="trigger" class="close_btn">×</label>
 			<!-- 支払い方法ポップアップ中身 -->
 			<div align="center">
 			<h2>支払い方法情報登録</h2>
@@ -134,6 +155,8 @@
 
 			</table>
 			</div>
+			<br>
+			<label for="trigger"><span class="finish">完了</span></label>
 		</div>
 		</div>
 		</div>
@@ -144,8 +167,8 @@
 		<input id="trigger2" type="checkbox" class="payment">
 		<div class="popup_overlay">
 		<label for="trigger2" class="popup_trigger"></label>
-		<div class="popup_content">
-		<label for="trigger2" class="close_btn">×</label>
+		<div class="popup_content2">
+		<!-- <label for="trigger2" class="close_btn">×</label> -->
 			<!-- お届け先ポップアップ中身 -->
 			<div align="center">
 			<h2>お届け先情報登録</h2>
@@ -180,6 +203,8 @@
 
 			</table>
 			</div>
+			<br>
+			<label for="trigger2"><span class="finish">完了</span></label>
 		</div>
 		</div>
 		</div>
