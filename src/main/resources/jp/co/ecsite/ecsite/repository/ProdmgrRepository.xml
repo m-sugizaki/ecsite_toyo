@@ -32,7 +32,7 @@
 <result column="user_id" property="user_id"/>
 <result column="evaluation" property="evaluation"/>
 <result column="review_content" property="review_content"/>
-<result column="review_dt" property="review"/>
+<result column="review_dt" property="review_dt"/>
 <result column="nickname" property="nickname"/>
 </resultMap>
 
