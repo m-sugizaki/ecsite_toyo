@@ -9,6 +9,16 @@
 <title>商品詳細</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
+
+<!-- 商品合計金額計算用 -->
+<script type="text/javascript">
+function sum(){
+
+	var price = document.form1.quantity.value * ${productentity.price};
+	document.form1.field.value = price;
+
+}
+</script>
 </head>
 <body>
 	<div class="all">
@@ -111,7 +121,7 @@
 				<br>
 		      <!-- 商品詳細の表示 -->
 				<table id="kensaku">
-					<form:form modelAttribute="productCartModel">
+					<form:form modelAttribute="productCartModel" name="form1">
 						<tr>
 							<td>商品コード&nbsp;&nbsp;</td><td>${productentity.product_id}</td>
 						</tr>
@@ -151,13 +161,14 @@
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" /></td>
+							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity"/></td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 						<tr>
 							<td>購入価格&nbsp;&nbsp;&nbsp;</td>
 							<td>
-
+							<!-- 合計金額表示 -->
+							<input type="text" name="field" size="8" value="0" readonly>
 							</td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
