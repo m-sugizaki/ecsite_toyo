@@ -147,7 +147,7 @@
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>写真&nbsp;&nbsp;&nbsp;</td><td>${productentity.image}</td>
+							<td>写真&nbsp;&nbsp;&nbsp;</td><td><img src="data:image/jpg;base64,${productentity.image64}"></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
