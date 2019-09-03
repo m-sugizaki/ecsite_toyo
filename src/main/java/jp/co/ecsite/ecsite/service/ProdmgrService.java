@@ -16,4 +16,6 @@ public interface ProdmgrService{
 
 	public List<ReviewEntity> productReview(String product_id);
 
+	//商品管理のメソッド！！
+
 }
