@@ -136,7 +136,7 @@ text-decoration: underline;
 					</table>
 				</form:form>
 				<br> <br>
-				<form:form modelAttribute="prodmgrModel">
+
 					<table id="kensakuresult" border="1">
 						<tr>
 							<th>商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
@@ -145,6 +145,7 @@ text-decoration: underline;
 							<th>価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 						<c:forEach var="product" items="${productsearchresultsentity}">
+						<form:form modelAttribute="prodmgrModel">
 							<tr>
 								<td><form:button name="detail" class="view"> ${product.product_id}</form:button>
 								<form:hidden path="product_id" value="${product.product_id}"/>
@@ -152,15 +153,16 @@ text-decoration: underline;
 								<td>${product.product_name}</td>
 								<td>${product.maker}</td>
 								<td>${product.price}</td>
-
 							</tr>
+						</form:form>
 						</c:forEach>
 					</table>
 
-				</form:form>
+
 				<!-- テスト中！！！！！！！！！！！！！ -->
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
