@@ -133,6 +133,8 @@ text-decoration: underline;
 									placeholder="上限価格  （例）5000000" /></td>
 							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku">検索</form:button></td>
 						</tr>
+						<c:out value="${opposite}"/>
+						<c:out value="${numberformat}"/>
 					</table>
 				</form:form>
 				<br> <br>
