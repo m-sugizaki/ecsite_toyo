@@ -277,21 +277,17 @@
 							<th>口コミ日時</th>
 
 						</tr>
-　　　　　　　　　　　　　　　　　　　	<c:if test="${not empty posSystems}">
-						<c:forEach var="reviewbox" items="${reviews}">
-						<!-- varはitemから取り出した要素を格納する変数　　　
-						　itemsはループする配列、または、コレクション(キー)。　コントローラーの引数で(@ModelAttribute("posSystems") List<PosSystemEntity> posSystemのように
-						　モデルアトリビュートに登録する。-->
+						<c:forEach var="reviewbox" items="${reviewentity}">
+						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 						<!--  -->
 							<tr>
-								<td>${reviewList.review_no}</td>
-								<td>${reviewList.evaluation}</td>
-								<td>${reviewList.dept_code}</td>
-								<td>${reviewList.dept_name}</td>
-								<td>${reviewList.jan}</td>
+								<td>${reviewbox.review_no}</td>
+								<td>${reviewbox.nickname}</td>
+								<td>${reviewbox.evaluation}</td>
+								<td>${reviewbox.review_content}</td>
+								<td>${reviewbox.review_dt}</td>
 							</tr>
 						</c:forEach>
-						</c:if>
 					</table>
 
 			</div>
