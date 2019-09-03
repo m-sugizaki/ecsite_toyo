@@ -68,6 +68,7 @@ public class ProductmgrController {
 				productsearchentity.setMinprice(Integer.parseInt(prodmgrModel.getMinprice()));
 			}catch(NumberFormatException e) {
 				model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
+				return "search";
 			}
 		}
 		//最高価格の空文字チェックを行い、入力された文字か最高額をentityに格納
@@ -78,6 +79,7 @@ public class ProductmgrController {
 				productsearchentity.setMaxprice(Integer.parseInt(prodmgrModel.getMaxprice()));
 			}catch(NumberFormatException e) {
 				model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
+				return "search";
 			}
 
 		}
