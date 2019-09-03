@@ -1,5 +1,6 @@
 package jp.co.ecsite.ecsite.controller;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class ProductmgrController {
 		return new ProductCartModel();
 	}
 
+	//商品検索画面表示
 	@RequestMapping(value="/search", method=RequestMethod.POST, params="kensaku")
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model) {
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
@@ -109,12 +111,14 @@ public class ProductmgrController {
 		return "search";
 	}
 
+	//商品詳細画面表示
 	@RequestMapping(value="/search", method=RequestMethod.POST, params="detail")
 	public String detail(@ModelAttribute ProdmgrModel prodmgrModel, Model model, RedirectAttributes attributes) {
 		ProductEntity productentity =prodmgrService.productDetail(prodmgrModel.getProduct_id());
-
 		List<ReviewEntity> reviewentity = prodmgrService.productReview(prodmgrModel.getProduct_id());
 
+		//画像表示用 (base64型に変換してエンティティのフィールドに格納)
+		productentity.setImage64(Base64.getEncoder().encodeToString(productentity.getImage()));
 
 		model.addAttribute("productentity", productentity);
 		model.addAttribute("reviewentity", reviewentity);
@@ -123,9 +127,11 @@ public class ProductmgrController {
 		//List<ReviewEntity> reviewentity = prodmgrService.productReview(prodmgrModel.getProduct_id());
 		//model.addAttribute("productentity", productentity);
 		//model.addAttribute("reviewentity", reviewentity);
+
+		//List<String> colorlist =Arrays.asList(productentity.getColor().split(","));
+		//model.addAttribute("colorlist", colorlist);
+
 		return "detail";
 	}
 
 }
-
-
