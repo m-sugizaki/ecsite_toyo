@@ -1,5 +1,6 @@
 package jp.co.ecsite.ecsite.controller;
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class ProductmgrController {
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model) {
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
 
-		/*最低価格と最高価格の空文字チェックを行う
+		/* 最低価格と最高価格の空文字チェックを行う
 		if(prodmgrModel.getMinprice().isEmpty()||prodmgrModel.getMaxprice().isEmpty()) {
 			productsearchentity.setMinprice(0);
 			productsearchentity.setMaxprice(2147483647);
@@ -67,6 +68,7 @@ public class ProductmgrController {
 				productsearchentity.setMinprice(Integer.parseInt(prodmgrModel.getMinprice()));
 			}catch(NumberFormatException e) {
 				model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
+				return "search";
 			}
 		}
 		//最高価格の空文字チェックを行い、入力された文字か最高額をentityに格納
@@ -77,6 +79,7 @@ public class ProductmgrController {
 				productsearchentity.setMaxprice(Integer.parseInt(prodmgrModel.getMaxprice()));
 			}catch(NumberFormatException e) {
 				model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
+				return "search";
 			}
 
 		}
@@ -127,8 +130,10 @@ public class ProductmgrController {
 		//model.addAttribute("productentity", productentity);
 		//model.addAttribute("reviewentity", reviewentity);
 
-		//List<String> colorlist =Arrays.asList(productentity.getColor().split(","));
-		//model.addAttribute("colorlist", colorlist);
+		List<String> colorlist =Arrays.asList(productentity.getColor().split(","));
+		model.addAttribute("colorlist", colorlist);
+		List<String> sizelist =Arrays.asList(productentity.getSize().split(","));
+		model.addAttribute("sizelist", sizelist);
 
 		return "detail";
 	}
