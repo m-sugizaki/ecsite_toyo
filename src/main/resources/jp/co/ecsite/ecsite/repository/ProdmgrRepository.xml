@@ -64,7 +64,7 @@
 	]]>
 </select>
 
-<select id="productReview" resultMap="reviewResultMap"> <!-- 豊泉担当 -->
+<select id="productReview" resultMap="reviewResultMap" parameterType="string"> <!-- 豊泉担当 -->
 	<![CDATA[
 		SELECT
 			product_id, review_no, r.user_id, evaluation, review_content, review_dt, nickname
