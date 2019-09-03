@@ -156,7 +156,9 @@ text-decoration: underline;
 							</tr>
 						</c:forEach>
 					</table>
+
 				</form:form>
+				<!-- テスト中！！！！！！！！！！！！！ -->
 			</div>
 		</div>
 	</div>
