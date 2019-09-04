@@ -114,7 +114,8 @@ function sum(){
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><input type="submit" value="ログイン" name="login"
+															<td><form:input type="hidden" path="hid" value="3" />
+															<input type="submit" value="ログイン" name="login"
 																class="login"  /> <a href="home" class="cancel">キャンセル</a></td>
 														</tr>
 													</form:form>
@@ -188,10 +189,10 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 						<tr>
-							<td>購入価格&nbsp;&nbsp;&nbsp;</td>
+							<td>合計購入価格&nbsp;&nbsp;&nbsp;</td>
 							<td >
 							<!-- 合計金額表示 -->
-							<input type="text" name="field" size="8" value="0" readonly>
+							<input type="text" name="field" size="8" value="${productentity.price} " readonly>
 							</td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
@@ -200,7 +201,7 @@ function sum(){
 				</table>
 
 
-				<!-- カートに入れる　レジに進む　のポップアップ -->
+				<!-- lカートに入れる　レジに進む　のポップアップ -->
 					<c:choose>
 					<c:when test="${empty login.name }">
 						<br>
@@ -220,7 +221,8 @@ function sum(){
 										<form:form modelAttribute="userModel">
 										<tr><td><form:input path="user_id" placeholder="ユーザーID" class="userid" /></td></tr>
 										<tr><td><form:input path="password" placeholder="パスワード" class="userid" /></td></tr>
-										<tr><td><input type="submit" value="ログイン" name="login" class="login" />
+										<tr><td><form:input type="hidden" path="hid" value="3" />
+										<input type="submit" value="ログイン" name="login" class="login" />
 										<a href="home" class="cancel">キャンセル</a></td></tr>
 										</form:form>
 									</table>
@@ -229,8 +231,8 @@ function sum(){
 							</div>
 							</div>
 							<!-- 右上ユーザー情報続き -->
-							<label for="trigger" class="open_btn" for="login">カートに入れる</label>
-							<label for="trigger" class="open_btn" for="login">レジへ進む</label>
+							<label for="trigger" class="tocart" for="login">カートに入れる</label>
+							<label for="trigger" class="tocart" for="login">レジへ進む</label>
 					</c:when>
 					<c:otherwise>
 						<br>
@@ -252,45 +254,20 @@ function sum(){
 									<table>
 
 										<tr><td><a href="detail" class="cancel">カートに追加</a></td>
-									　　　　　　　<td><a href="detail" class="cancel">キャンセル</a></td></tr>
+									　　　　　　　<td><label for="trigger_c" class="cancel">キャンセル</label></td>
 										</tr>
 
-									</table>
-								</div>
-							</div>
-							</div>
-							</div>
-						<!-- login中の「レジに進む」のポップアップ -->
-						<!-- lポップアップ -->
-							<div class="popup_wrap">
-							<input id="trigger_b" type="checkbox">
-							<div class="popup_overlay">
-							<label for="trigger_b" class="popup_trigger"></label>
-							<div class="popup_content">
-							<label for="trigger_b" class="close_btn">×</label>
-							<!-- ポップアップ中身 -->
-								<div align="center">
-								　		<br>
-										<br>
-									<p>カートに追加しますか？</p>
-									<form method="get" action="">
-									</form>
-									<table>
-
-										<tr><td><a href="detail" class="cancel">カートに追加</a></td></tr>
 
 									</table>
 								</div>
 							</div>
 							</div>
 							</div>
+							<!-- カートに進む・レジに進のボタン -->
 
+							<label for="trigger_c" class="tocart" for="tocart">カートに入れる</label>
 
-							<!-- 右上ユーザー情報続き -->
-
-							<label for="trigger_c" class="open_btn" for="tocart"><input type="submit" value="ログイン" name="login" class="login" />カートに入れる</label>
-
-							 <a href="regist">レジに進む</a>
+							 <a href="regist" class="tocart">レジに進む</a>
 							 <!-- lレジに進むはｊｓｐ -->
 
 
