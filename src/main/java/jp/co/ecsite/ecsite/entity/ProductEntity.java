@@ -19,6 +19,10 @@ public class ProductEntity  implements Serializable {
 	private byte[] image;
 	private int stock_quantity;
 	private String similar_product_id;
+
+	//base64型格納用
+	private String imagebase;
+
 	public String getProduct_id() {
 		return product_id;
 	}
@@ -78,6 +82,15 @@ public class ProductEntity  implements Serializable {
 	}
 	public void setSimilar_product_id(String similar_product_id) {
 		this.similar_product_id = similar_product_id;
+	}
+
+	//base64格納用
+	public String getImagebase() {
+		return imagebase;
+	}
+	//base64格納用
+	public void setImagebase(String imagebase) {
+		this.imagebase = imagebase;
 	}
 
 

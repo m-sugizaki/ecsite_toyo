@@ -13,12 +13,21 @@ background-color: transparent;
 color: blue;
 text-decoration: underline;
 }
+
+
+.table,result {
+	border: solid 1px #000000;
+	border-collapse: collapse;}
+
+}
+
 </style>
 <title>商品検索</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
 </head>
 <body>
+
 	<div class="all">
 		<!-- サイドバー -->
 		<aside class="sidebar">
@@ -87,7 +96,7 @@ text-decoration: underline;
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><form:input path="password" placeholder="パスワード"
+															<td><form:password path="password" placeholder="パスワード"
 																	class="userid" /></td>
 														</tr>
 														<tr>
@@ -133,34 +142,40 @@ text-decoration: underline;
 									placeholder="上限価格  （例）5000000" /></td>
 							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku">検索</form:button></td>
 						</tr>
+						<c:out value="${opposite}"/>
+						<c:out value="${numberformat}"/>
 					</table>
 				</form:form>
 				<br> <br>
-				<form:form modelAttribute="prodmgrModel">
-					<table id="kensakuresult" border="1">
+
+
+
+					<table class ="results" >
 						<tr>
-							<th>商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th>商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th>メーカー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th>価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="table">商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="table">商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="table">メーカー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="table">価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 						<c:forEach var="product" items="${productsearchresultsentity}">
+						<form:form modelAttribute="prodmgrModel">
 							<tr>
-								<td><form:button name="detail" class="view"> ${product.product_id}</form:button>
+								<td class="table"><form:button name="detail" class="view"> ${product.product_id}</form:button>
 								<form:hidden path="product_id" value="${product.product_id}"/>
 								</td>
-								<td>${product.product_name}</td>
-								<td>${product.maker}</td>
-								<td>${product.price}</td>
-
+								<td class="table">${product.product_name}</td>
+								<td class="table">${product.maker}</td>
+								<td class="table">${product.price}</td>
 							</tr>
+						</form:form>
 						</c:forEach>
 					</table>
 
-				</form:form>
+
 				<!-- テスト中！！！！！！！！！！！！！ -->
 			</div>
 		</div>
 	</div>
+
 </body>
 </html>
