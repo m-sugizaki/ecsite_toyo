@@ -78,7 +78,8 @@
 										<!-- フォーム入力 -->
 										<tr><td><form:input path="user_id" placeholder="ユーザーID" class="userid" /></td></tr>
 										<tr><td><form:password path="password" placeholder="パスワード" class="userid" /></td></tr>
-										<tr><td><input type="submit" value="ログイン" name="login" class="login" />
+										<tr><td><form:input type="hidden" path="hid" value="1"/>
+										<input type="submit" value="ログイン" name="login" class="login" />
 										<a href="home" class="cancel">キャンセル</a></td></tr>
 										</form:form>
 									</table>

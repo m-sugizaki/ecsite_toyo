@@ -7,20 +7,37 @@
 <head>
 <meta charset="UTF-8">
 <style>
-.view{
-border: none;
-background-color: transparent;
-color: blue;
-text-decoration: underline;
+.view {
+	border: none;
+	background-color: transparent;
+	color: blue;
+	text-decoration: underline;
 }
 
+#kensaku{
+ font-size: 18px;
+}
 
-.table,result {
+.minititle, contents {
+	font-size: 26px;
+	text-decoration: underline #000000;
+}
+
+.table, results {
+	font-size: 16px;
 	border: solid 1px #000000;
-	border-collapse: collapse;}
-
+	border-collapse: collapse;
 }
 
+.tabletitle, results {
+	font-size: 16px;
+	align: center;
+	width: 150px;
+	background-color: lightblue;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+}
 </style>
 <title>商品検索</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
@@ -96,12 +113,13 @@ text-decoration: underline;
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><form:password path="password" placeholder="パスワード"
-																	class="userid" /></td>
+															<td><form:password path="password"
+																	placeholder="パスワード" class="userid" /></td>
 														</tr>
 														<tr>
-															<td><input type="submit" value="ログイン" name="login"
-																class="login" /> <a href="home" class="cancel">キャンセル</a></td>
+															<td><form:input type="hidden" path="hid" value="2"/>
+															<input type="submit" value="ログイン" name="login" class="login" />
+																 <a href="home" class="cancel">キャンセル</a></td>
 														</tr>
 													</form:form>
 												</table>
@@ -123,7 +141,9 @@ text-decoration: underline;
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-				<h1>商品検索</h1>
+				<br>
+				<p class="minititle">商品検索</p>
+				<br>
 				<form:form modelAttribute="prodmgrModel">
 					<table id="kensaku">
 
@@ -142,37 +162,41 @@ text-decoration: underline;
 									placeholder="上限価格  （例）5000000" /></td>
 							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku">検索</form:button></td>
 						</tr>
-						<c:out value="${opposite}"/>
-						<c:out value="${numberformat}"/>
+						<tr>
 					</table>
+
+					<div class="errormessage">
+						<c:out value="${opposite}" />
+						<c:out value="${numberformat}" />
+					</div>
 				</form:form>
 				<br> <br>
 
 
 
-					<table class ="results" >
-						<tr>
-							<th class="table">商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="table">商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="table">メーカー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="table">価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-						</tr>
-						<c:forEach var="product" items="${productsearchresultsentity}">
+				<table class="results">
+					<tr>
+						<th class="tabletitle">商品コード</th>
+						<th class="tabletitle">商品名</th>
+						<th class="tabletitle">メーカー</th>
+						<th class="tabletitle">価格</th>
+					</tr>
+					<c:forEach var="product" items="${productsearchresultsentity}">
 						<form:form modelAttribute="prodmgrModel">
 							<tr>
 								<td class="table"><form:button name="detail" class="view"> ${product.product_id}</form:button>
-								<form:hidden path="product_id" value="${product.product_id}"/>
+									<form:hidden path="product_id" value="${product.product_id}" />
 								</td>
 								<td class="table">${product.product_name}</td>
 								<td class="table">${product.maker}</td>
 								<td class="table">${product.price}</td>
 							</tr>
 						</form:form>
-						</c:forEach>
-					</table>
-
-
-				<!-- テスト中！！！！！！！！！！！！！ -->
+					</c:forEach>
+				</table>
+				<div class="errormessage">
+						<c:out value="${noproduct}" />
+					</div>
 			</div>
 		</div>
 	</div>
