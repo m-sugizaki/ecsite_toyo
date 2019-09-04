@@ -6,6 +6,27 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+
+.minititle,contents{
+	font-size: 30px;
+	text-decoration: underline #000000;
+}
+
+.table,review {
+	font-size: 16px;
+	border: solid 1px #000000;
+	border-collapse: collapse;}
+
+.tabletitle,review{
+	font-size: 16px;
+	width: 150px;
+	align: center;
+ 	background-color: lightblue;
+ 	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+</style>
 <title>商品詳細</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
@@ -89,7 +110,7 @@ function sum(){
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><form:input path="password" placeholder="パスワード"
+															<td><form:password path="password" placeholder="パスワード"
 																	class="userid" /></td>
 														</tr>
 														<tr>
@@ -116,12 +137,12 @@ function sum(){
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-				<h5>商品詳細</h5>
+			<p class= "minititle">商品詳細</p>
 				<br>
 				<br>
 		      <!-- 商品詳細の表示 -->
 				<table id="kensaku">
-					<form:form modelAttribute="productCartModel" name="form1">
+					<form:form modelAttribute="productCartModel">
 						<tr>
 							<td>商品コード&nbsp;&nbsp;</td><td>${productentity.product_id}</td>
 						</tr>
@@ -140,11 +161,12 @@ function sum(){
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>サイズ&nbsp;&nbsp;&nbsp;</td>
-
+							<td><form:select path="size" items="${sizelist}" /></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>色&nbsp;&nbsp;&nbsp;</td>
+							<td><form:select path="color" items="${colorlist}" /></td>
 
 						</tr>
 						<tr><td>&nbsp;</td></tr>
@@ -157,7 +179,7 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>写真&nbsp;&nbsp;&nbsp;</td><td><img src="data:image/jpg;base64,${productentity.image64}"></td>
+							<td>写真&nbsp;&nbsp;&nbsp;</td><td><img src="data:image/jpg;base64,${productentity.imagebase}"></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
@@ -223,12 +245,14 @@ function sum(){
 								<div align="center">
 								　		<br>
 										<br>
-									<p>カートに追加しました</p>
+									<p>カートに追加しますか？</p>
 									<form method="get" action="">
 									</form>
 									<table>
 
-										<tr><td><a href="detail" class="cancel">詳細へ戻る</a></td></tr>
+										<tr><td><a href="detail" class="cancel">カートに追加</a></td>
+									　　　　　　　<td><a href="detail" class="cancel">キャンセル</a></td></tr>
+										</tr>
 
 									</table>
 								</div>
@@ -247,12 +271,12 @@ function sum(){
 								<div align="center">
 								　		<br>
 										<br>
-									<p>カートに追加しました</p>
+									<p>カートに追加しますか？</p>
 									<form method="get" action="">
 									</form>
 									<table>
 
-										<tr><td><a href="detail" class="cancel">詳細へ戻る</a></td></tr>
+										<tr><td><a href="detail" class="cancel">カートに追加</a></td></tr>
 
 									</table>
 								</div>
@@ -262,7 +286,9 @@ function sum(){
 
 
 							<!-- 右上ユーザー情報続き -->
-							<label for="trigger_c" class="open_btn" for="tocart">カートに入れる</label>
+
+							<label for="trigger_c" class="open_btn" for="tocart"><input type="submit" value="ログイン" name="login" class="login" />カートに入れる</label>
+
 							 <a href="regist">レジに進む</a>
 							 <!-- lレジに進むはｊｓｐ -->
 
@@ -273,25 +299,25 @@ function sum(){
 
 
 				<br>
-				　　   <!-- 商品の口コミの表示-->
-					<table id="review" border="1">
+				　　 <!-- 商品の口コミの表示-->
+					<table class ="review" >
 						<tr>
-							<th>口コミNo</th>
-							<th>ニックネーム</th>
-							<th>評価</th>
-							<th>口コミ内容</th>
-							<th>口コミ日時</th>
+							<th class="tabletitle">口コミNo</th>
+							<th class="tabletitle">ニックネーム</th>
+							<th class="tabletitle">評価</th>
+							<th class="tabletitle">口コミ内容</th>
+							<th class="tabletitle">口コミ日時</th>
 
 						</tr>
 						<c:forEach var="reviewbox" items="${reviewentity}">
 						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 						<!--  -->
 							<tr>
-								<td>${reviewbox.review_no}</td>
-								<td>${reviewbox.nickname}</td>
-								<td>${reviewbox.evaluation}</td>
-								<td>${reviewbox.review_content}</td>
-								<td>${reviewbox.review_dt}</td>
+								<td class="table">${reviewbox.review_no}</td>
+								<td class="table">${reviewbox.nickname}</td>
+								<td class="table">${reviewbox.evaluation}</td>
+								<td class="table">${reviewbox.review_content}</td>
+								<td class="table">${reviewbox.review_dt}</td>
 							</tr>
 						</c:forEach>
 					</table>
