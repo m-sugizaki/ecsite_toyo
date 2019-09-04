@@ -77,7 +77,7 @@
 										<form:form modelAttribute="userModel" >
 										<!-- フォーム入力 -->
 										<tr><td><form:input path="user_id" placeholder="ユーザーID" class="userid" /></td></tr>
-										<tr><td><form:input path="password" placeholder="パスワード" class="userid" /></td></tr>
+										<tr><td><form:password path="password" placeholder="パスワード" class="userid" /></td></tr>
 										<tr><td><input type="submit" value="ログイン" name="login" class="login" />
 										<a href="home" class="cancel">キャンセル</a></td></tr>
 										</form:form>
