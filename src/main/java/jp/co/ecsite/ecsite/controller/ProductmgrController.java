@@ -61,6 +61,8 @@ public class ProductmgrController {
 		}
 		}*/
 
+
+
 		//最低価格の空文字チェックを行い、入力された文字か最低額をentityに格納
 		if(prodmgrModel.getMinprice().isEmpty()){
 			productsearchentity.setMinprice(0);
@@ -108,10 +110,17 @@ public class ProductmgrController {
 		}
 
 		List<ProductSearchResultsEntity> productsearchresultsentity = prodmgrService.productSearch(productsearchentity);
+
+		//入力された商品名または、メーカー名、金額がなかった時の処理
+		if(productsearchresultsentity.size() == 0) {
+			model.addAttribute("noproduct", "該当商品がありませんでした。");
+			return "search";
+		}else {
 		//entityで帰ってきた値をJSPに返す処理↓
 		model.addAttribute("productsearchresultsentity", productsearchresultsentity);
 
 		return "search";
+	}
 	}
 
 	//商品詳細画面表示
