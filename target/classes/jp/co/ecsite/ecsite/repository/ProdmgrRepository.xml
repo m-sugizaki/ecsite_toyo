@@ -3,7 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ecsite.ecsite.repository.ProdmgrRepository">
 
-<!-- 商品検索結果処理 -->
+<!-- 商品検索結果処理 --><!-- 石田担当 -->
 <resultMap type="ProductSearchResultsEntity" id="findResultMap">
 <result column="product_id" property="product_id"/>
 <result column="product_name" property="product_name"/>
@@ -32,7 +32,7 @@
 <result column="user_id" property="user_id"/>
 <result column="evaluation" property="evaluation"/>
 <result column="review_content" property="review_content"/>
-<result column="review_dt" property="review"/>
+<result column="review_dt" property="review_dt"/>
 <result column="nickname" property="nickname"/>
 </resultMap>
 
@@ -64,7 +64,7 @@
 	]]>
 </select>
 
-<select id="productReview" resultMap="reviewResultMap"> <!-- 豊泉担当 -->
+<select id="productReview" resultMap="reviewResultMap" parameterType="string"> <!-- 豊泉担当 -->
 	<![CDATA[
 		SELECT
 			product_id, review_no, r.user_id, evaluation, review_content, review_dt, nickname
