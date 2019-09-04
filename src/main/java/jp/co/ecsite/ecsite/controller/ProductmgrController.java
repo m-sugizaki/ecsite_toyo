@@ -73,7 +73,6 @@ public class ProductmgrController {
 		}*/
 
 
-
 		//最低価格の空文字チェックを行い、入力された文字か最低額をentityに格納
 		if(prodmgrModel.getMinprice().isEmpty()){
 			productsearchentity.setMinprice(0);
