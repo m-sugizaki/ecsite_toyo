@@ -8,12 +8,25 @@
 <meta charset="UTF-8">
 <style>
 
+.minititle,contents{
+	font-size: 30px;
+	text-decoration: underline #000000;
+}
+
 .table,review {
+	font-size: 16px;
 	border: solid 1px #000000;
 	border-collapse: collapse;}
 
+.tabletitle,review{
+	font-size: 16px;
+	width: 150px;
+	align: center;
+ 	background-color: lightblue;
+ 	border: solid 1px #000000;
+	border-collapse: collapse;
+}
 </style>
-
 <title>商品詳細</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
@@ -124,7 +137,7 @@ function sum(){
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-				<h5>商品詳細</h5>
+			<p class= "minititle">商品詳細</p>
 				<br>
 				<br>
 		      <!-- 商品詳細の表示 -->
@@ -166,7 +179,7 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>写真&nbsp;&nbsp;&nbsp;</td><td><img src="data:image/jpg;base64,${productentity.image64}"></td>
+							<td>写真&nbsp;&nbsp;&nbsp;</td><td><img src="data:image/jpg;base64,${productentity.imagebase}"></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
@@ -289,11 +302,11 @@ function sum(){
 				　　 <!-- 商品の口コミの表示-->
 					<table class ="review" >
 						<tr>
-							<th class="table">口コミNo</th>
-							<th class="table">ニックネーム</th>
-							<th class="table">評価</th>
-							<th class="table">口コミ内容</th>
-							<th class="table">口コミ日時</th>
+							<th class="tabletitle">口コミNo</th>
+							<th class="tabletitle">ニックネーム</th>
+							<th class="tabletitle">評価</th>
+							<th class="tabletitle">口コミ内容</th>
+							<th class="tabletitle">口コミ日時</th>
 
 						</tr>
 						<c:forEach var="reviewbox" items="${reviewentity}">

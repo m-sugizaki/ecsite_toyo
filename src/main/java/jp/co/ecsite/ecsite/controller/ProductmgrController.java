@@ -130,7 +130,7 @@ public class ProductmgrController {
 		List<ReviewEntity> reviewentity = prodmgrService.productReview(prodmgrModel.getProduct_id());
 
 		//画像表示用 (base64型に変換してエンティティのフィールドに格納)
-		productentity.setImage64(Base64.getEncoder().encodeToString(productentity.getImage()));
+		productentity.setImagebase(Base64.getEncoder().encodeToString(productentity.getImage()));
 
 		model.addAttribute("productentity", productentity);
 		model.addAttribute("reviewentity", reviewentity);
