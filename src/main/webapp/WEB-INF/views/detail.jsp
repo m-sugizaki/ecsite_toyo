@@ -8,12 +8,21 @@
 <meta charset="UTF-8">
 <style>
 
+.title,contents{
+	font-size: 36px;
+}
+
 .table,review {
 	border: solid 1px #000000;
 	border-collapse: collapse;}
 
+.tabletitle,review{
+	width: 150px;
+ 	background-color: lightblue;
+ 	border: solid 1px #000000;
+	border-collapse: collapse;
+}
 </style>
-
 <title>商品詳細</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
@@ -124,7 +133,7 @@ function sum(){
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-				<h5>商品詳細</h5>
+			<p class= "title">商品詳細</p>
 				<br>
 				<br>
 		      <!-- 商品詳細の表示 -->
@@ -289,11 +298,11 @@ function sum(){
 				　　 <!-- 商品の口コミの表示-->
 					<table class ="review" >
 						<tr>
-							<th class="table">口コミNo</th>
-							<th class="table">ニックネーム</th>
-							<th class="table">評価</th>
-							<th class="table">口コミ内容</th>
-							<th class="table">口コミ日時</th>
+							<th class="tabletitle">口コミNo&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle">ニックネーム&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle">評価&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle">口コミ内容&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle">口コミ日時&nbsp;&nbsp;&nbsp;</th>
 
 						</tr>
 						<c:forEach var="reviewbox" items="${reviewentity}">
