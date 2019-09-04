@@ -58,13 +58,7 @@ public class ProductmgrController {
 	@RequestMapping(value="/search", method=RequestMethod.POST, params="kensaku")
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model) {
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
-<<<<<<< HEAD
 
-		/* 最低価格と最高価格の空文字チェックを行う
-=======
-/**/
-		/*最低価格と最高価格の空文字チェックを行う
->>>>>>> branch 'master' of https://github.com/m-sugizaki/ecsite_toyo.git
 		if(prodmgrModel.getMinprice().isEmpty()||prodmgrModel.getMaxprice().isEmpty()) {
 			productsearchentity.setMinprice(0);
 			productsearchentity.setMaxprice(2147483647);
@@ -75,7 +69,7 @@ public class ProductmgrController {
 		}catch(NumberFormatException e){
 			model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
 		}
-		}*/
+		}
 
 
 		//最低価格の空文字チェックを行い、入力された文字か最低額をentityに格納
