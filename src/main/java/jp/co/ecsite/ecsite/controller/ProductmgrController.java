@@ -56,7 +56,7 @@ public class ProductmgrController {
 	@RequestMapping(value="/search", method=RequestMethod.POST, params="kensaku")
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model) {
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
-
+/**/
 		/*最低価格と最高価格の空文字チェックを行う
 		if(prodmgrModel.getMinprice().isEmpty()||prodmgrModel.getMaxprice().isEmpty()) {
 			productsearchentity.setMinprice(0);
