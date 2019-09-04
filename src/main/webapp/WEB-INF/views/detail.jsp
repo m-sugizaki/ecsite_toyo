@@ -9,7 +9,7 @@
 <style>
 
 .minititle,contents{
-	font-size: 30px;
+	font-size: 26px;
 	text-decoration: underline #000000;
 }
 
@@ -137,12 +137,13 @@ function sum(){
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
+			<br>
 			<p class= "minititle">商品詳細</p>
 				<br>
 				<br>
 		      <!-- 商品詳細の表示 -->
 				<table id="kensaku">
-					<form:form modelAttribute="productCartModel">
+					<form:form modelAttribute="productCartModel" name="form1">
 						<tr>
 							<td>商品コード&nbsp;&nbsp;</td><td>${productentity.product_id}</td>
 						</tr>
@@ -188,7 +189,7 @@ function sum(){
 						<tr><td>&nbsp;</td><tr>
 						<tr>
 							<td>購入価格&nbsp;&nbsp;&nbsp;</td>
-							<td>
+							<td >
 							<!-- 合計金額表示 -->
 							<input type="text" name="field" size="8" value="0" readonly>
 							</td>
