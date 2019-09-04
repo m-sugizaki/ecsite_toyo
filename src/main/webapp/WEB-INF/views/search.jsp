@@ -96,7 +96,7 @@ text-decoration: underline;
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><form:input path="password" placeholder="パスワード"
+															<td><form:password path="password" placeholder="パスワード"
 																	class="userid" /></td>
 														</tr>
 														<tr>
