@@ -117,8 +117,9 @@
 																	placeholder="パスワード" class="userid" /></td>
 														</tr>
 														<tr>
-															<td><input type="submit" value="ログイン" name="login"
-																class="login" /> <a href="home" class="cancel">キャンセル</a></td>
+															<td><form:input type="hidden" path="hid" value="2"/>
+															<input type="submit" value="ログイン" name="login" class="login" />
+																 <a href="home" class="cancel">キャンセル</a></td>
 														</tr>
 													</form:form>
 												</table>

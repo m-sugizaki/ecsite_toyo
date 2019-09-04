@@ -17,6 +17,7 @@ import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 import jp.co.ecsite.ecsite.model.NewUserModel;
 import jp.co.ecsite.ecsite.model.ProdmgrModel;
+import jp.co.ecsite.ecsite.model.ProductCartModel;
 import jp.co.ecsite.ecsite.model.UserModel;
 import jp.co.ecsite.ecsite.service.MypageService;
 
@@ -46,16 +47,15 @@ public class MypageController {
 		return new ProdmgrModel();
 	}
 
+	@ModelAttribute("productCartModel")
+	public ProductCartModel setUpProdcart() {
+		return new ProductCartModel();
+	}
+
 	//起動時にマイページに遷移
 	@RequestMapping(value="/home" , method=RequestMethod.GET)
 	public String toHome() {
 		return "mypage";
-	}
-
-	//商品検索画面に遷移
-	@RequestMapping(value="/search" , method=RequestMethod.GET )
-	public String toSearch() {
-		return "search";
 	}
 
 	//ログインチェック
@@ -71,7 +71,15 @@ public class MypageController {
 		}
 		mypageService.dateUpdate(login);
 		model.addAttribute("login",login);
-		return "mypage";
+
+		if(uModel.getHid().equals("1")) {
+			return "mypage";
+		}else if(uModel.getHid().equals("2")) {
+			return "search";
+		}else {
+			return "detail";
+		}
+
 	}
 
 	/*@RequestMapping(value="/home", method=RequestMethod.POST, params="out")

@@ -11,6 +11,7 @@ public class UserModel implements Serializable {
 	@NotEmpty(message = "パスワードが未入力です。")
 	private String password;
 
+	private String hid;
 
 	public String getUser_id() {
 		return user_id;
@@ -24,5 +25,13 @@ public class UserModel implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getHid() {
+		return hid;
+	}
+	public void setHid(String hid) {
+		this.hid = hid;
+	}
+
+
 
 }
