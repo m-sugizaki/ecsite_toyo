@@ -131,7 +131,7 @@
 
 	<c:forEach var="pay" items="paymentinfo">
 		<tr>
-			<td>${pay.payment_id}</td>
+			<td>${pay.payment_no}</td>
 			<td>${pay.payment_method}</td>
 			<td>${pay.card_number}</td>
 			<td>${pay.expiration_date}</td>
