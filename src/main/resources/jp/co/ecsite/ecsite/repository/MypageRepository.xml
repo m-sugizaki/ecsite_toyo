@@ -110,7 +110,7 @@
 </select>
 
 <!-- ログイン中のアカウント情報取得 -->
-<select id="accountInfo" resultMap="accountInfoResultMap">
+<select id="accountInfo" resultMap="accountInfoResultMap" parameterType="UserEntity">
  <![CDATA[
 			SELECT
 			  *
@@ -124,7 +124,7 @@
 </select>
 
 <!-- ログイン中の支払い情報取得 -->
-<select id="paymentInfo" resultMap="paymentInfoResultMap">
+<select id="paymentInfo" resultMap="paymentInfoResultMap" parameterType="PaymentMethodEntity">
  <![CDATA[
 			SELECT
 			  *
@@ -136,7 +136,7 @@
 </select>
 
 <!-- ログイン中の送り先情報取得 -->
-<select id="shippingInfo" resultMap="shippingInfoResultMap">
+<select id="shippingInfo" resultMap="shippingInfoResultMap" parameterType="ShippingAddressEntity">
  <![CDATA[
 			SELECT
 			  *
