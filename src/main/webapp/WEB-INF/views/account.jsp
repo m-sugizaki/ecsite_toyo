@@ -6,6 +6,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style>
+.view {
+	border: none;
+	background-color: transparent;
+	color: blue;
+	text-decoration: underline;
+}
+
+#kensaku{
+ font-size: 18px;
+}
+
+.minititle, contents {
+	font-size: 26px;
+	text-decoration: underline #000000;
+}
+
+.table, results {
+	font-size: 16px;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+
+.tabletitle, results {
+	font-size: 16px;
+	align: center;
+	width: 150px;
+	background-color: lightblue;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+}
+</style>
 <title>アカウント情報画面</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
@@ -59,12 +92,11 @@
 				<br><a href="logout">ログアウト</a>
 			</div>
 	</div>
-	</div>
-	</div>
 
 
 	<!-- メインコンテンツ -->
-<h1>アカウント情報</h1>
+<div class="contents">
+<p class="minititle">アカウント情報</p>
 
 <table border="0">
 	<tr>
@@ -117,54 +149,54 @@
 		<td>${accountinfo.member_rank}</td>
 	</tr>
 </table>
-
+<br>
 <p>支払方法情報</p>
 
-<table>
+<table class="results">
 	<tr>
-		<th>支払No</th>
-		<th>支払方法</th>
-		<th>カード番号</th>
-		<th>有効期限</th>
-		<th>カード名義人</th>
+		<th class="tabletitle">支払方法</th>
+		<th class="tabletitle">カード番号</th>
+		<th class="tabletitle">有効期限</th>
+		<th class="tabletitle">カード名義人</th>
 	</tr>
 
 	<c:forEach var="pay" items="${paymentinfo}">
 		<tr>
-			<td>${pay.payment_no}</td>
-			<td>${pay.payment_method}</td>
-			<td>${pay.card_number}</td>
-			<td>${pay.expiration_date}</td>
-			<td>${pay.card_holder_name}</td>
+			<td class="table">${pay.payment_method}</td>
+			<td class="table">${pay.card_number}</td>
+			<td class="table">${pay.expiration_date}</td>
+			<td class="table">${pay.card_holder_name}</td>
 		</tr>
 	</c:forEach>
 </table>
-
+<br>
 <p>お届け先情報</p>
 
-<table>
+<table class="results">
 	<tr>
-		<th>お届けNo</th>
-		<th>郵便番号</th>
-		<th>住所1</th>
-		<th>住所2</th>
-		<th>電話番号</th>
-		<th>お届け先名</th>
+		<th class="tabletitle">郵便番号</th>
+		<th class="tabletitle">住所1</th>
+		<th class="tabletitle">住所2</th>
+		<th class="tabletitle">電話番号</th>
+		<th class="tabletitle">お届け先名</th>
 	</tr>
 
 	<c:forEach var="address" items="${shippinginfo}">
 		<tr>
-			<td>${address.shipping_address_no}</td>
-			<td>${address.postal_code}</td>
-			<td>${address.address1}</td>
-			<td>${address.address2}</td>
-			<td>${address.phone_number}</td>
-			<td>${address.shipping_address_name}</td>
+			<td class="table">${address.postal_code}</td>
+			<td class="table">${address.address1}</td>
+			<td class="table">${address.address2}</td>
+			<td class="table">${address.phone_number}</td>
+			<td class="table">${address.shipping_address_name}</td>
 		</tr>
 	</c:forEach>
 </table>
 
 <a href="accountupdate">変更</a>
+</div>
+
+	</div>
+	</div>
 
 
 </body>
