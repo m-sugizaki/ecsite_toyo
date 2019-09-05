@@ -25,6 +25,7 @@ import jp.co.ecsite.ecsite.model.UserModel;
 import jp.co.ecsite.ecsite.service.MypageService;
 
 //9/5 13:50 高橋
+//9/5 14:35 高橋
 
 
 
@@ -178,13 +179,13 @@ public class MypageController {
 	@RequestMapping(value="/account", method=RequestMethod.GET)
 	String toAccountmgr(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
 
-		UserEntity account = mypageService.accountInfo(userstoreentity);
-		List<ShippingAddressEntity> ship = mypageService.shippingInfo(userstoreentity);
-		List<PaymentMethodEntity> payment = mypageService.paymentInfo(userstoreentity);
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-		model.addAttribute("account" ,account);
-		model.addAttribute("ship" ,ship);
-		model.addAttribute("payment" ,payment);
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 		return "account";
 	}
 
