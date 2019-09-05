@@ -129,7 +129,7 @@
 		<th>カード名義人</th>
 	</tr>
 
-	<c:forEach var="pay" items="paymentinfo">
+	<c:forEach var="pay" items="${paymentinfo}">
 		<tr>
 			<td>${pay.payment_no}</td>
 			<td>${pay.payment_method}</td>
@@ -152,7 +152,7 @@
 		<th>お届け先名</th>
 	</tr>
 
-	<c:forEach var="address" items="shippinginfo">
+	<c:forEach var="address" items="${shippinginfo}">
 		<tr>
 			<td>${address.shipping_address_no}</td>
 			<td>${address.postal_code}</td>
