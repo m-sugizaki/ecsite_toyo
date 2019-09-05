@@ -1,6 +1,7 @@
 package jp.co.ecsite.ecsite.controller;
 
 import java.sql.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import jp.co.ecsite.ecsite.entity.PaymentMethodEntity;
+import jp.co.ecsite.ecsite.entity.ShippingAddressEntity;
 import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 import jp.co.ecsite.ecsite.model.NewUserModel;
@@ -172,18 +175,17 @@ public class MypageController {
 		return "mypage";
 	}
 
-	//アカウント管理画面への遷移
-			/*@RequestMapping(value="/account", method=RequestMethod.GET)
-			String toAccountmgr(Model model ,  HttpServletRequest request) {
-				HttpSession session = request.getSession();
+	@RequestMapping(value="/account", method=RequestMethod.GET)
+	String toAccountmgr(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
 
-				UserEntity account = mypageService.accountInfo(session.getAttribute("login"));
-				List<ShippingAddressEntity> ship = mypageService.shippingInfo(session.getAttribute("login"));
-				List<PaymentMethodEntity> payment = mypageService.paymentInfo(session.getAttribute("login"));
+		UserEntity account = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> ship = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> payment = mypageService.paymentInfo(userstoreentity);
 
-				model.addAttribute("account" ,account);
-				model.addAttribute("ship" ,ship);
-				model.addAttribute("payment" ,payment);
-				return "account";
-			}*/
+		model.addAttribute("account" ,account);
+		model.addAttribute("ship" ,ship);
+		model.addAttribute("payment" ,payment);
+		return "account";
+	}
+
 }
