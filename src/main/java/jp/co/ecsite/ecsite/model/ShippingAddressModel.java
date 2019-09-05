@@ -2,7 +2,7 @@ package jp.co.ecsite.ecsite.model;
 
 import java.io.Serializable;
 
-public class ShippngAddressModel implements Serializable {
+public class ShippingAddressModel implements Serializable {
 
 	private String shipping_address_no;
 	private String postal_code;
