@@ -1,3 +1,5 @@
+//ブランチテスト
+
 package jp.co.ecsite;
 
 // merge test
