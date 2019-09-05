@@ -52,8 +52,8 @@
 <result column="payment_no" property="payment_no"/>
 <result column="payment_method" property="payment_method"/>
 <result column="card_number" property="card_number"/>
-<result column="expiration" property="expiration"/>
-<result column="card_holder_name" property="cart_holder_name"/>
+<result column="expiration_date" property="expiration_date"/>
+<result column="card_holder_name" property="card_holder_name"/>
 </resultMap>
 
 <!-- ログイン中の送り先情報取得 -->
