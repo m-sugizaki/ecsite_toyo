@@ -1,5 +1,5 @@
 //Branch2 change
-//branch2 comment
+//branch2 comment2
 
 package jp.co.ecsite.ecsite.controller;
 
