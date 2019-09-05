@@ -167,6 +167,7 @@
 					<div class="errormessage">
 						<c:out value="${opposite}" />
 						<c:out value="${numberformat}" />
+						<c:out value="${minus}" />
 					</div>
 				</form:form>
 				<br> <br>

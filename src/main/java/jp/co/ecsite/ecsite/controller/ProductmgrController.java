@@ -61,7 +61,8 @@ public class ProductmgrController {
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model) {
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
 
-		if(prodmgrModel.getMinprice().isEmpty()||prodmgrModel.getMaxprice().isEmpty()) {
+		//最低・最高価格の空文字チェックを行い、入力された文字か最低・最高額をentityに格納
+		/*if(prodmgrModel.getMinprice().isEmpty()||prodmgrModel.getMaxprice().isEmpty()) {
 			productsearchentity.setMinprice(0);
 			productsearchentity.setMaxprice(2147483647);
 		}else {
@@ -70,9 +71,9 @@ public class ProductmgrController {
 			productsearchentity.setMaxprice(Integer.parseInt(prodmgrModel.getMaxprice()));
 		}catch(NumberFormatException e){
 			model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
+			return "search";
 		}
-		}
-
+		}*/
 
 		//最低価格の空文字チェックを行い、入力された文字か最低額をentityに格納
 		if(prodmgrModel.getMinprice().isEmpty()){
@@ -95,14 +96,25 @@ public class ProductmgrController {
 				model.addAttribute("numberformat", "書式が違います。半角数字で入力してください。");
 				return "search";
 			}
-
 		}
 
+		//最低価格の符号チェック(マイナスがついていないか)
+		if(Math.signum(productsearchentity.getMinprice())==-1.0) {
+			model.addAttribute("minus","数値にマイナスを付けることはできません。");
+			return "search";
+		}
+
+		//最高価格の符号チェック(マイナスがついていないか)
+		if(Math.signum(productsearchentity.getMaxprice())==-1.0) {
+			model.addAttribute("minus","数値にマイナスを付けることはできません。");
+			return "search";
+		}
 
 		/*int min =Integer.parseInt(prodmgrmodel.getMinprice());
 		entity.setMinprice(min);
 		entity.setMaxprice(Integer.parseInt(prodmgrmodel.getMaxprice()));*/
 
+		//最低価格<最高価格になっているか
 		if(productsearchentity.getMinprice() > productsearchentity.getMaxprice()) {
 			model.addAttribute("opposite","最低価格が最高価格を上回っています。適切な価格を入力してください。");
 			return "search";
