@@ -49,11 +49,11 @@
 <!-- ログイン中の支払い情報取得 -->
 <resultMap id="paymentInfoResultMap" type="PaymentMethodEntity">
 <result column="user_id" property="user_id"/>
-<result column="payment_no" property="product_id"/>
-<result column="payment_method" property="quantity"/>
-<result column="card_number" property="card_numer"/>
-<result column="expiration" property="color"/>
-<result column="card_holder_name" property="cart_regist_dt"/>
+<result column="payment_no" property="payment_no"/>
+<result column="payment_method" property="payment_method"/>
+<result column="card_number" property="card_number"/>
+<result column="expiration" property="expiration"/>
+<result column="card_holder_name" property="cart_holder_name"/>
 </resultMap>
 
 <!-- ログイン中の送り先情報取得 -->

@@ -5,7 +5,7 @@ import java.util.Date;
 public class PaymentMethodEntity {
 
 		private String user_id;
-		private int payment_id;
+		private int payment_no;
 		private String payment_method;
 		private String card_number;
 		private Date expiration_date;
@@ -16,11 +16,11 @@ public class PaymentMethodEntity {
 		public void setUser_id(String user_id) {
 			this.user_id = user_id;
 		}
-		public int getPayment_id() {
-			return payment_id;
+		public int getPayment_no() {
+			return payment_no;
 		}
-		public void setPayment_id(int payment_id) {
-			this.payment_id = payment_id;
+		public void setPayment_no(int payment_no) {
+			this.payment_no = payment_no;
 		}
 		public String getPayment_method() {
 			return payment_method;
