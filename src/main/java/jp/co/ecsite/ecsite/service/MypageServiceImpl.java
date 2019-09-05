@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.ecsite.ecsite.entity.PaymentMethodEntity;
 import jp.co.ecsite.ecsite.entity.ProductCartEntity;
 import jp.co.ecsite.ecsite.entity.PurchaseResultsEntity;
+import jp.co.ecsite.ecsite.entity.ShippingAddressEntity;
 import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 import jp.co.ecsite.ecsite.repository.MypageRepository;
@@ -49,5 +51,16 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public void newUser(UserEntity userentity) {
 		mypageRepository.newUser(userentity);
+	}
+
+	// 9/5 13:00 豊泉 お支払情報表示
+	@Override
+	public List<PaymentMethodEntity> paymentInfo(UserStoreEntity userstoreentity){
+		return mypageRepository.paymentInfo(userstoreentity.getUser_id());
+	}
+	// 9/5 13:00 豊泉 お届け先情報表示
+	@Override
+	public List<ShippingAddressEntity> shippingInfo(UserStoreEntity userstoreentity){
+		return mypageRepository.shippingInfo(userstoreentity.getUser_id());
 	}
 }
