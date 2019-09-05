@@ -21,7 +21,7 @@ import jp.co.ecsite.ecsite.model.ProductCartModel;
 import jp.co.ecsite.ecsite.model.UserModel;
 import jp.co.ecsite.ecsite.service.MypageService;
 
-
+//9/5 13:50 高橋
 
 
 
@@ -171,4 +171,19 @@ public class MypageController {
 	public String canselRegist() {
 		return "mypage";
 	}
+
+	//アカウント管理画面への遷移
+			/*@RequestMapping(value="/account", method=RequestMethod.GET)
+			String toAccountmgr(Model model ,  HttpServletRequest request) {
+				HttpSession session = request.getSession();
+
+				UserEntity account = mypageService.accountInfo(session.getAttribute("login"));
+				List<ShippingAddressEntity> ship = mypageService.shippingInfo(session.getAttribute("login"));
+				List<PaymentMethodEntity> payment = mypageService.paymentInfo(session.getAttribute("login"));
+
+				model.addAttribute("account" ,account);
+				model.addAttribute("ship" ,ship);
+				model.addAttribute("payment" ,payment);
+				return "account";
+			}*/
 }
