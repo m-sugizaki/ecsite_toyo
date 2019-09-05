@@ -170,8 +170,7 @@ public class ProductmgrController {
 		model.addAttribute("sizelist", sizelist);
 
 		return "detail";
-	}
-
+	}//
 }
 
 
