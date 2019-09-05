@@ -67,7 +67,7 @@
 							<div class="popup_overlay">
 							<label for="trigger" class="popup_trigger"></label>
 							<div class="popup_content">
-							<label for="trigger" class="close_btn">×</label>
+							<!--<label for="trigger" class="close_btn">×</label>-->
 							<!-- ログインポップアップ中身 -->
 								<div align="center">
 									<p class="logintitle">ログイン</p>
@@ -80,7 +80,8 @@
 										<tr><td><form:password path="password" placeholder="パスワード" class="userid" /></td></tr>
 										<tr><td><form:input type="hidden" path="hid" value="1"/>
 										<input type="submit" value="ログイン" name="login" class="login" />
-										<a href="home" class="cancel">キャンセル</a></td></tr>
+										<label for="trigger" class="cancel">キャンセル</label></td></tr>
+										<!-- <a href="home" class="cancel">キャンセル</a>-->    </td></tr>
 										</form:form>
 									</table>
 								</div>

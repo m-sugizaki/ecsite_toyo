@@ -98,7 +98,6 @@ function sum(){
 									<div class="popup_overlay">
 										<label for="trigger" class="popup_trigger"></label>
 										<div class="popup_content">
-											<label for="trigger" class="close_btn">×</label>
 											<!-- ログインポップアップ中身 -->
 											<div align="center">
 												<p class="logintitle">ログイン</p>
@@ -116,7 +115,7 @@ function sum(){
 														<tr>
 															<td><form:input type="hidden" path="hid" value="3" />
 															<input type="submit" value="ログイン" name="login"
-																class="login"  /> <a href="home" class="cancel">キャンセル</a></td>
+																class="login"  /> <label for="trigger" class="cancel">キャンセル</label></td>
 														</tr>
 													</form:form>
 												</table>
@@ -200,8 +199,8 @@ function sum(){
 					</form:form>
 				</table>
 
-
-				<!-- lカートに入れる　レジに進む　のポップアップ -->
+				<!-- カートに入れる　レジに進む　のポップアップ -->
+				　　　<!-- ログインしていないときはログインポップアップ -->
 					<c:choose>
 					<c:when test="${empty login.name }">
 						<br>
@@ -211,7 +210,6 @@ function sum(){
 							<div class="popup_overlay">
 							<label for="trigger" class="popup_trigger"></label>
 							<div class="popup_content">
-							<label for="trigger" class="close_btn">×</label>
 							<!-- ログインポップアップ中身 -->
 								<div align="center">
 									<p class="logintitle">ログイン</p>
@@ -223,7 +221,7 @@ function sum(){
 										<tr><td><form:input path="password" placeholder="パスワード" class="userid" /></td></tr>
 										<tr><td><form:input type="hidden" path="hid" value="3" />
 										<input type="submit" value="ログイン" name="login" class="login" />
-										<a href="home" class="cancel">キャンセル</a></td></tr>
+										<label for="trigger" class="cancel">キャンセル</label></td></tr>
 										</form:form>
 									</table>
 								</div>
@@ -236,15 +234,16 @@ function sum(){
 					</c:when>
 					<c:otherwise>
 						<br>
-						<!--login中の「カートに進む」のポップアップ -->
-						<!--lポップアップ -->
+						<!-- ログインしているときのポップアップ -->
+						<!--「カートに進む」のポップアップ -->
+						　　　<!--ポップアップ -->
 							<div class="popup_wrap">
 							<input id="trigger_c" type="checkbox">
 							<div class="popup_overlay">
 							<label for="trigger_c" class="popup_trigger"></label>
 							<div class="popup_content">
-							<label for="trigger_c" class="close_btn">×</label>
-							<!-- ポップアップ中身 -->
+
+							　　<!-- ポップアップ中身 -->
 								<div align="center">
 								　		<br>
 										<br>
@@ -263,10 +262,8 @@ function sum(){
 							</div>
 							</div>
 							</div>
-							<!-- カートに進む・レジに進のボタン -->
-
+						<!-- カートに進む・レジに進のボタン -->
 							<label for="trigger_c" class="tocart" for="tocart">カートに入れる</label>
-
 							 <a href="regist" class="tocart">レジに進む</a>
 							 <!-- lレジに進むはｊｓｐ -->
 

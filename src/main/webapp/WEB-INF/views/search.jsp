@@ -101,7 +101,6 @@
 									<div class="popup_overlay">
 										<label for="trigger" class="popup_trigger"></label>
 										<div class="popup_content">
-											<label for="trigger" class="close_btn">×</label>
 											<!-- ログインポップアップ中身 -->
 											<div align="center">
 												<p class="logintitle">ログイン</p>
@@ -119,7 +118,7 @@
 														<tr>
 															<td><form:input type="hidden" path="hid" value="2"/>
 															<input type="submit" value="ログイン" name="login" class="login" />
-																 <a href="home" class="cancel">キャンセル</a></td>
+																<label for="trigger" class="cancel">キャンセル</label></td>
 														</tr>
 													</form:form>
 												</table>
