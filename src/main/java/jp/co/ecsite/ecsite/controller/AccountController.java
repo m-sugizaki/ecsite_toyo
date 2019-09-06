@@ -1,29 +1,28 @@
 package jp.co.ecsite.ecsite.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.ecsite.ecsite.entity.PaymentMethodEntity;
 import jp.co.ecsite.ecsite.entity.ShippingAddressEntity;
 import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 import jp.co.ecsite.ecsite.model.AccountModel;
-import jp.co.ecsite.ecsite.model.NewUserModel;
 import jp.co.ecsite.ecsite.model.PaymentMethodModel;
 import jp.co.ecsite.ecsite.model.ShippingAddressModel;
+import jp.co.ecsite.ecsite.model.UserModel;
 import jp.co.ecsite.ecsite.service.AccountService;
 import jp.co.ecsite.ecsite.service.MypageService;
 
 @Controller
+@SessionAttributes("login")           // 引数のキーワードでセッションオブジェクトを格納
 public class AccountController  {
 
 	@Autowired
@@ -33,7 +32,12 @@ public class AccountController  {
 	MypageService mypageService;
 
 	@ModelAttribute("userModel")
-	public AccountModel setUpfindAccountOne() {
+	public UserModel setUpaccountInfo() {
+		return new UserModel();
+	}
+
+	@ModelAttribute("accountModel")
+	public AccountModel setUpupdateAccountOne() {
 		return new AccountModel();
 	}
 
@@ -42,14 +46,15 @@ public class AccountController  {
 		return new PaymentMethodModel();
 	}
 
-	@ModelAttribute("shippingAdderessModel")
+	@ModelAttribute("shippingAddressModel")
 	public ShippingAddressModel setUpdeletePayOne(PaymentMethodEntity paymentmethodentity) {
 		return new ShippingAddressModel();
 	}
-/*
+
 	//アカウント情報からアカウント情報更新の画面遷移（変更のボタンを押したとき）
-	@RequestMapping(value="/accountupdata", method=RequestMethod.GET )
-	public String toAccountUpdate(UserStoreEntity userstoreentity , Model model) {
+	@RequestMapping(value="/accountupdate", method=RequestMethod.GET )
+	public String toaccountInfo(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
+
 		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
 		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
 		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
@@ -62,7 +67,7 @@ public class AccountController  {
 
 
 
-	//支払い情報を登録（追加）するメソッド
+/*	//支払い情報を登録（追加）するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
 	public String registPaymentMethod(@Validated @ModelAttribute PaymentMethodModel pmModel , BindingResult result ,  Model model) {
 
@@ -118,7 +123,7 @@ public class AccountController  {
 
 		return "account";
 	}
-	//(キャンセル)アカウント情報、支払い情報、お届け先情報を更新せずにアカウント情報画面に遷移させるメソッド
+	//(キャンセル)アカウント情報を更新せずにアカウント情報画面に遷移させるメソッド
 	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="cancel")
 	public String canceltoAccount(UserStoreEntity userstoreentity , Model model) {
 		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
@@ -133,10 +138,9 @@ public class AccountController  {
 		}
 
 
+	}*/
 
-	}
 
-*/
 }
 
 
