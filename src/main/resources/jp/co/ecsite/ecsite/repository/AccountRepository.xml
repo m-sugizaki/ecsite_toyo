@@ -29,7 +29,7 @@
 </update>
 
 <!-- 支払い方法テーブルの削除 -->
-<delete id="deletetPayOne" parameterType="PaymentMethodEntity">
+<delete id="deletePayOne" parameterType="PaymentMethodEntity">
 	<![CDATA[
 		DELETE FROM
 			payment_method
@@ -87,8 +87,7 @@
 			address2 = #{address2},
 			phone_number = #{phone_number},
 			email = #{email},
-			birthday = #{birthday},
-			member_rank = #{member_rank},
+			birthday = #{birthday}
 		WHERE
 			user_id = #{user_id}
 	]]>

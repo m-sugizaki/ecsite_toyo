@@ -173,7 +173,7 @@
 		INSERT INTO user_store
 			(user_id, password)
 		VALUES
-			(#{user_id},#{passpword})
+			(#{user_id},#{password})
 	]]>
 </insert>
 
@@ -181,9 +181,9 @@
 	<![CDATA[
 		INSERT INTO
 			user
-			(user_id, nickname, postal_code, address1, address2, phone_number, email, birthday, member_rank)
+			(user_id, name ,nickname ,postal_code, address1, address2, phone_number, email, birthday)
 		VALUES
-			(#{user_id},#{nickname},#{postal_code},#{address1},#{address2},#{phone_number},#{email},#{birthday},#{member_rank})
+			(#{user_id}, #{name} ,  #{nickname}, #{postal_code},#{address1},#{address2},#{phone_number},#{email},#{birthday})
 
 	]]>
 </insert>
@@ -199,4 +199,15 @@
 				user_id = #{user_id}
 	]]>
 </update>
+
+<insert id="dateInsert" parameterType="UserStoreEntity">
+	<![CDATA[
+		INSERT INTO login_history
+			(user_id,login_dt)
+		VALUES
+			(#{user_id},NOW())
+
+	]]>
+</insert>
+
 </mapper>

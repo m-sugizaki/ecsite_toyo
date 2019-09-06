@@ -30,4 +30,6 @@ public interface MypageRepository {
 	void newUserStore(UserStoreEntity userstoreentity);
 	//サービスから受け取ったデータを使ってデータベースにデータを挿入するメソッド
 	void newUser(UserEntity userentity);
+	//最終ログイン日時を登録するメソッド
+	public void dateInsert(UserStoreEntity userstoreentity);
 }
