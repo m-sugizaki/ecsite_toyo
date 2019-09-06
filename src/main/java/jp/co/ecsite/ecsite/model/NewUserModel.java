@@ -2,6 +2,11 @@ package jp.co.ecsite.ecsite.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.CreditCardNumber;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class NewUserModel implements Serializable {
@@ -9,9 +14,11 @@ public class NewUserModel implements Serializable {
 	private String user_id;
 
 	@NotEmpty(message = "パスワードが未入力です。")
+	@Length(min=8, message="パスワードは８文字以上で入力してください。")
 	private String password;
 
 	@NotEmpty(message = "パスワード（確認用）が未入力です。")
+	@Length(min=8, message="パスワードは８文字以上で入力してください。")
 	private String password2;
 
 	@NotEmpty(message = "名前が未入力です。")
@@ -21,6 +28,7 @@ public class NewUserModel implements Serializable {
 	private String nickname;
 
 	@NotEmpty(message = "郵便番号が未入力です。")
+	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", message="値が不正です。")
 	private String postal_code;
 
 	@NotEmpty(message = "住所が未入力です。")
@@ -30,12 +38,15 @@ public class NewUserModel implements Serializable {
 	private String address2;
 
 	@NotEmpty(message = "電話番号が未入力です。")
+	@Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$", message="値が不正です。")
 	private String phone_number;
 
 	@NotEmpty(message = "メールアドレスが未入力です。")
+	@Email(message="Emailを入力してください。")
 	private String email;
 
 	@NotEmpty(message = "誕生日が未入力です。")
+	@Pattern(regexp="^\\d{4}-\\d{1,2}-\\d{1,2}$", message="値が不正です。")
 	private String birthday;
 
 	private String member_rank;
@@ -44,6 +55,7 @@ public class NewUserModel implements Serializable {
 	private String payment_method;
 
 	@NotEmpty(message= "カード番号を入力してください。")
+	@CreditCardNumber(message="カード番号が不正です。")
 	private String card_number;
 
 	private String expiration_month;
@@ -54,6 +66,7 @@ public class NewUserModel implements Serializable {
 	private String card_holder_name;
 
 	@NotEmpty(message= "郵便番号を入力してください。")
+	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", message="値が不正です。")
 	private String postal_code2;  //お届け先情報の郵便番号
 
 	@NotEmpty(message= "住所を入力してください。")
@@ -62,6 +75,7 @@ public class NewUserModel implements Serializable {
 	private String address4;  //お届け先情報の住所2
 
 	@NotEmpty(message= "電話番号を入力してください。")
+	@Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$", message="値が不正です。")
 	private String phone_number2;  //お届け先情報の電話番号
 
 	@NotEmpty(message= "お届き先名を入力してください。")
