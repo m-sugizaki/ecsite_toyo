@@ -17,12 +17,12 @@ public class AccountServiceImpl implements AccountService {
 	public void insertPayOne(PaymentMethodEntity paymentmethodentity) {
 		accountRepository.insertPayOne(paymentmethodentity);
 	}
-
+*/
 	@Override
-	 public void deletePayOne(String payment_no) {
-		accountRepository.deletePayOne(payment_no());
+	 public void deletePayOne(int payment_no) {
+		accountRepository.deletePayOne(payment_no);
 	}
-
+/*
 	@Override
 	public void updatePayOne(PaymentMethodEntity paymentmethodentity) {
 		accountRepository.updatePayOne(paymentmethodentity);
@@ -32,12 +32,12 @@ public class AccountServiceImpl implements AccountService {
 	public void insertAddressOne(ShippingAddressEntity shippingaddressentity) {
 		accountRepository.insertAddressOne(shippingaddressentity);
 	}
-
+*/
 	@Override
-	public void deleteAddressOne(String shipping_address_no) {
-		accountRepository.deleteAddressOne(shipping_address_no());
+	public void deleteAddressOne(int shipping_address_no) {
+		accountRepository.deleteAddressOne(shipping_address_no);
 	}
-
+/*
 	@Override
 	public void updateAddressOne(ShippingAddressEntity shippingaddressentity) {
 		accountRepository.updateAddressOne(shippingaddressentity);
