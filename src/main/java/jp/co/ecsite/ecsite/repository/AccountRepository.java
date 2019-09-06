@@ -13,7 +13,7 @@ public interface AccountRepository {
 	void updatePayOne(PaymentMethodEntity paymentmethodentity);
 
 	//サービスから受け取ったデータを使って支払い方法テーブルから行を削除するメソッド
-	void deletePayOne(String payment_no);
+	void deletePayOne(int payment_no);
 
 	//サービスから受け取ったデータを使ってお届け先テーブルに挿入するメソッド
 	void insertAddressOne(ShippingAddressEntity shippingaddressentity);
@@ -22,7 +22,7 @@ public interface AccountRepository {
 	void updateAddressOne(ShippingAddressEntity shippingaddressentity);
 
 	//サービスから受け取ったデータを使ってお届け先テーブルから行を削除するメソッド
-	void deleteAddressOne(String shipping_address_no);
+	void deleteAddressOne(int shipping_address_no);
 
 	//サービスから受け取ったデータを使ってユーザーテーブルを変更するメソッド
 	void updateAccountOne(UserEntity userentity);
