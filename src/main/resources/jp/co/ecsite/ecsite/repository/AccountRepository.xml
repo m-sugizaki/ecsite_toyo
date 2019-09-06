@@ -2,4 +2,103 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.co.ecsite.ecsite.repository.AccountRepository" >
+
+<!-- 支払い方法テーブルに挿入 -->
+<insert id="insertPayOne" parameterType="PaymentMethodEntity">
+	<![CDATA[
+		INSERT INTO payment_method
+			(user_id, payment_method, card_number, expiration_date, card_holder_name)
+		VALUES
+			(#{user_id},#{payment_method},#{card_number},#{expiration_date},#{card_holder_name})
+	]]>
+</insert>
+
+<!-- 支払い方法テーブルの更新 -->
+<update id="updatePayOne" parameterType="PaymentMethodEntity">
+	<![CDATA[
+		UPDATE
+			payment_method
+		SET
+			payment_method = #{payment_method},
+			card_number = #{card_number},
+			expiration_date = #{expiration_date},
+			card_holder_name = #{card_holder_name}
+		WHERE
+			user_id = #{user_id}
+		AND
+			payment_no = #{payment_id}
+	]]>
+</update>
+
+<!-- 支払い方法テーブルの削除 -->
+<delete id="deletetPayOne" parameterType="PaymentMethodEntity">
+	<![CDATA[
+		DELETE FROM
+			payment_method
+		WHERE
+			user_id = #{user_id}
+		AND
+			payment_no = #{payment_id}
+	]]>
+</delete>
+
+<!-- お届け先テーブルに挿入 -->
+<insert id="insertAddressOne" parameterType="ShippingAddressEntity">
+	<![CDATA[
+		INSERT INTO shipping_address
+			(user_id, postal_code, address1, address2, phone_number, shipping_address_name)
+		VALUES
+			(#{user_id},#{postal_code},#{address1},#{address2},#{phone_number},#{shipping_address_name})
+	]]>
+</insert>
+
+<!-- お届け先テーブルの更新 -->
+<update id="updateAddressOne" parameterType="ShippingAddressEntity">
+	<![CDATA[
+		UPDATE
+			shipping_address
+		SET
+			postal_code = #{postal_code},
+			address1 = #{address1},
+			address2 = #{address2},
+			phone_number = #{phone_number},
+			shipping_address_name = #{shipping_address_name}
+		WHERE
+			user_id = #{user_id}
+		AND
+			shipping_address_no = #{shipping_address_no}
+	]]>
+</update>
+
+<!-- お届け先テーブルの削除 -->
+<delete id="deleteAddressOne" parameterType="ShippingAddressEntity">
+	<![CDATA[
+		DELETE FROM
+			shipping_address
+		WHERE
+			user_id = #{user_id}
+		AND
+			shipping_address_no = #{shipping_address_no}
+	]]>
+</delete>
+
+<!-- ユーザーテーブルの更新 -->
+<update id="updateAccountOne" parameterType="UserEntity">
+	<![CDATA[
+		UPDATE
+			user
+		SET
+			name = #{name},
+			nickname = #{nickname},
+			postal_code = #{postal_code},
+			address1 = #{address1},
+			address2 = #{address2},
+			phone_number = #{phone_number},
+			email = #{email},
+			birthday = #{birthday},
+			member_rank = #{member_rank},
+		WHERE
+			user_id = #{user_id}
+	]]>
+</update>
 </mapper>
