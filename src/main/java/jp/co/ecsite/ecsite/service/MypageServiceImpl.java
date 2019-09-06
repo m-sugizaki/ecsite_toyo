@@ -63,4 +63,9 @@ public class MypageServiceImpl implements MypageService {
 	public List<ShippingAddressEntity> shippingInfo(UserStoreEntity userstoreentity){
 		return mypageRepository.shippingInfo(userstoreentity.getUser_id());
 	}
+
+	@Override
+	public void dateInsert(UserStoreEntity userstoreentity) {
+		mypageRepository.dateInsert(userstoreentity);
+	}
 }
