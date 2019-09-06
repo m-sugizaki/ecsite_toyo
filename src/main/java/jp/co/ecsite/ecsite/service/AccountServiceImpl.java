@@ -1,14 +1,18 @@
 package jp.co.ecsite.ecsite.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jp.co.ecsite.ecsite.entity.UserEntity;
+import jp.co.ecsite.ecsite.repository.AccountRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-/*
+
 	 @Autowired
 	AccountRepository accountRepository;
 
-
+/*
 	@Override
 	public void insertPayOne(PaymentMethodEntity paymentmethodentity) {
 		accountRepository.insertPayOne(paymentmethodentity);
@@ -38,10 +42,11 @@ public class AccountServiceImpl implements AccountService {
 	public void updateAddressOne(ShippingAddressEntity shippingaddressentity) {
 		accountRepository.updateAddressOne(shippingaddressentity);
 	}
+	*/
 
 	@Override
 	public void updateAccountOne(UserEntity userentity) {
 		accountRepository.updateAccountOne(userentity);
 	}
-*/
+
 }
