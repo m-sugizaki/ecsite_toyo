@@ -29,7 +29,7 @@
 </update>
 
 <!-- 支払い方法テーブルの削除 -->
-<delete id="deletetPayOne" parameterType="PaymentMethodEntity">
+<delete id="deletePayOne" parameterType="PaymentMethodEntity">
 	<![CDATA[
 		DELETE FROM
 			payment_method
