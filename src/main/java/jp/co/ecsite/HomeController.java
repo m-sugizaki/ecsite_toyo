@@ -3,12 +3,10 @@
 
 /* 2019/09/06 コメント対応
  * sugizaki修正
- * sugi2で修正
  */
 
 /* 2019/09/06 コメント対応
  * sugizaki修正
- * sugi2で修正
  */
 
 package jp.co.ecsite;
