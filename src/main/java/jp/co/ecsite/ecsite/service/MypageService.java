@@ -21,4 +21,5 @@ public interface MypageService {
 	List<PaymentMethodEntity> paymentInfo(UserStoreEntity userstoreentity);
 	// 9/5 13:00 豊泉 お届け先情報表示
 	List<ShippingAddressEntity> shippingInfo(UserStoreEntity userstoreentity);
+	void dateInsert(UserStoreEntity userstoreentity);
 }
