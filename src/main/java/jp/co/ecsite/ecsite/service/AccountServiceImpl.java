@@ -30,8 +30,8 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void deleteAddressOne(String shipping_no) {
-		accountRepository.deleteAddressOne(shipping_no());
+	public void deleteAddressOne(String shipping_address_no) {
+		accountRepository.deleteAddressOne(shipping_address_no());
 	}
 
 	@Override
