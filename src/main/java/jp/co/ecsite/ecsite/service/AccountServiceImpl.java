@@ -8,10 +8,6 @@ public class AccountServiceImpl implements AccountService {
 	 * @Autowired
 	AccountRepository accountRepository;
 
-	@Override
-	UserEntity findAccountOne(String user_id) {
-		return accountRepository.findAccountOne(String user_id);
-	}
 
 	@Override
 	void insertPayOne(PaymentMethodEntity paymentmethodentity) {
