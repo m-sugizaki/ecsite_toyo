@@ -1,6 +1,10 @@
 //ブランチテスト
 //developにプルリクを送る
 
+/* 2019/09/06 コメント対応
+ * sugizaki修正
+ */
+
 package jp.co.ecsite;
 
 // merge test
