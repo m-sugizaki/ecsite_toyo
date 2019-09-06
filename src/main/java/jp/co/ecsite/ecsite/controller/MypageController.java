@@ -128,49 +128,54 @@ public class MypageController {
 		return "newaccount";
 	}
 
+
 	//新規アカウント登録処理
 	@RequestMapping(value="/regist" , method=RequestMethod.POST, params="regist")
 	public String toRegist(@Validated @ModelAttribute NewUserModel nuModel , BindingResult result ,  Model model) {
-		if(result.hasErrors()) {
-			return "newaccount";
+			if(result.hasErrors()) {
+				return "newaccount";
+			}
+
+			if(!nuModel.getPassword().equals(nuModel.getPassword2())) {
+				model.addAttribute("message","確認用パスワードが間違っています。");
+				return "newaccount";
+			}
+
+			Date birthday = Date.valueOf(nuModel.getBirthday());
+			UserStoreEntity userstoreentity = new UserStoreEntity();
+			userstoreentity.setUser_id(nuModel.getUser_id());
+			userstoreentity.setPassword(nuModel.getPassword());
+
+			UserEntity userentity = new UserEntity();
+
+			userentity.setUser_id(nuModel.getUser_id());
+			userentity.setName(nuModel.getName());
+			userentity.setNickname(nuModel.getNickname());
+			userentity.setPostal_code(nuModel.getPostal_code());
+			userentity.setAddress1(nuModel.getAddress1());
+			userentity.setAddress2(nuModel.getAddress2());
+			userentity.setPhone_number(nuModel.getPhone_number());
+			userentity.setEmail(nuModel.getEmail());
+			userentity.setBirthday(birthday);
+
+			UserEntity logincheck = mypageService.accountInfo(userstoreentity);
+			if(logincheck != null) {
+				model.addAttribute("message" , "既に登録されたユーザーです。");
+				return "newaccount";
+			}
+
+			mypageService.newUser(userentity);
+			mypageService.newUserStore(userstoreentity);
+			mypageService.dateInsert(userstoreentity);
+
+			UserStoreEntity login = mypageService.login(userstoreentity.getUser_id() ,userstoreentity.getPassword());
+
+			model.addAttribute("login" , login);
+
+			return "mypage";
+
+
 		}
-		if(!nuModel.getPassword().equals(nuModel.getPassword2())) {
-			model.addAttribute("message","確認用パスワードが間違っています。");
-			return "newaccount";
-		}
-
-		UserStoreEntity userstoreentity = mypageService.login(nuModel.getUser_id(), nuModel.getPassword());
-		if(userstoreentity != null) {
-			model.addAttribute("errormessage" , "既に登録されたユーザーです。");
-			return "newaccount";
-		}
-
-		Date birthday = Date.valueOf(nuModel.getBirthday());
-
-		UserEntity userentity = new UserEntity();
-
-		userentity.setUser_id(nuModel.getUser_id());
-		userentity.setPassword(nuModel.getPassword());
-		userentity.setName(nuModel.getName());
-		userentity.setNickname(nuModel.getNickname());
-		userentity.setAddress1(nuModel.getAddress1());
-		userentity.setAddress2(nuModel.getAddress2());
-		userentity.setPhone_number(nuModel.getPhone_number());
-		userentity.setEmail(nuModel.getEmail());
-		userentity.setBirthday(birthday);
-		userentity.setMember_rank(nuModel.getMember_rank());
-
-		mypageService.dateUpdate(userstoreentity);
-
-		mypageService.newUser(userentity);
-		mypageService.newUserStore(userstoreentity);
-
-		model.addAttribute("login",userstoreentity);
-		return "mypage";
-
-		//アカウント処理の中の支払情報登録と届け先情報を追加するメソッドを呼び出す。
-	}
-
 	@RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
 	public String canselRegist() {
 		return "mypage";
