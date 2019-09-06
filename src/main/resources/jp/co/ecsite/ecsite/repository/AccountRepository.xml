@@ -24,9 +24,7 @@
 			expiration_date = #{expiration_date},
 			card_holder_name = #{card_holder_name}
 		WHERE
-			user_id = #{user_id}
-		AND
-			payment_no = #{payment_id}
+			payment_no = #{payment_no}
 	]]>
 </update>
 
@@ -36,9 +34,7 @@
 		DELETE FROM
 			payment_method
 		WHERE
-			user_id = #{user_id}
-		AND
-			payment_no = #{payment_id}
+			payment_no = #{payment_no}
 	]]>
 </delete>
 
@@ -64,8 +60,6 @@
 			phone_number = #{phone_number},
 			shipping_address_name = #{shipping_address_name}
 		WHERE
-			user_id = #{user_id}
-		AND
 			shipping_address_no = #{shipping_address_no}
 	]]>
 </update>
@@ -76,8 +70,6 @@
 		DELETE FROM
 			shipping_address
 		WHERE
-			user_id = #{user_id}
-		AND
 			shipping_address_no = #{shipping_address_no}
 	]]>
 </delete>
