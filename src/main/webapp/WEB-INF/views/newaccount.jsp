@@ -46,47 +46,47 @@
 		<table>
 			<tr>
 				<th>ユーザID</th>
-				<td><form:input path="user_id" placeholder="(例)abc" /></td>
+				<td><form:input path="user_id" placeholder="(例)abc" /></td><td><form:errors path="user_id" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>パスワード</th>
-				<td><form:password path="password" placeholder="(例)def"/></td>
+				<td><form:password path="password" placeholder="(例)def"/></td><td><form:errors path="password" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>パスワード（確認用）</th>
-				<td><form:password path="password2" /></td>
+				<td><form:password path="password2" /></td><td><form:errors path="password2" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<td><form:input path="name" placeholder="(例)山田太郎" /></td>
+				<td><form:input path="name" placeholder="(例)山田太郎" /></td><td><form:errors path="name" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>ﾆｯｸﾈｰﾑ</th>
-				<td><form:input path="nickname" placeholder="(例)たろう" /></td>
+				<td><form:input path="nickname" placeholder="(例)たろう" /></td><td><form:errors path="nickname" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<td><form:input path="postal_code" placeholder="(例)000-0000" /></td>
+				<td><form:input path="postal_code" placeholder="(例)000-0000" /></td><td><form:errors path="postal_code" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>住所1</th>
-				<td><form:input path="address1" placeholder="(例)東京"/></td>
+				<td><form:input path="address1" placeholder="(例)東京"/></td><td><form:errors path="address1" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>住所２</th>
-				<td><form:input path="address2" placeholder="(例)大崎" /></td>
+				<td><form:input path="address2" placeholder="(例)大崎" /></td><td><form:errors path="address2" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>電話番号</th>
-				<td><form:input path="phone_number" placeholder="(例)000-0000-0000"/></td>
+				<td><form:input path="phone_number" placeholder="(例)000-0000-0000"/></td><td><form:errors path="phone_number" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>E-mail</th>
-				<td><form:input path="email" placeholder="(例)xxxx@co.jp"/></td>
+				<td><form:input path="email" placeholder="(例)xxxx@co.jp"/></td><td><form:errors path="email" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>生年月日</th>
-				<td><form:input path="birthday" placeholder="(例)0000/00/00"/></td>
+				<td><form:input path="birthday" placeholder="(例)0000/00/00"/></td><td><form:errors path="birthday" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>会員ランク</th>
@@ -112,11 +112,11 @@
 				</tr>
 				<tr>
 				<th>支払方法</th>
-				<td><form:input path="payment_method" placeholder="(例)クレジットカード" /></td>
+				<td><form:input path="payment_method" placeholder="(例)クレジットカード" /></td><td><form:errors path="payment_method" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>カード番号</th>
-				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" /></td>
+				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" /></td><td><form:errors path="card_number" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>有効期限</th>
@@ -149,7 +149,7 @@
 
 				<tr>
 				<th>カード名義人</th>
-				<td><form:input path="card_holder_name" placeholder="(例)abc" /></td>
+				<td><form:input path="card_holder_name" placeholder="(例)abc" /></td><td><form:errors path="card_holder_name" elements="span" /></td>
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->
 
@@ -181,23 +181,23 @@
 				</tr>
 				<tr>
 				<th>郵便番号</th>
-				<td><form:input path="postal_code2" placeholder="(例)000-0000" /></td>
+				<td><form:input path="postal_code2" placeholder="(例)000-0000" /></td><td><form:errors path="postal_code2" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>住所１</th>
-				<td><form:input path="address3" placeholder="(例)東京" /></td>
+				<td><form:input path="address3" placeholder="(例)東京" /></td><td><form:errors path="address3" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>住所２</th>
-				<td><form:input path="address4" placeholder="(例)大崎" /></td>
+				<td><form:input path="address4" placeholder="(例)大崎" /></td><td><form:errors path="address4" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>電話番号</th>
-				<td><form:input path="phone_number2" placeholder="(例)000-0000-0000" /></td>
+				<td><form:input path="phone_number2" placeholder="(例)000-0000-0000" /></td><td><form:errors path="phone_number2" elements="span" /></td>
 				</tr>
 				<tr>
 				<th>お届け先名</th>
-				<td><form:input path="shipping_address_name" placeholder="(例)abc" /></td>
+				<td><form:input path="shipping_address_name" placeholder="(例)abc" /></td><td><form:errors path="shipping_address_name" elements="span" /></td>
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->
 
