@@ -4,48 +4,44 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-	/*13：50　窪田
-	 * @Autowired
+/*
+	 @Autowired
 	AccountRepository accountRepository;
 
+
 	@Override
-	UserEntity findAccountOne(String user_id) {
-		return accountRepository.findAccountOne(String user_id);
+	public void insertPayOne(PaymentMethodEntity paymentmethodentity) {
+		accountRepository.insertPayOne(paymentmethodentity);
 	}
 
 	@Override
-	void insertPayOne(PaymentMethodEntity paymentmethodentity) {
-		return accountRepository.insertPayOne(paymentmethodentity.getUser_id());
+	 public void deletePayOne(String payment_no) {
+		accountRepository.deletePayOne(payment_no());
 	}
 
 	@Override
-	void deletePayOne(PaymentMethodEntity paymentmethodentity) {
-		return accountRepository.deletePayOne(paymentmethodentity.getUser_id());
+	public void updatePayOne(PaymentMethodEntity paymentmethodentity) {
+		accountRepository.updatePayOne(paymentmethodentity);
 	}
 
 	@Override
-	void updatePayOne(PaymentMethodEntity paymentmethodentity) {
-		return accountRepository.updatePayOne(paymentmethodentity.getUser_id());
+	public void insertAddressOne(ShippingAddressEntity shippingaddressentity) {
+		accountRepository.insertAddressOne(shippingaddressentity);
 	}
 
 	@Override
-	void insertAddressOne(ShippingAddressEntity shippingaddressentity) {
-		return accountRepository.insertAddressOne(shippingaddressentity.getUser_id());
+	public void deleteAddressOne(String shipping_no) {
+		accountRepository.deleteAddressOne(shipping_no());
 	}
 
 	@Override
-	void deleteAddressOne(ShippingAddressEntity shippingaddressentity) {
-		return accountRepository.deleteAddressOne(shippingaddressentity.getUser_id());
+	public void updateAddressOne(ShippingAddressEntity shippingaddressentity) {
+		accountRepository.updateAddressOne(shippingaddressentity);
 	}
 
 	@Override
-	void updateAddressOne(ShippingAddressEntity shippingaddressentity) {
-		return accountRepository.updateAddressOne(shippingaddressentity.getUser_id());
+	public void updateAccountOne(UserEntity userentity) {
+		accountRepository.updateAccountOne(userentity);
 	}
-
-	@Override
-	void updateAccountOne(UserEntity userentity) {
-		return accountRepository.updateAccountOne(userentity.getUser_id());
-	}
-	*/
+*/
 }
