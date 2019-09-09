@@ -219,7 +219,7 @@
 								</tr>
 								<tr>
 									<th>カード名義人</th>
-									<td><form:input path="card_number" value="${pay.card_number}"/></td>
+									<td><form:input path="card_holder_name" value="${pay.card_holder_name}"/></td>
 								</tr>
 							</table>
 							<form:button name="registerpayment">登録</form:button>
@@ -325,6 +325,7 @@
 											</tr>
 										</table>
 										<form:button name="updatepayment">更新</form:button>
+										<form:hidden path="payment_no" value="${pay.payment_no}"/>
 									</form:form>
 									<label for="trigger${pay.payment_no}"><span class="finish">キャンセル</span></label>
 								</div>
@@ -464,6 +465,7 @@
 											</tr>
 										</table>
 										<form:button name="updateshipping">更新</form:button>
+										<form:hidden path="shipping_address_no" value="${address.shipping_address_no}"/>
 									</form:form>
 									<label for="triggerup${shipping_address_no}"><span class="finish">キャンセル</span></label>
 								</div>
