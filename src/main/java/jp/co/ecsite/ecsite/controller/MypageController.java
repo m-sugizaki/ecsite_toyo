@@ -146,6 +146,12 @@ public class MypageController {
 			userstoreentity.setUser_id(nuModel.getUser_id());
 			userstoreentity.setPassword(nuModel.getPassword());
 
+			UserEntity logincheck = mypageService.accountInfo(userstoreentity);
+			if(logincheck != null) {
+				model.addAttribute("message" , "既に登録されたユーザーです。");
+				return "newaccount";
+			}
+
 			UserEntity userentity = new UserEntity();
 
 			userentity.setUser_id(nuModel.getUser_id());
@@ -157,12 +163,6 @@ public class MypageController {
 			userentity.setPhone_number(nuModel.getPhone_number());
 			userentity.setEmail(nuModel.getEmail());
 			userentity.setBirthday(birthday);
-
-			UserEntity logincheck = mypageService.accountInfo(userstoreentity);
-			if(logincheck != null) {
-				model.addAttribute("message" , "既に登録されたユーザーです。");
-				return "newaccount";
-			}
 
 			mypageService.newUser(userentity);
 			mypageService.newUserStore(userstoreentity);
