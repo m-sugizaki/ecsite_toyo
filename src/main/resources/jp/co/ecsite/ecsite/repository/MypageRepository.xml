@@ -73,7 +73,7 @@
 <result column="password" property="password"/>
 <result column="name" property="name"/>
 <result column="login_dt" property="login_dt"/>
-<result column="product_cart_id" property="product_cart_id"/>
+<result column="count(product_cart_id)" property="product_cart_id"/>
 </resultMap>
 
 
