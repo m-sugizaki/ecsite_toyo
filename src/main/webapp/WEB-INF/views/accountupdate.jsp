@@ -321,7 +321,7 @@
 											</tr>
 											<tr>
 												<th>カード名義人</th>
-												<td><form:input path="card_number" value="${pay.card_number}"/></td>
+												<td><form:input path="card_holder_name" value="${pay.card_holder_name}"/></td>
 											</tr>
 										</table>
 										<form:button name="updatepayment">更新</form:button>
