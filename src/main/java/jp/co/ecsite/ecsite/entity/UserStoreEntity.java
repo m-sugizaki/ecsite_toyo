@@ -8,7 +8,7 @@ public class UserStoreEntity implements Serializable {
 	private String password;
 	private String name;
 	private LocalDateTime login_dt;
-	private String product_cart_id;
+	private int product_cart_id;
 
 
 	public String getUser_id() {
@@ -35,11 +35,12 @@ public class UserStoreEntity implements Serializable {
 	public void setLogin_dt(LocalDateTime login_dt) {
 		this.login_dt = login_dt;
 	}
-	public String getProduct_cart_id() {
+	public int getProduct_cart_id() {
 		return product_cart_id;
 	}
-	public void setProduct_cart_id(String product_cart_id) {
+	public void setProduct_cart_id(int product_cart_id) {
 		this.product_cart_id = product_cart_id;
 	}
+
 
 }
