@@ -20,13 +20,12 @@
 
 .minititle, contents {
 	font-size: 26px;
-	text-decoration: underline #000000;
 }
 
 .table, results {
 	font-size: 16px;
 	border: solid 1px #000000;
-	border-collapse: collapse;
+	border-collapse: separate;
 }
 
 .tabletitle, results {
@@ -34,10 +33,31 @@
 	align: center;
 	width: 150px;
 	background-color: lightblue;
-	border: solid 1px #000000;
-	border-collapse: collapse;
+	border: 1px solid  #000000;
+	border-collapse: separate;
 }
+
+
+.accounttable{
+	width: 50%;
 }
+
+.accounttable th{
+	position:relative;
+	width: 1px;
+	text-align:right;
+	padding: 10px 0;
+	border-bottom: 4px solid #ccc;
+}
+
+.accounttable td{
+	text-align: left;
+	width:60%;
+	text-align: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
 </style>
 <title>アカウント情報画面</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
@@ -98,9 +118,9 @@
 <div class="contents">
 <p class="minititle">アカウント情報</p>
 
-<table border="0">
+<table border="0" class="accounttable">
 	<tr>
-		<th>ユーザーID：</th>
+		<th>ユーザーID:</th>
 		<td>${accountinfo.user_id}</td>
 	</tr>
 
