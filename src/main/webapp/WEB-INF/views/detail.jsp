@@ -290,7 +290,15 @@ function sum(){
 							<tr>
 								<td class="table">${reviewbox.review_no}</td>
 								<td class="table">${reviewbox.nickname}</td>
-								<td class="table">${reviewbox.evaluation}</td>
+								<td class="table">
+									<c:choose>
+										<c:when test="${reviewbox.evaluation == 1}">★☆☆☆☆</c:when>
+										<c:when test="${reviewbox.evaluation == 2}">★★☆☆☆</c:when>
+										<c:when test="${reviewbox.evaluation == 3}">★★★☆☆</c:when>
+										<c:when test="${reviewbox.evaluation == 4}">★★★★☆</c:when>
+										<c:otherwise>★★★★★</c:otherwise>
+									</c:choose>
+								</td>
 								<td class="table">${reviewbox.review_content}</td>
 								<td class="table">${reviewbox.review_dt}</td>
 							</tr>
