@@ -1,5 +1,6 @@
 package jp.co.ecsite.ecsite.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,8 +68,8 @@ public class AccountController  {
 
 
 
-/*	//支払い情報を登録（追加）するメソッド
-	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
+	//支払い情報を登録（追加）するメソッド
+	/*@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
 	public String registPaymentMethod(@Validated @ModelAttribute PaymentMethodModel pmModel , BindingResult result ,  Model model) {
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
@@ -83,12 +84,24 @@ public class AccountController  {
 		paymentmethodentity.setCard_holder_name(pmModel.getCard_holder_name());
 
 		return "accountupdate";
-	}
+	}*/
 
 	//支払い情報を削除するメソッド
-	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
-	public String deletePaymentMethod(){
-		return "accountupdate";
+	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deletepayment")
+	public String deletePaymentMethod(@ModelAttribute PaymentMethodModel paymentmethodmodel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+			accountService.deletePayOne(Integer.parseInt(paymentmethodmodel.getPayment_no()));
+
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
+
+
+
+			return "accountupdate";
 	}
 
 	//支払い情報を更新するメソッド
@@ -97,35 +110,109 @@ public class AccountController  {
 		return "accountupdate";
 
 	}
+
+
 	//お届け先の追加（登録）するメソッド
-	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registershipping")
-	public String registShippingAddress() {
+	/*	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registershipping")
+	public String registShippingAddress(@ModelAttribute ShippingAddressModel shippingAddressModel,
+			@ModelAttribute("login")UserStoreEntity userstoreentity,Model model) {
+		ShippingAddressEntity entity = new ShippingAddressEntity();
+		entity.setUser_id(userstoreentity.getUser_id());
+		entity.setShipping_address_no(Integer.parseInt(shippingAddressModel.getShipping_address_no()));
+		entity.setPostal_code(shippingAddressModel.getPostal_code());
+		entity.setAddress1(shippingAddressModel.getAddress1());
+		entity.setAddress2(shippingAddressModel.getAddress2());
+		entity.setPhone_number(shippingAddressModel.getPhone_number());
+		entity.setShipping_address_name(shippingAddressModel.getShipping_address_name());
 
 		return "accountupdate";
-	}
+	}*/
+
+
+
+
+
 	//お届け先を削除するメソッド
-	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deleteshipping")
-	public String deleteShippingAddress() {
+		@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deleteshipping")
+		public String deleteShippingAddress(@ModelAttribute ShippingAddressModel shippingaddressmodel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+			accountService.deleteAddressOne(Integer.parseInt(shippingaddressmodel.getShipping_address_no()));
 
-		return "accountupdate";
-	}
+			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+			model.addAttribute("accountinfo" ,accountinfo);
+			model.addAttribute("shippinginfo" ,shippinginfo);
+			model.addAttribute("paymentinfo" ,paymentinfo);
+
+
+			return "accountupdate";
+		}
+
+
 
 	//お届け先を更新するメソッド
-	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updateshipping")
-	public String updateShippingAddress() {
+/*	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updateshipping")
+	public String updateShippingAddress(@ModelAttribute("login") UserStoreEntity userstoreentity, ShippingAddressEntity saModel, Model model) {
+
+		ShippingAddressEntity shippinaddressgentity = new ShippingAddressEntity();
+
+		shippinaddressgentity.setUser_id(userstoreentity.getUser_id());
+		shippinaddressgentity.setShipping_address_no(Integer.valueOf(saModel.getShipping_address_no()));
+		shippinaddressgentity.setPostal_code(saModel.getPostal_code());
+		shippinaddressgentity.setAddress1(saModel.getAddress1());
+		shippinaddressgentity.setAddress2(saModel.getAddress2());
+		shippinaddressgentity.setPhone_number(saModel.getPhone_number());
+		shippinaddressgentity.setShipping_address_name(saModel.getShipping_address_name());
+
+		accountService.updateAddressOne(shippinaddressgentity);
+
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 
 		return "accountupdate";
 	}
-
+*/
 	//アカウント情報を更新するメソッド
 	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="update")
-	public String updateAccountInfo() {
+	public String updateAccountInfo(@ModelAttribute("login") UserStoreEntity userstoreentity ,AccountModel aModel, Model model) {
 
+		String userbirthday = (aModel.getBirthday());
+		Date birthday =java.sql.Date.valueOf(userbirthday);
+
+		UserEntity userentity = new UserEntity();
+
+		userentity.setUser_id(userstoreentity.getUser_id());
+		userentity.setName(aModel.getName());
+		userentity.setNickname(aModel.getNickname());
+		userentity.setPostal_code(aModel.getPostal_code());
+		userentity.setAddress1(aModel.getAddress1());
+		userentity.setAddress2(aModel.getAddress2());
+		userentity.setPhone_number(aModel.getPhone_number());
+		userentity.setEmail(aModel.getEmail());
+		userentity.setBirthday(birthday);
+
+		accountService.updateAccountOne(userentity) ;
+
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 		return "account";
 	}
+
 	//(キャンセル)アカウント情報を更新せずにアカウント情報画面に遷移させるメソッド
 	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="cancel")
-	public String canceltoAccount(UserStoreEntity userstoreentity , Model model) {
+	public String canceltoAccount(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
+
 		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
 		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
 		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
@@ -136,11 +223,5 @@ public class AccountController  {
 
 			return "account";
 		}
-
-
-	}*/
-
-
 }
-
-
+}
