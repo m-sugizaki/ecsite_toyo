@@ -2,16 +2,43 @@ package jp.co.ecsite.ecsite.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AccountModel implements Serializable {
 	private String user_id;
+
+	@NotEmpty(message = "名前が未入力です。")
 	private String name;
+
+	@NotEmpty(message = "ニックネームが未入力です。")
 	private String nickname;
+
+	@NotEmpty(message = "郵便番号が未入力です。")
+	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", message="値が不正です。(例.123-4567)")
 	private String postal_code;
+
+	@NotEmpty(message = "住所が未入力です。")
 	private String address1;
+
+	@NotEmpty(message = "住所が未入力です。")
 	private String address2;
+
+	@NotEmpty(message = "電話番号が未入力です。")
+	@Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$", message="値が不正です。")
 	private String phone_number;
+
+	@NotEmpty(message = "メールアドレスが未入力です。")
+	@Email(message="Emailを入力してください。")
 	private String email;
+
+	@NotEmpty(message = "誕生日が未入力です。")
+	@Pattern(regexp="^\\d{4}-\\d{1,2}-\\d{1,2}$", message="値が不正です。(例.1996-01-01)")
 	private String birthday;
+
+
 	private String member_rank;
 
 	public String getUser_id() {
