@@ -491,9 +491,9 @@
 					<td class="table">
 					<!-- 届け先情報更新ポップアップ -->
 						<div class="popup_wrap">
-							<input id="triggerup${shipping_address_no}" type="checkbox" class="payment">
+							<input id="triggerup${address.shipping_address_no}" type="checkbox" class="payment">
 							<div class="popup_overlay">
-							<label for="triggerup${shipping_address_no}" class="popup_trigger"></label>
+							<label for="triggerup${address.shipping_address_no}" class="popup_trigger"></label>
 								<div class="popup_content2">
 									<!-- 届け先情報更新ポップアップ中身 -->
 									<div align="center">
@@ -529,13 +529,13 @@
 										<br>
 										<form:button name="updateshipping" class="login">更新</form:button>
 										<form:hidden path="shipping_address_no" value="${address.shipping_address_no}"/>
-									<label for="triggerup${shipping_address_no}" class="cancel"><span>キャンセル</span></label>
+									<label for="triggerup${address.shipping_address_no}" class="cancel"><span>キャンセル</span></label>
 									</form:form>
 								</div>
 								</div>
 							</div>
 						</div>
-							<p><label for="triggerup${shipping_address_no}" class="open_btn" >更新</label></p>
+							<p><label for="triggerup${address.shipping_address_no}" class="open_btn" >更新</label></p>
 					</td>
 				</tr>
 			</c:forEach>
