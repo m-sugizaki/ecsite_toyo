@@ -26,6 +26,18 @@
  	border: solid 1px #000000;
 	border-collapse: collapse;
 }
+
+.review td{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.rview th{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
 </style>
 <title>商品詳細</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
@@ -184,7 +196,7 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity"/></td>
+							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity" /></td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 						<tr>

@@ -17,16 +17,30 @@
 #kensaku{
  font-size: 18px;
 }
+#kensaku th{
+	height: 40px;
+}
 
 .minititle, contents {
 	font-size: 26px;
-	text-decoration: underline #000000;
 }
 
 .table, results {
 	font-size: 16px;
 	border: solid 1px #000000;
 	border-collapse: collapse;
+}
+
+.results td{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.results th{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .tabletitle, results {
@@ -37,6 +51,18 @@
 	border: solid 1px #000000;
 	border-collapse: collapse;
 }
+
+.form_input{
+	font-size: 15px;
+	box-sizing: border-box;
+	width: 300px;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid lightgray;
+	background: transparent;
 }
 </style>
 <title>商品検索</title>
@@ -148,18 +174,18 @@
 
 						<tr>
 							<td>商品名&nbsp;&nbsp;</td>
-							<td><form:input path="product_name" placeholder="商品名" /></td>
+							<td><form:input path="product_name" placeholder="商品名" class="form_input" /></td>
 						</tr>
 						<tr>
 							<td>メーカー名&nbsp;&nbsp;</td>
-							<td><form:input path="maker" placeholder="メーカー名" /></td>
+							<td><form:input path="maker" placeholder="メーカー名" class="form_input" /></td>
 						<tr>
 						<tr>
 							<td>価格帯&nbsp;&nbsp;&nbsp;</td>
-							<td><form:input path="minprice" placeholder="下限価格　（例）0" />&nbsp;&nbsp;～&nbsp;&nbsp;</td>
+							<td><form:input path="minprice" placeholder="下限価格　（例）0" class="form_input" />&nbsp;&nbsp;～&nbsp;&nbsp;</td>
 							<td><form:input path="maxprice"
-									placeholder="上限価格  （例）5000000" /></td>
-							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku">検索</form:button></td>
+									placeholder="上限価格  （例）5000000" class="form_input" /></td>
+							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku" class="login">検索</form:button></td>
 						</tr>
 						<tr>
 					</table>

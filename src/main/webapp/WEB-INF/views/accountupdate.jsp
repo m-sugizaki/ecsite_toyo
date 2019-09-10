@@ -50,7 +50,6 @@
 
 .minititle, contents {
 	font-size: 26px;
-	text-decoration: underline #000000;
 }
 .table, results {
 	font-size: 16px;
@@ -66,13 +65,75 @@
 	border: solid 1px #000000;
 	border-collapse: collapse;
 }
+
+.results td{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.results th{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.form_input{
+	font-size: 15px;
+	box-sizing: border-box;
+	width: 300px;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid lightgray;
+	background: transparent;
+}
+
+.form_input:focus {
+	border-bottom: 2px solid black;
+	outline: none;
+}
+
+.not_input{
+	font-size: 15px;
+	color: black;
+}
+
+.form_height{
+	height: 40px;
+}
+
+.account_update th{
+	width: 100px;
+	text-align: left;
+}
+
+/*支払い方法登録,お届け先登録ポップアップ*/
+	.popup_content2 {
+  position: relative;
+  align-self: center;
+  width: 90%;
+  max-width: 40%;
+  height: 60%;
+  padding: 30px 30px 15px;
+  box-sizing: border-box;
+  background: #fff;
+  line-height: 1.4em;
+  transition: 0.5s;
+}
+
+.delete{
+	padding: 55px;
+}
 </style>
 </head>
 <body>
 <div class="all">
 	<!-- サイドバー -->
 	<aside class="sidebar">
-		<ul style="list-style:none">
+		<ul style="list-style:none" >
 			<li class="sidebartitle">MENU</li>
 			<li><a href="home">マイページ</a></li>
 			<li><a href="search">商品検索</a></li>
@@ -116,52 +177,51 @@
 	<div class="contents">
 		<br><p class="minititle">アカウント情報更新</p>
 		<br>
-		<h1>アカウント情報登録</h1>
 		<form:form modelAttribute="accountModel">
-			<table>
+			<table class="account_update">
 				<tr>
 					<th>ユーザID</th>
-					<td>${accountinfo.user_id}</td>
+					<td class="not_input form_height">${accountinfo.user_id}</td>
 				</tr>
 				<tr>
 					<th>氏名</th>
-					<td><form:input path="name" value="${accountinfo.name}" /></td>
+					<td class="form_height"><form:input path="name" placeholder="${accountinfo.name}" class="form_input"/></td>
 				</tr>
 				<tr>
 					<th>ﾆｯｸﾈｰﾑ</th>
-					<td><form:input path="nickname" value="${accountinfo.nickname}" /></td>
+					<td class="form_height"><form:input path="nickname" placeholder="${accountinfo.nickname}" class="form_input" /></td>
 				</tr>
 				<tr>
 					<th>郵便番号</th>
-					<td><form:input path="postal_code" value="${accountinfo.postal_code}" /></td>
+					<td class="form_height"><form:input path="postal_code" placeholder="${accountinfo.postal_code}" class="form_input" /></td>
 				</tr>
 				<tr>
 					<th>住所1</th>
-					<td><form:input path="address1" value="${accountinfo.address1}"/></td>
+					<td class="form_height"><form:input path="address1" placeholder="${accountinfo.address1}" class="form_input"/></td>
 				</tr>
 				<tr>
 					<th>住所２</th>
-					<td><form:input path="address2" value="${accountinfo.address2}" /></td>
+					<td class="form_height"><form:input path="address2" placeholder="${accountinfo.address2}" class="form_input" /></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
-					<td><form:input path="phone_number" value="${accountinfo.phone_number}"/></td>
+					<td class="form_height"><form:input path="phone_number" placeholder="${accountinfo.phone_number}" class="form_input"/></td>
 				</tr>
 				<tr>
 					<th>E-mail</th>
-					<td><form:input path="email" value="${accountinfo.email}"/></td>
+					<td class="form_height"><form:input path="email" placeholder="${accountinfo.email}" class="form_input"/></td>
 				</tr>
 				<tr>
 					<th>生年月日</th>
-					<td><form:input path="birthday" value="${accountinfo.birthday}"/></td>
+					<td class="form_height"><form:input path="birthday" placeholder="${accountinfo.birthday}" class="form_input"/></td>
 				</tr>
 				<tr>
 					<th>会員ランク</th>
-					<td>一般</td>
+					<td class="not_input form_height">一般</td>
 				</tr>
 			</table>
-			<form:button name="update">登録&nbsp;</form:button>
-			<form:button name="cancel">キャンセル</form:button>
+			<form:button name="update" class="login">登録&nbsp;</form:button>
+			<form:button name="cancel" class="login">キャンセル</form:button>
 		</form:form>
 		<br>
 
@@ -172,29 +232,28 @@
 				<input id="triggeraddpay" type="checkbox" class="payment">
 				<div class="popup_overlay">
 				<label for="triggeraddpay" class="popup_trigger"></label>
-					<div class="popup_content">
+					<div class="popup_content2">
 						<!-- 支払い方法追加ポップアップ中身 -->
 						<div align="center">
-						<h2>支払い方法情報登録</h2>
-						</div>
+						<p class="minititle">支払い方法情報登録</p>
 						<br>
 						<form:form modelAttribute="paymentMethodModel">
-							<table>
+							<table class="account_update">
 								<tr>
 									<th>ユーザーID</th>
 										<td>${accountinfo.user_id}</td>
 								</tr>
 								<tr>
 									<th>支払方法</th>
-									<td><form:input path="payment_method"/></td>
+									<td><form:input path="payment_method" class="userid"/></td>
 								</tr>
 								<tr>
 									<th>カード番号</th>
-									<td><form:input path="card_number"/></td>
+									<td><form:input path="card_number" class="userid"/></td>
 								</tr>
 								<tr>
 									<th>有効期限</th>
-									<td><form:select path="expiration_month">
+									<td><form:select path="expiration_month" class="userid">
 											<option value="1">01</option>
 											<option value="2">02</option>
 											<option value="3">03</option>
@@ -209,7 +268,7 @@
 											<option value="12">12</option>
 										</form:select>
 
-										<form:select path="expiration_year">
+										<form:select path="expiration_year" class="userid">
 											<option value="<%= year %>"><%= year %></option>
 											<option value="<%= year + 1%>"><%= year + 1 %></option>
 											<option value="<%= year + 2%>"><%= year + 2 %></option>
@@ -219,12 +278,14 @@
 								</tr>
 								<tr>
 									<th>カード名義人</th>
-									<td><form:input path="card_holder_name" value="${pay.card_holder_name}"/></td>
+									<td><form:input path="card_holder_name" value="${pay.card_holder_name}" class="userid"/></td>
 								</tr>
 							</table>
-							<form:button name="registerpayment">登録</form:button>
+										<br>
+							<form:button name="registerpayment" class="login">登録</form:button>
+						<label for="triggeraddpay" class="cancel"><span>キャンセル</span></label>
 						</form:form>
-						<label for="triggeraddpay"><span class="finish">キャンセル</span></label>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -254,15 +315,15 @@
 							<label for="trigger" class="popup_trigger"></label>
 								<div class="popup_content">
 									<!-- 支払い方法削除ポップアップ中身 -->
-									<div align="center">
-									<h3>削除してよろしいですか。</h3>
-									</div>
+									<div align="center" class="delete">
+									<p class="minititle">削除してよろしいですか。</p>
 									<br>
 									<form:form modelAttribute="paymentMethodModel">
-										<form:button name="deletepayment">削除</form:button>
+										<form:button name="deletepayment" class="login">削除</form:button>
 										<form:hidden path="payment_no" value="${pay.payment_no}"/>
+									<label for="trigger" class="cancel"><span>キャンセル</span></label>
 									</form:form>
-									<label for="trigger"><span class="finish">キャンセル</span></label>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -274,29 +335,28 @@
 							<input id="trigger${pay.payment_no}" type="checkbox" class="payment">
 							<div class="popup_overlay">
 							<label for="trigger${pay.payment_no}" class="popup_trigger"></label>
-								<div class="popup_content">
+								<div class="popup_content2">
 									<!-- 支払い方法更新ポップアップ中身 -->
 									<div align="center">
-									<h2>支払情報更新</h2>
-									</div>
+									<p class="minititle">支払情報更新</p>
 									<br>
 									<form:form modelAttribute="paymentMethodModel">
-										<table>
+										<table class="account_update">
 											<tr>
 												<th>ユーザーID</th>
 												<td>${accountinfo.user_id}</td>
 											</tr>
 											<tr>
 												<th>支払方法</th>
-												<td><form:input path="payment_method" value="${pay.payment_method}"/></td>
+												<td><form:input path="payment_method" value="${pay.payment_method}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>カード番号</th>
-												<td><form:input path="card_number" value="${pay.card_number}"/></td>
+												<td><form:input path="card_number" value="${pay.card_number}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>有効期限</th>
-												<td><form:select path="expiration_month" value="pay.expiration_month">
+												<td><form:select path="expiration_month" value="pay.expiration_month" class="userid">
 														<option value="1">01</option>
 														<option value="2">02</option>
 														<option value="3">03</option>
@@ -311,7 +371,7 @@
 														<option value="12">12</option>
 													</form:select>
 
-													<form:select path="expiration_year" value="pay.expiration_year">
+													<form:select path="expiration_year" value="pay.expiration_year" class="userid">
 														<option value="<%= year %>"><%= year %></option>
 														<option value="<%= year + 1%>"><%= year + 1 %></option>
 														<option value="<%= year + 2%>"><%= year + 2 %></option>
@@ -321,13 +381,15 @@
 											</tr>
 											<tr>
 												<th>カード名義人</th>
-												<td><form:input path="card_holder_name" value="${pay.card_holder_name}"/></td>
+												<td><form:input path="card_holder_name" value="${pay.card_holder_name}" class="userid"/></td>
 											</tr>
 										</table>
-										<form:button name="updatepayment">更新</form:button>
+										<br>
+										<form:button name="updatepayment" class="login">更新</form:button>
 										<form:hidden path="payment_no" value="${pay.payment_no}"/>
+									<label for="trigger${pay.payment_no}" class="cancel"><span>キャンセル</span></label>
 									</form:form>
-									<label for="trigger${pay.payment_no}"><span class="finish">キャンセル</span></label>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -344,42 +406,43 @@
 							<input id="triggerupaddadd" type="checkbox" class="payment">
 							<div class="popup_overlay">
 							<label for="triggerupaddadd" class="popup_trigger"></label>
-								<div class="popup_content">
+								<div class="popup_content2">
 									<!-- 届け先情報追加ポップアップ中身 -->
 									<div align="center">
-									<h2>お届け先情報登録</h2>
-									</div>
+									<p class="minititle">お届け先情報登録</p>
 									<br>
 									<form:form modelAttribute="shippingAddressModel">
-										<table>
+										<table class="account_update">
 											<tr>
 												<th>ユーザーID</th>
 												<td>${accountinfo.user_id}</td>
 											</tr>
 											<tr>
 												<th>郵便番号</th>
-												<td><form:input path="postal_code"/></td>
+												<td><form:input path="postal_code" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>住所1</th>
-												<td><form:input path="address1"/></td>
+												<td><form:input path="address1" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>住所2</th>
-												<td><form:input path="address2"/></td>
+												<td><form:input path="address2" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>電話番号</th>
-												<td><form:input path="phone_number"/></td>
+												<td><form:input path="phone_number" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>お届け先名</th>
-												<td><form:input path="shipping_address_name"/></td>
+												<td><form:input path="shipping_address_name" class="userid"/></td>
 											</tr>
 										</table>
-										<form:button name="registershipping">登録</form:button>
+										<br>
+										<form:button name="registershipping" class="login">登録</form:button>
+									<label for="triggerupaddadd" class="cancel"><span>キャンセル</span></label>
 									</form:form>
-									<label for="triggerupaddadd"><span class="finish">キャンセル</span></label>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -411,16 +474,16 @@
 							<label for="triggerdel" class="popup_trigger"></label>
 								<div class="popup_content">
 									<!-- 届け先情報削除ポップアップ中身 -->
-									<div align="center">
-									<h3>削除してよろしいですか。</h3>
-									</div>
+									<div align="center" class="delete">
+									<p class="minititle">削除してよろしいですか。</p>
 									<br>
 									<form:form modelAttribute="shippingAddressModel">
-										<form:button name="deleteshipping">削除</form:button>
+										<form:button name="deleteshipping" class="login">削除</form:button>
 										<form:hidden path="shipping_address_no" value="${address.shipping_address_no}"/>
+									<label for="triggerdel" class="cancel"><span>キャンセル</span></label>
 									</form:form>
-									<label for="triggerdel"><span class="finish">キャンセル</span></label>
 								</div>
+							</div>
 							</div>
 						</div>
 							<p><label for="triggerdel" class="open_btn" >削除</label></p>
@@ -431,43 +494,44 @@
 							<input id="triggerup${shipping_address_no}" type="checkbox" class="payment">
 							<div class="popup_overlay">
 							<label for="triggerup${shipping_address_no}" class="popup_trigger"></label>
-								<div class="popup_content">
+								<div class="popup_content2">
 									<!-- 届け先情報更新ポップアップ中身 -->
 									<div align="center">
-									<h2>お届け先情報更新</h2>
-									</div>
+									<p class="minititle">お届け先情報更新</p>
 									<br>
 									<form:form modelAttribute="shippingAddressModel">
-										<table>
+										<table class="account_update">
 											<tr>
 												<th>ユーザーID</th>
 												<td>${accountinfo.user_id}</td>
 											</tr>
 											<tr>
 												<th>郵便番号</th>
-												<td><form:input path="postal_code" value="${address.postal_code}"/></td>
+												<td><form:input path="postal_code" value="${address.postal_code}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>住所1</th>
-												<td><form:input path="address1" value="${address.address1}"/></td>
+												<td><form:input path="address1" value="${address.address1}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>住所2</th>
-												<td><form:input path="address2" value="${address.address2}"/></td>
+												<td><form:input path="address2" value="${address.address2}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>電話番号</th>
-												<td><form:input path="phone_number" value="${address.phone_number}"/></td>
+												<td><form:input path="phone_number" value="${address.phone_number}" class="userid"/></td>
 											</tr>
 											<tr>
 												<th>お届け先名</th>
-												<td><form:input path="shipping_address_name" value="${address.shipping_address_name}"/></td>
+												<td><form:input path="shipping_address_name" value="${address.shipping_address_name}" class="userid"/></td>
 											</tr>
 										</table>
-										<form:button name="updateshipping">更新</form:button>
+										<br>
+										<form:button name="updateshipping" class="login">更新</form:button>
 										<form:hidden path="shipping_address_no" value="${address.shipping_address_no}"/>
+									<label for="triggerup${shipping_address_no}" class="cancel"><span>キャンセル</span></label>
 									</form:form>
-									<label for="triggerup${shipping_address_no}"><span class="finish">キャンセル</span></label>
+								</div>
 								</div>
 							</div>
 						</div>

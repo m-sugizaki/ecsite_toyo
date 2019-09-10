@@ -58,6 +58,18 @@
 	border-bottom: 1px solid #ccc;
 }
 
+.results td{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.results th{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
 </style>
 <title>アカウント情報画面</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
