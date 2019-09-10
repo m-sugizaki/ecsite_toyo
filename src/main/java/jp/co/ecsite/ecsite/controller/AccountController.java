@@ -86,7 +86,7 @@ public class AccountController  {
 		//月と年の取得
 		int iyear = Integer.valueOf(pmModel.getExpiration_year());
 		int imonth= Integer.valueOf(pmModel.getExpiration_month());
-		calendar.set(iyear, imonth, 1);
+		calendar.set(iyear, imonth-1, 1);
 
 		//月の最終日を取得する
 		int dayMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
