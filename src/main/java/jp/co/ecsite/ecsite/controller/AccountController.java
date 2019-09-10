@@ -10,6 +10,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,7 +76,7 @@ public class AccountController  {
 
 	//支払い情報を登録（追加）するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
-	public String paymentmethodentity(@ModelAttribute("login") UserStoreEntity userstoreentity, PaymentMethodModel pmModel, Model model) {
+	public String paymentmethodentity(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity, PaymentMethodModel pmModel,BindingResult result, Model model) {
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
@@ -148,7 +150,7 @@ public class AccountController  {
 
 	//支払い情報を更新するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updatepayment")
-	public String updatePaymentMethod(@ModelAttribute("login") UserStoreEntity userstoreentity, PaymentMethodModel pmModel, Model model) {
+	public String updatePaymentMethod(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity,BindingResult result, PaymentMethodModel pmModel, Model model) {
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
@@ -200,7 +202,7 @@ public class AccountController  {
 
 	//お届け先の追加（登録）するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registershipping")
-	public String registShippingAddress(@ModelAttribute ShippingAddressModel saModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+	public String registShippingAddress(@Validated @ModelAttribute ShippingAddressModel saModel,BindingResult result, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		ShippingAddressEntity shippingaddressentity = new ShippingAddressEntity();
 
 
@@ -250,7 +252,7 @@ public class AccountController  {
 
 	//お届け先を更新するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updateshipping")
-	public String updateShippingAddress(@ModelAttribute("login") UserStoreEntity userstoreentity, ShippingAddressModel saModel, Model model) {
+	public String updateShippingAddress(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity,BindingResult result, ShippingAddressModel saModel, Model model) {
 
 		ShippingAddressEntity shippingaddressentity = new ShippingAddressEntity();
 		shippingaddressentity.setShipping_address_no(Integer.valueOf(saModel.getShipping_address_no()));
@@ -275,7 +277,7 @@ public class AccountController  {
 
 	//アカウント情報を更新するメソッド
 	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="update")
-	public String updateAccountInfo(@ModelAttribute("login") UserStoreEntity userstoreentity ,AccountModel aModel, Model model) {
+	public String updateAccountInfo(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity,BindingResult result ,AccountModel aModel, Model model) {
 
 		String userbirthday = (aModel.getBirthday());
 		Date birthday =java.sql.Date.valueOf(userbirthday);
