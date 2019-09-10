@@ -18,30 +18,16 @@
  font-size: 18px;
 }
 
-.minititle, contents {
+.minititle{
 	font-size: 26px;
+	margin-top: 20px;
+	margin-bottom: 10px;
 }
 
-.table, results {
-	font-size: 16px;
-	border: solid 1px #000000;
-	border-collapse: separate;
-}
-
-.tabletitle, results {
-	font-size: 16px;
-	align: center;
-	width: 150px;
-	background-color: lightblue;
-	border: 1px solid  #000000;
-	border-collapse: separate;
-}
-
-
+/*アカウント情報テーブル*/
 .accounttable{
 	width: 50%;
 }
-
 .accounttable th{
 	position:relative;
 	width: 1px;
@@ -49,7 +35,6 @@
 	padding: 10px 0;
 	border-bottom: 4px solid #ccc;
 }
-
 .accounttable td{
 	text-align: left;
 	width:60%;
@@ -58,18 +43,30 @@
 	border-bottom: 1px solid #ccc;
 }
 
+	/*支払い&お届け先情報テーブル*/
 .results td{
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
 }
-
 .results th{
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
 }
-
+.table, results {
+	font-size: 16px;
+	border: solid 1px #000000;
+	border-collapse: separate;
+}
+.tabletitle, results {
+	font-size: 16px;
+	align: center;
+	width: 150px;
+	background-color: lightblue;
+	border: 1px solid  #000000;
+	border-collapse: separate;
+}
 </style>
 <title>アカウント情報画面</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
@@ -182,7 +179,7 @@
 	</tr>
 </table>
 <br>
-<p>支払方法情報</p>
+<p class="minititle">支払方法情報</p>
 
 <table class="results">
 	<tr>
@@ -202,7 +199,7 @@
 	</c:forEach>
 </table>
 <br>
-<p>お届け先情報</p>
+<p class="minititle">お届け先情報</p>
 
 <table class="results">
 	<tr>
@@ -224,7 +221,7 @@
 	</c:forEach>
 </table>
 
-<a href="accountupdate">変更</a>
+<a href="accountupdate" class="cancel">変更</a>
 </div>
 
 	</div>
