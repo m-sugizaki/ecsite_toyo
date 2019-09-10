@@ -219,7 +219,7 @@ public class MypageController {
 
 	@RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
 	public String canselRegist() {
-		return "mypage";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value="/account", method=RequestMethod.GET)
