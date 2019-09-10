@@ -237,7 +237,7 @@
 			</tr>
 			<tr>
 				<th>生年月日</th>
-				<td><form:input path="birthday" placeholder="(例)0000/00/00" class="userid"/></td><td><form:errors path="birthday" elements="span" /></td>
+				<td><form:input path="birthday" placeholder="(例)0000-00-00" class="userid"/></td><td><form:errors path="birthday" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>会員ランク</th>
