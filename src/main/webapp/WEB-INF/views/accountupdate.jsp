@@ -186,34 +186,42 @@
 				<tr>
 					<th>氏名</th>
 					<td class="form_height"><form:input path="name" placeholder="${accountinfo.name}" class="form_input"/></td>
+					<td><form:errors path="name" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>ﾆｯｸﾈｰﾑ</th>
 					<td class="form_height"><form:input path="nickname" placeholder="${accountinfo.nickname}" class="form_input" /></td>
+					<td><form:errors path="nickname" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>郵便番号</th>
 					<td class="form_height"><form:input path="postal_code" placeholder="${accountinfo.postal_code}" class="form_input" /></td>
+					<td><form:errors path="postal_code" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>住所1</th>
 					<td class="form_height"><form:input path="address1" placeholder="${accountinfo.address1}" class="form_input"/></td>
+					<td><form:errors path="address1" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>住所２</th>
 					<td class="form_height"><form:input path="address2" placeholder="${accountinfo.address2}" class="form_input" /></td>
+					<td><form:errors path="address2" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
 					<td class="form_height"><form:input path="phone_number" placeholder="${accountinfo.phone_number}" class="form_input"/></td>
+					<td><form:errors path="phone_number" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>E-mail</th>
 					<td class="form_height"><form:input path="email" placeholder="${accountinfo.email}" class="form_input"/></td>
+					<td><form:errors path="email" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>生年月日</th>
 					<td class="form_height"><form:input path="birthday" placeholder="${accountinfo.birthday}" class="form_input"/></td>
+					<td><form:errors path="birthday" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>会員ランク</th>
@@ -310,9 +318,9 @@
 					<td class="table">
 						<!-- 支払方法削除ポップアップ -->
 						<div class="popup_wrap">
-							<input id="trigger" type="checkbox" class="payment">
+							<input id="triggerdelete${pay.payment_no}" type="checkbox" class="payment">
 							<div class="popup_overlay">
-							<label for="trigger" class="popup_trigger"></label>
+							<label for="triggerdelete${pay.payment_no}" class="popup_trigger"></label>
 								<div class="popup_content">
 									<!-- 支払い方法削除ポップアップ中身 -->
 									<div align="center" class="delete">
@@ -321,13 +329,13 @@
 									<form:form modelAttribute="paymentMethodModel">
 										<form:button name="deletepayment" class="login">削除</form:button>
 										<form:hidden path="payment_no" value="${pay.payment_no}"/>
-									<label for="trigger" class="cancel"><span>キャンセル</span></label>
+									<label for="triggerdelete${pay.payment_no}" class="cancel"><span>キャンセル</span></label>
 									</form:form>
 								</div>
 								</div>
 							</div>
 						</div>
-							<p><label for="trigger" class="open_btn" >削除</label></p>
+							<p><label for="triggerdelete${pay.payment_no}" class="open_btn" >削除</label></p>
 					</td>
 					<td class="table">
 						<!-- 支払方法更新ポップアップ -->
@@ -469,9 +477,9 @@
 					<td class="table">
 						<!-- 届け先情報削除ポップアップ -->
 						<div class="popup_wrap">
-							<input id="triggerdel" type="checkbox" class="payment">
+							<input id="triggerdel${address.shipping_address_no}" type="checkbox" class="payment">
 							<div class="popup_overlay">
-							<label for="triggerdel" class="popup_trigger"></label>
+							<label for="triggerdel${address.shipping_address_no}" class="popup_trigger"></label>
 								<div class="popup_content">
 									<!-- 届け先情報削除ポップアップ中身 -->
 									<div align="center" class="delete">
@@ -480,13 +488,13 @@
 									<form:form modelAttribute="shippingAddressModel">
 										<form:button name="deleteshipping" class="login">削除</form:button>
 										<form:hidden path="shipping_address_no" value="${address.shipping_address_no}"/>
-									<label for="triggerdel" class="cancel"><span>キャンセル</span></label>
+									<label for="triggerdel${address.shipping_address_no}" class="cancel"><span>キャンセル</span></label>
 									</form:form>
 								</div>
 							</div>
 							</div>
 						</div>
-							<p><label for="triggerdel" class="open_btn" >削除</label></p>
+							<p><label for="triggerdel${address.shipping_address_no}" class="open_btn" >削除</label></p>
 					</td>
 					<td class="table">
 					<!-- 届け先情報更新ポップアップ -->
