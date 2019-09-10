@@ -244,8 +244,15 @@
 										<td>${accountinfo.user_id}</td>
 								</tr>
 								<tr>
-									<th>支払方法</th>
-									<td><form:input path="payment_method" class="userid"/></td>
+									<th>カードの種類</th>
+									<td>
+										<form:select path="payment_method" class="userid">
+											<form:option value="VISA">VISA</form:option>
+											<form:option value="JCB">JCB</form:option>
+											<form:option value="MasterCard">MasterCard</form:option>
+											<form:option value="銀聯">銀聯</form:option>
+										</form:select>
+									</td>
 								</tr>
 								<tr>
 									<th>カード番号</th>
@@ -290,10 +297,11 @@
 							</div>
 						</div>
 							<p><label for="triggeraddpay" class="open_btn" >追加</label></p>
+
 		<br>
 		<table class="results">
 			<tr>
-				<th class="tabletitle">支払方法</th>
+				<th class="tabletitle">カードの種類</th>
 				<th class="tabletitle">カード番号</th>
 				<th class="tabletitle">有効期限</th>
 				<th class="tabletitle">カード名義人</th>
@@ -347,8 +355,15 @@
 												<td>${accountinfo.user_id}</td>
 											</tr>
 											<tr>
-												<th>支払方法</th>
-												<td><form:input path="payment_method" value="${pay.payment_method}" class="userid" style="color:black"/></td>
+												<th>カードの種類</th>
+												<td>
+													<form:select path="payment_method" value="${pay.payment_method}" class="userid" style="color:black">
+														<form:option value="VISA">VISA</form:option>
+														<form:option value="JCB">JCB</form:option>
+														<form:option value="MasterCard">MasterCard</form:option>
+														<form:option value="銀聯">銀聯</form:option>
+													</form:select>
+												</td>
 											</tr>
 											<tr>
 												<th>カード番号</th>
