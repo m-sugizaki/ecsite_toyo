@@ -1,6 +1,7 @@
 package jp.co.ecsite.ecsite.controller;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import jp.co.ecsite.ecsite.model.NewUserModel;
 import jp.co.ecsite.ecsite.model.ProdmgrModel;
 import jp.co.ecsite.ecsite.model.ProductCartModel;
 import jp.co.ecsite.ecsite.model.UserModel;
+import jp.co.ecsite.ecsite.service.AccountService;
 import jp.co.ecsite.ecsite.service.MypageService;
 
 //9/5 13:50 高橋
@@ -35,6 +37,9 @@ public class MypageController {
 
 	@Autowired
 	MypageService mypageService;
+
+	@Autowired
+	AccountService accountService;
 
 	@ModelAttribute("userModel")
 	public UserModel setUpUserInfo() {
@@ -151,9 +156,8 @@ public class MypageController {
 				model.addAttribute("message" , "既に登録されたユーザーです。");
 				return "newaccount";
 			}
-
+			//アカウント情報
 			UserEntity userentity = new UserEntity();
-
 			userentity.setUser_id(nuModel.getUser_id());
 			userentity.setName(nuModel.getName());
 			userentity.setNickname(nuModel.getNickname());
@@ -164,8 +168,44 @@ public class MypageController {
 			userentity.setEmail(nuModel.getEmail());
 			userentity.setBirthday(birthday);
 
+			//支払い情報
+			PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
+			//カレンダーの生成
+			Calendar calendar = Calendar.getInstance();
+			//月と年の取得
+			int iyear = Integer.valueOf(nuModel.getExpiration_year());
+			int imonth= Integer.valueOf(nuModel.getExpiration_month());
+			calendar.set(iyear, imonth-1, 1);
+			//月の最終日を取得する
+			int dayMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+			//int型からString型に変換して、結合
+			String year = String.valueOf(iyear);
+			String month= String.valueOf(imonth);
+			String day  = String.valueOf(dayMax);
+			String ex_date = year +"-"+ month +"-"+ day;
+			//日付の書式変換
+			Date expiration_date =  Date.valueOf(ex_date);
+			paymentmethodentity.setUser_id(nuModel.getUser_id());
+			paymentmethodentity.setPayment_method(nuModel.getPayment_method());
+			paymentmethodentity.setCard_number(nuModel.getCard_number());
+			paymentmethodentity.setExpiration_date(expiration_date);
+			paymentmethodentity.setCard_holder_name(nuModel.getCard_holder_name());
+
+			//お届け先情報
+			ShippingAddressEntity shippingaddressentity = new ShippingAddressEntity();
+
+			shippingaddressentity.setUser_id(nuModel.getUser_id());
+			shippingaddressentity.setPostal_code(nuModel.getPostal_code());
+			shippingaddressentity.setAddress1(nuModel.getAddress1());
+			shippingaddressentity.setAddress2(nuModel.getAddress2());
+			shippingaddressentity.setPhone_number(nuModel.getPhone_number());
+			shippingaddressentity.setShipping_address_name(nuModel.getShipping_address_name());
+
+			//各サービスを呼び出し登録する処理
 			mypageService.newUser(userentity);
 			mypageService.newUserStore(userstoreentity);
+			accountService.insertPayOne(paymentmethodentity);
+			accountService.insertAddressOne(shippingaddressentity);
 			mypageService.dateInsert(userstoreentity);
 
 			UserStoreEntity login = mypageService.login(userstoreentity.getUser_id() ,userstoreentity.getPassword());
@@ -176,6 +216,7 @@ public class MypageController {
 
 
 		}
+
 	@RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
 	public String canselRegist() {
 		return "mypage";
