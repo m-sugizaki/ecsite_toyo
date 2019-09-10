@@ -24,19 +24,6 @@
 	border: solid 1px black;
 }
 
-.popup_content2 {
-	position: relative;
-	align-self: center;
-	width: 90%;
-	max-width: 40%;
-	height: 45%;
-	padding: 30px 30px 15px;
-	box-sizing: border-box;
-	background: #fff;
-	line-height: 1.4em;
-	transition: 0.5s;
-}
-
 .view {
 	border: none;
 	background-color: transparent;
@@ -50,6 +37,9 @@
 
 .minititle, contents {
 	font-size: 26px;
+}
+.minititle{
+	margin-top: 30px;
 }
 .table, results {
 	font-size: 16px;
@@ -85,7 +75,7 @@
 	padding: 0.3em;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	color: black;
 	border: none;
 	border-bottom: 2px solid lightgray;
 	background: transparent;
@@ -110,13 +100,15 @@
 	text-align: left;
 }
 
+
+
 /*支払い方法登録,お届け先登録ポップアップ*/
 	.popup_content2 {
   position: relative;
   align-self: center;
   width: 90%;
   max-width: 40%;
-  height: 60%;
+  height: 70%;
   padding: 30px 30px 15px;
   box-sizing: border-box;
   background: #fff;
@@ -185,42 +177,42 @@
 				</tr>
 				<tr>
 					<th>氏名</th>
-					<td class="form_height"><form:input path="name" placeholder="${accountinfo.name}" class="form_input"/></td>
+					<td class="form_height"><form:input path="name" value="${accountinfo.name}" class="form_input"/></td>
 					<td><form:errors path="name" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>ﾆｯｸﾈｰﾑ</th>
-					<td class="form_height"><form:input path="nickname" placeholder="${accountinfo.nickname}" class="form_input" /></td>
+					<td class="form_height"><form:input path="nickname" value="${accountinfo.nickname}" class="form_input" /></td>
 					<td><form:errors path="nickname" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>郵便番号</th>
-					<td class="form_height"><form:input path="postal_code" placeholder="${accountinfo.postal_code}" class="form_input" /></td>
+					<td class="form_height"><form:input path="postal_code" value="${accountinfo.postal_code}" class="form_input" /></td>
 					<td><form:errors path="postal_code" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>住所1</th>
-					<td class="form_height"><form:input path="address1" placeholder="${accountinfo.address1}" class="form_input"/></td>
+					<td class="form_height"><form:input path="address1" value="${accountinfo.address1}" class="form_input"/></td>
 					<td><form:errors path="address1" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>住所２</th>
-					<td class="form_height"><form:input path="address2" placeholder="${accountinfo.address2}" class="form_input" /></td>
+					<td class="form_height"><form:input path="address2" value="${accountinfo.address2}" class="form_input" /></td>
 					<td><form:errors path="address2" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
-					<td class="form_height"><form:input path="phone_number" placeholder="${accountinfo.phone_number}" class="form_input"/></td>
+					<td class="form_height"><form:input path="phone_number" value="${accountinfo.phone_number}" class="form_input"/></td>
 					<td><form:errors path="phone_number" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>E-mail</th>
-					<td class="form_height"><form:input path="email" placeholder="${accountinfo.email}" class="form_input"/></td>
+					<td class="form_height"><form:input path="email" value="${accountinfo.email}" class="form_input"/></td>
 					<td><form:errors path="email" elements="span" /></td>
 				</tr>
 				<tr>
 					<th>生年月日</th>
-					<td class="form_height"><form:input path="birthday" placeholder="${accountinfo.birthday}" class="form_input"/></td>
+					<td class="form_height"><form:input path="birthday" value="${accountinfo.birthday}" class="form_input"/></td>
 					<td><form:errors path="birthday" elements="span" /></td>
 				</tr>
 				<tr>
@@ -356,15 +348,15 @@
 											</tr>
 											<tr>
 												<th>支払方法</th>
-												<td><form:input path="payment_method" value="${pay.payment_method}" class="userid"/></td>
+												<td><form:input path="payment_method" value="${pay.payment_method}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>カード番号</th>
-												<td><form:input path="card_number" value="${pay.card_number}" class="userid"/></td>
+												<td><form:input path="card_number" value="${pay.card_number}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>有効期限</th>
-												<td><form:select path="expiration_month" value="pay.expiration_month" class="userid">
+												<td><form:select path="expiration_month" value="pay.expiration_month" class="userid" style="color:black">
 														<option value="1">01</option>
 														<option value="2">02</option>
 														<option value="3">03</option>
@@ -379,7 +371,7 @@
 														<option value="12">12</option>
 													</form:select>
 
-													<form:select path="expiration_year" value="pay.expiration_year" class="userid">
+													<form:select path="expiration_year" value="pay.expiration_year" class="userid" style="color:black">
 														<option value="<%= year %>"><%= year %></option>
 														<option value="<%= year + 1%>"><%= year + 1 %></option>
 														<option value="<%= year + 2%>"><%= year + 2 %></option>
@@ -389,7 +381,7 @@
 											</tr>
 											<tr>
 												<th>カード名義人</th>
-												<td><form:input path="card_holder_name" value="${pay.card_holder_name}" class="userid"/></td>
+												<td><form:input path="card_holder_name" value="${pay.card_holder_name}" class="userid" style="color:black"/></td>
 											</tr>
 										</table>
 										<br>
@@ -515,23 +507,23 @@
 											</tr>
 											<tr>
 												<th>郵便番号</th>
-												<td><form:input path="postal_code" value="${address.postal_code}" class="userid"/></td>
+												<td><form:input path="postal_code" value="${address.postal_code}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>住所1</th>
-												<td><form:input path="address1" value="${address.address1}" class="userid"/></td>
+												<td><form:input path="address1" value="${address.address1}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>住所2</th>
-												<td><form:input path="address2" value="${address.address2}" class="userid"/></td>
+												<td><form:input path="address2" value="${address.address2}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>電話番号</th>
-												<td><form:input path="phone_number" value="${address.phone_number}" class="userid"/></td>
+												<td><form:input path="phone_number" value="${address.phone_number}" class="userid" style="color:black"/></td>
 											</tr>
 											<tr>
 												<th>お届け先名</th>
-												<td><form:input path="shipping_address_name" value="${address.shipping_address_name}" class="userid"/></td>
+												<td><form:input path="shipping_address_name" value="${address.shipping_address_name}" class="userid" style="color:black"/></td>
 											</tr>
 										</table>
 										<br>

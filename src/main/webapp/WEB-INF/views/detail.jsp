@@ -10,7 +10,6 @@
 
 .minititle,contents{
 	font-size: 26px;
-	text-decoration: underline #000000;
 }
 
 .table,review {
@@ -33,10 +32,26 @@
 	vertical-align: middle;
 }
 
-.rview th{
+.review th{
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
+}
+
+/*テキストボックスのデザイン*/
+.input_form{
+  position: relative;
+  display: block;
+  width: 100px;
+  margin-top: 6px;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: black;
+  outline: none;
+  background: white;
+  border: 1px solid lightgray;
 }
 </style>
 <title>商品詳細</title>
@@ -174,12 +189,12 @@ function sum(){
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>サイズ&nbsp;&nbsp;&nbsp;</td>
-							<td><form:select path="size" items="${sizelist}" /></td>
+							<td><form:select path="size" items="${sizelist}" class="input_form" /></td>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>色&nbsp;&nbsp;&nbsp;</td>
-							<td><form:select path="color" items="${colorlist}" /></td>
+							<td><form:select path="color" items="${colorlist}" class="input_form" /></td>
 
 						</tr>
 						<tr><td>&nbsp;</td></tr>
@@ -196,14 +211,14 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity" /></td>
+							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity" class="input_form" /></td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 						<tr>
 							<td>合計購入価格&nbsp;&nbsp;&nbsp;</td>
 							<td >
 							<!-- 合計金額表示 -->
-							<input type="text" name="field" size="8" value="${productentity.price} " readonly>
+							<input type="text" name="field" size="8" value="${productentity.price} " class="input_form" readonly>
 							</td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
