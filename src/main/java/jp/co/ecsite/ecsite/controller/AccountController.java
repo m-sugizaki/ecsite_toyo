@@ -1,10 +1,7 @@
 package jp.co.ecsite.ecsite.controller;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +73,17 @@ public class AccountController  {
 
 	//支払い情報を登録（追加）するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="registerpayment")
-	public String paymentmethodentity(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity, PaymentMethodModel pmModel,BindingResult result, Model model) {
+	public String paymentmethodentity(@Validated @ModelAttribute PaymentMethodModel pmModel,BindingResult result,@ModelAttribute("login") UserStoreEntity userstoreentity,  Model model) {
+		if(result.hasErrors()) {
+			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+			model.addAttribute("accountinfo" ,accountinfo);
+			model.addAttribute("shippinginfo" ,shippinginfo);
+			model.addAttribute("paymentinfo" ,paymentinfo);
+			return "accountupdate";
+		}
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
@@ -150,7 +157,17 @@ public class AccountController  {
 
 	//支払い情報を更新するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updatepayment")
-	public String updatePaymentMethod(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity,BindingResult result, PaymentMethodModel pmModel, Model model) {
+	public String updatePaymentMethod(@Validated @ModelAttribute PaymentMethodModel pmModel, BindingResult result,@ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+		if(result.hasErrors()) {
+			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+			model.addAttribute("accountinfo" ,accountinfo);
+			model.addAttribute("shippinginfo" ,shippinginfo);
+			model.addAttribute("paymentinfo" ,paymentinfo);
+			return "accountupdate";
+		}
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
@@ -276,35 +293,48 @@ public class AccountController  {
 	}
 
 	//アカウント情報を更新するメソッド
-	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="update")
-	public String updateAccountInfo(@Validated @ModelAttribute("login") UserStoreEntity userstoreentity,BindingResult result ,AccountModel aModel, Model model) {
+		@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="update")
+		public String updateAccountInfo(@Validated@ModelAttribute AccountModel aModel, BindingResult result, @ModelAttribute("login") UserStoreEntity userstoreentity,  Model model) {
 
-		String userbirthday = (aModel.getBirthday());
-		Date birthday =java.sql.Date.valueOf(userbirthday);
+			if(result.hasErrors()) {
 
-		UserEntity userentity = new UserEntity();
+				List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+				List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-		userentity.setUser_id(userstoreentity.getUser_id());
-		userentity.setName(aModel.getName());
-		userentity.setNickname(aModel.getNickname());
-		userentity.setPostal_code(aModel.getPostal_code());
-		userentity.setAddress1(aModel.getAddress1());
-		userentity.setAddress2(aModel.getAddress2());
-		userentity.setPhone_number(aModel.getPhone_number());
-		userentity.setEmail(aModel.getEmail());
-		userentity.setBirthday(birthday);
+				model.addAttribute("shippinginfo" ,shippinginfo);
+				model.addAttribute("paymentinfo" ,paymentinfo);
 
-		accountService.updateAccountOne(userentity) ;
+				return "accountupdate";
+			}
 
-		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
-		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
-		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-		model.addAttribute("accountinfo" ,accountinfo);
-		model.addAttribute("shippinginfo" ,shippinginfo);
-		model.addAttribute("paymentinfo" ,paymentinfo);
-		return "account";
-	}
+			String userbirthday = (aModel.getBirthday());
+			Date birthday =java.sql.Date.valueOf(userbirthday);
+
+			UserEntity userentity = new UserEntity();
+
+			userentity.setUser_id(userstoreentity.getUser_id());
+			userentity.setName(aModel.getName());
+			userentity.setNickname(aModel.getNickname());
+			userentity.setPostal_code(aModel.getPostal_code());
+			userentity.setAddress1(aModel.getAddress1());
+			userentity.setAddress2(aModel.getAddress2());
+			userentity.setPhone_number(aModel.getPhone_number());
+			userentity.setEmail(aModel.getEmail());
+			userentity.setBirthday(birthday);
+
+			accountService.updateAccountOne(userentity) ;
+
+			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+
+			model.addAttribute("accountinfo" ,accountinfo);
+			model.addAttribute("shippinginfo" ,shippinginfo);
+			model.addAttribute("paymentinfo" ,paymentinfo);
+			return "accountupdate";
+		}
+
 
 	//(キャンセル)アカウント情報を更新せずにアカウント情報画面に遷移させるメソッド
 	@RequestMapping(value="/accountupdate",method =RequestMethod.POST,params="cancel")
