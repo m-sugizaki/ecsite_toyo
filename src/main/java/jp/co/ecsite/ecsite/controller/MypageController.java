@@ -69,7 +69,7 @@ public class MypageController {
 			return "mypage";
 		}
 		UserStoreEntity login = mypageService.login(uModel.getUser_id() , uModel.getPassword());
-		if(login == null) {
+		if(login.getName() == null) {
 			model.addAttribute("errormessage" , "ユーザーIDもしくはパスワードが間違っています。");
 			return "mypage";
 		}

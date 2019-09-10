@@ -1,6 +1,10 @@
 package jp.co.ecsite.ecsite.controller;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,74 +78,60 @@ public class AccountController  {
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
-		//String[] eDateArray = {pmModel.getExpiration_year(),pmModel.getExpiration_month(),"01"};
-		//Date expiration_date = Date.valueOf(String.join("/",eDateArray));
-
-		Date expiration_date = Date.valueOf(pmModel.getExpiration_year() + "/"+pmModel.getExpiration_month() + "/" +"01");
 
 
-		paymentmethodentity.setPayment_no(Integer.valueOf(pmModel.getPayment_no()));
+		//カレンダーの生成
+		Calendar calendar = Calendar.getInstance();
+
+		//月と年の取得
+		int iyear = Integer.valueOf(pmModel.getExpiration_year());
+		int imonth= Integer.valueOf(pmModel.getExpiration_month());
+		calendar.set(iyear, imonth, 1);
+
+		//月の最終日を取得する
+		int dayMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+
+
+		//int型からString型に変換して、結合
+		String year = String.valueOf(iyear);
+		String month= String.valueOf(imonth);
+		String day  = String.valueOf(dayMax);
+
+		String ex_date = year +"-"+ month +"-"+ day;
+
+
+
+
+		//日付の書式変換
+		Date expiration_date =  Date.valueOf(ex_date);
+
+		paymentmethodentity.setUser_id(userstoreentity.getUser_id());
 		paymentmethodentity.setPayment_method(pmModel.getPayment_method());
 		paymentmethodentity.setCard_number(pmModel.getCard_number());
 		paymentmethodentity.setExpiration_date(expiration_date);
 		paymentmethodentity.setCard_holder_name(pmModel.getCard_holder_name());
 
-			accountService.insertPayOne(paymentmethodentity);
+		accountService.insertPayOne(paymentmethodentity);
 
-			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
-			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
-			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-			model.addAttribute("accountinfo" ,accountinfo);
-			model.addAttribute("shippinginfo" ,shippinginfo);
-			model.addAttribute("paymentinfo" ,paymentinfo);
-
-			return "accountupdate";
-		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*public String registPaymentMethod(@Validated @ModelAttribute PaymentMethodModel pmModel , BindingResult result ,  Model model) {
-
-		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
-
-		Date expiration_date = Date.valueOf(pmModel.getExpiration_month());
-
-		paymentmethodentity.setUser_id(pmModel.getUser_id());
-		//paymentmethodentity.setPayment_no(pmModel.Integer.parseInt.getPayment_no()); //型変換必要？？
-		paymentmethodentity.setPayment_method(pmModel.getPayment_method());
-		paymentmethodentity.setCard_number(pmModel.getCard_number());
-		paymentmethodentity.setExpiration_date();  //結合必要
-		paymentmethodentity.setCard_holder_name(pmModel.getCard_holder_name());
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 
 		return "accountupdate";
-	}*/
+
+
+	}
+
 
 	//支払い情報を削除するメソッド
 	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deletepayment")
 	public String deletePaymentMethod(@ModelAttribute PaymentMethodModel paymentmethodmodel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
-			accountService.deletePayOne(Integer.parseInt(paymentmethodmodel.getPayment_no()));
+		accountService.deletePayOne(Integer.parseInt(paymentmethodmodel.getPayment_no()));
 
 		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
 		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
@@ -153,7 +143,7 @@ public class AccountController  {
 
 
 
-			return "accountupdate";
+		return "accountupdate";
 	}
 
 	//支払い情報を更新するメソッド
@@ -162,28 +152,48 @@ public class AccountController  {
 
 		PaymentMethodEntity paymentmethodentity = new PaymentMethodEntity();
 
+		//カレンダーの生成
+		Calendar calendar = Calendar.getInstance();
 
-		//String[] eDateArray = {pmModel.getExpiration_month(),pmModel.getExpiration_year()};
-		//Date expiration_date = Date.valueOf(String.join("/",eDateArray));
+		//月と年の取得
+		int iyear = Integer.valueOf(pmModel.getExpiration_year());
+		int imonth= Integer.valueOf(pmModel.getExpiration_month());
+		calendar.set(iyear, imonth, 1);
 
-		paymentmethodentity.setPayment_no(Integer.valueOf(pmModel.getPayment_no())); //型変換必要？？
+		//月の最終日を取得する
+		int dayMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+
+		//String型に変換して、結合
+		String year = pmModel.getExpiration_year();
+		String month= pmModel.getExpiration_month();
+		String day  = String.valueOf(dayMax);
+
+		String ex_date = year+"-" + month +"-"+ day;
+
+
+		//日付の書式変換
+
+		//Date型に変換
+		Date expiration_date =  Date.valueOf(ex_date);
+		paymentmethodentity.setPayment_no(Integer.valueOf(pmModel.getPayment_no()));
 		paymentmethodentity.setPayment_method(pmModel.getPayment_method());
 		paymentmethodentity.setCard_number(pmModel.getCard_number());
-		//paymentmethodentity.setExpiration_date(expiration_date);
+		paymentmethodentity.setExpiration_date(expiration_date);
 		paymentmethodentity.setCard_holder_name(pmModel.getCard_holder_name());
 
-			accountService.updatePayOne(paymentmethodentity);
+		accountService.updatePayOne(paymentmethodentity);
 
-			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
-			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
-			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-			model.addAttribute("accountinfo" ,accountinfo);
-			model.addAttribute("shippinginfo" ,shippinginfo);
-			model.addAttribute("paymentinfo" ,paymentinfo);
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 
-			return "accountupdate";
-		}
+		return "accountupdate";
+	}
 
 
 
@@ -220,26 +230,26 @@ public class AccountController  {
 
 
 	//お届け先を削除するメソッド
-		@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deleteshipping")
-		public String deleteShippingAddress(@ModelAttribute ShippingAddressModel shippingaddressmodel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
-			accountService.deleteAddressOne(Integer.parseInt(shippingaddressmodel.getShipping_address_no()));
+	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="deleteshipping")
+	public String deleteShippingAddress(@ModelAttribute ShippingAddressModel shippingaddressmodel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+		accountService.deleteAddressOne(Integer.parseInt(shippingaddressmodel.getShipping_address_no()));
 
-			UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
-			List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
-			List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
+		UserEntity accountinfo = mypageService.accountInfo(userstoreentity);
+		List<ShippingAddressEntity> shippinginfo = mypageService.shippingInfo(userstoreentity);
+		List<PaymentMethodEntity> paymentinfo = mypageService.paymentInfo(userstoreentity);
 
-			model.addAttribute("accountinfo" ,accountinfo);
-			model.addAttribute("shippinginfo" ,shippinginfo);
-			model.addAttribute("paymentinfo" ,paymentinfo);
+		model.addAttribute("accountinfo" ,accountinfo);
+		model.addAttribute("shippinginfo" ,shippinginfo);
+		model.addAttribute("paymentinfo" ,paymentinfo);
 
 
-			return "accountupdate";
-		}
+		return "accountupdate";
+	}
 
 
 
 	//お届け先を更新するメソッド
-   @RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updateshipping")
+	@RequestMapping(value= "/accountupdate", method=RequestMethod.POST, params="updateshipping")
 	public String updateShippingAddress(@ModelAttribute("login") UserStoreEntity userstoreentity, ShippingAddressModel saModel, Model model) {
 
 		ShippingAddressEntity shippingaddressentity = new ShippingAddressEntity();
@@ -308,5 +318,5 @@ public class AccountController  {
 
 			return "account";
 		}
-}
+	}
 }
