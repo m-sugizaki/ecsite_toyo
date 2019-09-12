@@ -69,7 +69,7 @@
 }
 </style>
 
-<title>アカウント情報画面</title>
+<title>カート更新画面</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
 
@@ -135,7 +135,8 @@ function sum(){
 
 
 <!-- メインコンテンツ -->
-
+<div align="center">
+<p class="minititle">商品カート更新</p>
 <form:form modelAttribute="productCartModel" name="form1">
 
 <table>
@@ -176,7 +177,7 @@ function sum(){
 			<a href="productcart">キャンセル</a>
 
 </form:form>
-
+</div>
 </div>
 </div>
 </body>
