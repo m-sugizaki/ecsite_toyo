@@ -1,7 +1,7 @@
 package jp.co.ecsite.ecsite.service;
 
 import jp.co.ecsite.ecsite.entity.ProductCartEntity;
-/*
+
 public interface ProdCartService {
 
 	//商品カートを更新する
@@ -16,4 +16,4 @@ public interface ProdCartService {
 	ProductCartEntity findResultOne(int order_no);
 	//注文キャンセルの取り消しボタンが押されたときに注文状況をキャンセルにする
 	void changeResultOne(int order_no);
-}*/
+}
