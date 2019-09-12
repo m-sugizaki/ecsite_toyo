@@ -170,7 +170,7 @@ function sum(){
 				<br>
 		      <!-- 商品詳細の表示 -->
 				<table id="kensaku">
-					<form:form modelAttribute="productCartModel" name="form1">
+					<form:form modelAttribute="productCartModel" name="">
 						<tr>
 							<td>商品コード&nbsp;&nbsp;</td><td>${productentity.product_id}</td>
 						</tr>
@@ -277,14 +277,17 @@ function sum(){
 									<p>カートに追加しますか？</p>
 									<form method="get" action="">
 									</form>
+									<form:form modelAttribute="ProductCartModel" name="addcart">
 									<table>
 
-										<tr><td><a href="detail" class="cancel">カートに追加</a></td>
+										<tr><td><input type="submit" value="カートに追加" class="cancel"/></td>
+										<td><form:input type="hidden" path="hidden_prodid" value="${productentity.product_id}" /></td>
 									　　　　　　　<td><label for="trigger_c" class="cancel">キャンセル</label></td>
 										</tr>
 
 
 									</table>
+									</form:form>
 								</div>
 							</div>
 							</div>
