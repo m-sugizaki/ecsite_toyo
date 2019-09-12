@@ -59,7 +59,8 @@ public class ProductmgrController {
 	//商品検索画面表示
 	@RequestMapping(value="/search", method=RequestMethod.POST, params="kensaku")
 	public String search(@ModelAttribute ProdmgrModel prodmgrModel, Model model, SessionStatus status) {
-		status.setComplete();
+		List<ProductSearchResultsEntity> resultsentity = new ArrayList<ProductSearchResultsEntity>();
+		model.addAttribute("productsearchresultsentity", resultsentity);
 		ProductSearchEntity productsearchentity = new ProductSearchEntity();
 
 		//最低・最高価格の空文字チェックを行い、入力された文字か最低・最高額をentityに格納
