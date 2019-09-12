@@ -3,13 +3,18 @@ package jp.co.ecsite.ecsite.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+
 //11:20 フィールドの追加(升岡)
 public class ProductCartModel implements Serializable {
 
 	private String product_cart_id;
 	private String product_id;
 	private String price;
+
+	@Min(1)
 	private String quantity;
+
 	private String size;
 	private String color;
 	private String payment_method;
