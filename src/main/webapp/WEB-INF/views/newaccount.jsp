@@ -262,7 +262,7 @@
 				<td></td>
 				</tr>
 				<tr>
-				<th>支払方法</th>
+				<th>カードの種類</th>
 				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" /></td><td><form:errors path="payment_method" elements="span" /></td>
 				</tr>
 				<tr>

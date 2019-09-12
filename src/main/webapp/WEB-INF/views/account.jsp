@@ -183,7 +183,7 @@
 
 <table class="results">
 	<tr>
-		<th class="tabletitle">支払方法</th>
+		<th class="tabletitle">カードの種類</th>
 		<th class="tabletitle">カード番号</th>
 		<th class="tabletitle">有効期限</th>
 		<th class="tabletitle">カード名義人</th>
