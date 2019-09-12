@@ -1,3 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.co.ecsite.ecsite.repository.ProdCartRepository">
+
+	<resultMap type="ProductCartEntity" id="purchaseResultMap">
+		<result property="order_no" column="order_no" />
+		<result property="user_id" column="user_id" />
+		<result property="product_id" column="product_id" />
+		<result property="quantity" column="quantity" />
+		<result property="size" column="size" />
+		<result property="color" column="color" />
+		<result property="order_dt" column="order_dt" />
+		<result property="order_status" column="order_status" />
+		<result property="payment_method" column="payment_method" />
+		<result property="payment_no" column="payment_no" />
+		<result property="shipping_address_no" column="shipping_address_no" />
+		<result property="delivery_plan_dt" column="delivery_plan_dt" />
+		<result property="price" column="price" />
+	</resultMap>
+
+	<!-- カート更新
+	<update id="updateCart" parameterType="ProductCartEntity">
+	<![CDATA[
+		UPDATE product_cart SET
+			quantity = #{quantity}, color = #{color}, size = #{size}, cart_regist_dt = now()
+		WHERE
+			product_cart_id = #{product_cart_id}
+	]]>
+	</update> -->
+
+	<!-- カート削除
+	<delete id="deleteCart" parameterType="int">
+	<![CDATA[
+		DELETE FROM
+			product_cart
+		WHERE
+			 product_cart_id = #{product_cart_id}
+	]]>
+	</delete> -->
+
+	<!-- 購入履歴追加
+	<insert id="insertHistoryOne" parameterType="ProductCartEntity">
+	<![CDATA[
+		INSERT INTO purchase_results
+			(user_id, product_id, quantity, size, color, order_dt, order_status, payment_method,
+			payment_no, shipping_address_no, delivery_plan_dt)
+		VALUES
+			(#{user_id}, #{product_id}, #{quantity}, #{size}, #{color}, now(), '注文確定',
+			#{payment_method}, #{payment_no}, #{shipping_address_no}, date_add(now(),interval 2 day))
+	]]>
+	</insert> -->
+
+	<!-- カートに商品を追加
+	<insert id="insertCart" parameterType="ProductCartEntity">
+	<![CDATA[
+		INSERT INTO product_cart
+			(user_id, product_id, quantity, size, color, cart_regist_dt)
+		VALUES
+			(#{user_id}, #{product_id}, #{quantity}, #{size}, #{color}, now())
+	]]>
+	</insert> -->
+
+
+	<!-- 注文情報を1件取得
+	<select id="findResultOne" parameterType="int" resultMap="purchaseResultMap">
+	<![CDATA[
+	SELECT
+		order_no, user_id, pr.product_id, quantity, pr.size, pr.color, order_dt, order_status,
+		payment_method, payment_no, shipping_address_no, delivery_plan_dt, price
+	FROM
+		purchase_results pr
+	JOIN
+		product p
+	ON
+		pr.product_id = p.product_id
+	WHERE
+		order_no = #{order_no}
+	]]>
+	</select> -->
+
+	<!-- 注文キャンセル(購入履歴画面)
+	<update id="changeResultOne" parameterType="int">
+	<![CDATA[
+		UPDATE purchase_results SET
+			order_status = '注文キャンセル'
+		WHERE
+			order_no = #{order_no}
+	]]>
+	</update> -->
+
+</mapper>
