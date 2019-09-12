@@ -1,14 +1,200 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<style>
+
+.minititle,contents{
+	font-size: 26px;
+}
+
+.table,review {
+	font-size: 16px;
+	border: solid 1px #000000;
+	border-collapse: collapse;}
+
+.tabletitle,review{
+	font-size: 16px;
+	width: 150px;
+	align: center;
+ 	background-color: lightblue;
+ 	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+
+.review td{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.review th{
+	height: 40px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+/*テキストボックスのデザイン*/
+.input_form{
+  position: relative;
+  display: block;
+  width: 100px;
+  margin-top: 6px;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: black;
+  outline: none;
+  background: white;
+  border: 1px solid lightgray;
+}
+</style>
+<title>購入履歴</title>
+<link rel="stylesheet" type="text/css" href="resources/mypage.css">
+<link rel="stylesheet" type="text/css" href="resources/reset.css">
+
+
 </head>
 <body>
+	<div class="all">
+		<!-- サイドバー -->
+		<aside class="sidebar">
+			<ul style="list-style: none">
+				<li class="sidebartitle">MENU</li>
+				<li><a href="home">マイページ</a></li>
+				<li><a href="search">商品検索</a></li>
+				<c:if test="${not empty  login.name}">
+					<li><a href="productcart">商品カート</a></li>
+					<li><a href="purchasehistory">購入履歴</a></li>
+					<li><a href="account">アカウント</a></li>
+				</c:if>
+			</ul>
+		</aside>
+		<!-- メイン(サイドバー横)の要素 -->
+		<div class="main">
+			<!-- ヘッダー -->
+			<div class="headder">
+				<div class="head">
+					<p class="title">アジャイル開発実践ECサイト</p>
+				</div>
+				<!-- 右上ユーザー情報 -->
+				<div class="head log">
+					<p>
+						ようこそ
+						<c:choose>
+							<c:when test="${empty login.name}">
+				ゲスト
+			</c:when>
+							<c:otherwise>
+								<c:out value="${ login.name}" />
+							</c:otherwise>
+						</c:choose>
+						さま
+						<c:if test="${not empty  login.name}">
+							<br>
+					ログイン最終日時：
+						<c:out value="${ login.login_dt}" />
+						</c:if>
+						<c:if test="${!empty login.name }">
+							<br>
+					商品カートの有無：
+					<c:choose>
+								<c:when test="${login.product_cart_id == 0 }"> 無</c:when>
+								<c:otherwise> 有</c:otherwise>
+							</c:choose>
+						</c:if>
+						<c:choose>
+							<c:when test="${empty login.name }">
+								<br>
+								<!-- ポップアップ -->
+								<div class="popup_wrap">
+									<input id="trigger" type="checkbox">
+									<div class="popup_overlay">
+										<label for="trigger" class="popup_trigger"></label>
+										<div class="popup_content">
+											<!-- ログインポップアップ中身 -->
+											<div align="center">
+												<p class="logintitle">ログイン</p>
+												<form method="get" action="login"></form>
+												<table>
+													<form:form modelAttribute="userModel">
+														<tr>
+															<td><form:input path="user_id" placeholder="ユーザーID"
+																	class="userid" /></td>
+														</tr>
+														<tr>
+															<td><form:password path="password" placeholder="パスワード"
+																	class="userid" /></td>
+														</tr>
+														<tr>
+															<td><form:input type="hidden" path="hid" value="3" />
+															<input type="submit" value="ログイン" name="login"
+																class="login"  /> <label for="trigger" class="cancel">キャンセル</label></td>
+														</tr>
+													</form:form>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 右上ユーザー情報続き -->
+								<label for="trigger" class="open_btn" for="login" >ログイン</label>
 
+							 / <a href="regist">新規登録</a>
+							</c:when>
+							<c:otherwise>
+								<br>
+								<a href="logout">ログアウト</a>
+							</c:otherwise>
+						</c:choose>
+				</div>
+			</div>
+			<!-- メインコンテンツ -->
+			<div class="contents">
+			<br>
+			<p class= "minititle">購入履歴</p>
+				<br>
+				<br>
+			 <!-- 購入履歴の表示テーブル-->
+					<table class ="review" >
+						<tr>
+							<th class="tabletitle">注文日時</th>
+							<th class="tabletitle">注文No.</th>
+							<th class="tabletitle">商品コード</th>
+							<th class="tabletitle">商品名</th>
+							<th class="tabletitle">注文状況</th>
+							<th class="tabletitle">配送予定日</th>
+							<th class="tabletitle">カートに入れる</th>
+							<th class="tabletitle">レジに進む</th>
+							<th class="tabletitle">注文キャンセル</th>
+
+
+						</tr>
+						<c:forEach var="purchasehistory" items="${productcartentity}">
+						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
+						<!--  -->
+							<tr>
+								<td class="table">${purchasehistory.order_dt}</td>
+								<td class="table">${purchasehistory.order_no}</td>
+								<td class="table">${purchasehistory.product_id}</td>
+								<td class="table">${purchasehistory.product_name}</td>
+								<td class="table">${purchasehistory.order_statas}</td>
+								<td class="table">${purchasehistory.nickname}</td>
+								<td class="table">${purchasehistory.nickname}</td>
+								<td class="table">${purchasehistory.nickname}</td>
+								<td class="table">${purchasehistory.nickname}</td>
+								<td class="table">
+							</tr>
+						</c:forEach>
+					</table>
+				<br>
+			</div>
+			</div>
+		</div>
 </body>
 </html>

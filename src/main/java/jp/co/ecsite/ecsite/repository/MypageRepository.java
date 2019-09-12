@@ -15,7 +15,7 @@ public interface MypageRepository {
 	//カートの全権検索のメソッド
 	List<ProductCartEntity> cartAll(UserStoreEntity userstoreentity);
 	//購入履歴の全件検索メソッド
-	List<PurchaseResultsEntity> purchasehistoryAll(UserStoreEntity userstoreentity);
+	List<ProductCartEntity> purchasehistoryAll(UserStoreEntity userstoreentity);
 	//ログイン中のアカウント情報取得メソッド
 	UserEntity accountInfo(UserStoreEntity userstoreentity);
 	//ログイン中の支払情報取得メソッド

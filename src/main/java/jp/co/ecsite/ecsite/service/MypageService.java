@@ -11,7 +11,7 @@ import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 
 public interface MypageService {
 	List<ProductCartEntity> cartAll(UserStoreEntity userstoreentity);
-	List<PurchaseResultsEntity> purchasehistoryAll(UserStoreEntity userstoreentity);
+	List<ProductCartEntity> purchasehistoryAll(UserStoreEntity userstoreentity);
 	UserEntity accountInfo(UserStoreEntity userstoreentity);
 	UserStoreEntity login(String user_id,String password);
 	void dateUpdate(UserStoreEntity userstoreentity);

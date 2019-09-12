@@ -24,7 +24,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<PurchaseResultsEntity> purchasehistoryAll(UserStoreEntity userstoreentity){
+	public List<ProductCartEntity> purchasehistoryAll(UserStoreEntity userstoreentity){
 		return mypageRepository.purchasehistoryAll(userstoreentity);
 	}
 
