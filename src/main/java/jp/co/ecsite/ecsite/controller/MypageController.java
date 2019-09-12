@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import jp.co.ecsite.ecsite.entity.PaymentMethodEntity;
+import jp.co.ecsite.ecsite.entity.ProductCartEntity;
 import jp.co.ecsite.ecsite.entity.ShippingAddressEntity;
 import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
@@ -96,12 +97,12 @@ public class MypageController {
 		return "redirect:/home";
 	}*/
 
-	/*@RequestMapping(value="productcart" , method=RequestMethod.GET , params="cart")
-	public String toCart(@ModelAttribute UserStoreEntity userStoreEntity , Model model) {
-		List<ProductCartEntity> cart = mypageService.cartAll(userStoreEntity);
-		model.addAttribute("cart" , cart);
+	@RequestMapping(value="productcart" , method=RequestMethod.GET)
+	public String toCart(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
+		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+		model.addAttribute("cartlist" , cartlist);
 		return "productcart";
-	}*/
+	}
 
 	/*@RequestMapping(value="/home" , method=RequestMethod.GET , params="purchasehistory")
 	public String to(@ModelAttribute UserStoreEntity userStoreEntity , Model model) {
