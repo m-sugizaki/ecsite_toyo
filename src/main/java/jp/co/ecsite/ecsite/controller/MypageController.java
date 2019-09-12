@@ -97,19 +97,21 @@ public class MypageController {
 		return "redirect:/home";
 	}*/
 
-	@RequestMapping(value="productcart" , method=RequestMethod.GET)
+	//カート画面への遷移処理
+	@RequestMapping(value="/productcart" , method=RequestMethod.GET)
 	public String toCart(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {
 		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
 		model.addAttribute("cartlist" , cartlist);
 		return "productcart";
 	}
 
-	/*@RequestMapping(value="/home" , method=RequestMethod.GET , params="purchasehistory")
-	public String to(@ModelAttribute UserStoreEntity userStoreEntity , Model model) {
-		List<PurchaseResultsEntity> purchase = MypageService.purchasehistoryAll(userStoreEntity);
-		model.addAttribute("purchase", purchase);
- 	"purchasehistory";
-	}*/
+	//購入履歴画面への遷移処理
+	@RequestMapping(value="/purchasehistory" , method=RequestMethod.GET)
+	public String to(@ModelAttribute("login") UserStoreEntity userStoreEntity , Model model) {
+		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userStoreEntity);
+		model.addAttribute("purchaselist", purchaselist);
+		return "purchasehistory";
+	}
 
 	/*@RequestMapping(value="/home" , method=RequestMethod.GET , params="account")
 	public String to(@ModelAttribute UserStoreEntity userStoreEntity , Model model) {
