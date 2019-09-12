@@ -13,15 +13,15 @@ import jp.co.ecsite.ecsite.entity.UserStoreEntity;
 
 public interface MypageRepository {
 	//カートの全権検索のメソッド
-	List<ProductCartEntity> cartAll(String user_id);
+	List<ProductCartEntity> cartAll(UserStoreEntity userstoreentity);
 	//購入履歴の全件検索メソッド
-	List<PurchaseResultsEntity> purchasehistoryAll(String user_id);
+	List<PurchaseResultsEntity> purchasehistoryAll(UserStoreEntity userstoreentity);
 	//ログイン中のアカウント情報取得メソッド
-	UserEntity accountInfo(String user_id);
+	UserEntity accountInfo(UserStoreEntity userstoreentity);
 	//ログイン中の支払情報取得メソッド
-	List<PaymentMethodEntity> paymentInfo(String user_id);
+	List<PaymentMethodEntity> paymentInfo(UserStoreEntity userstoreentity);
 	//ログイン中の届け先取得メソッド
-	List<ShippingAddressEntity> shippingInfo(String user_id);
+	List<ShippingAddressEntity> shippingInfo(UserStoreEntity userstoreentity);
 	//サービスから受け取ったデータを使って、DBからIDとパスワードを検索したデータをエンティティに格納するメソッド
 	UserStoreEntity login(@Param("user_id") String user_id,@Param("password") String password);
 	//ログインできたときのログイン日時の更新

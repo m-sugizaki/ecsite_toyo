@@ -20,17 +20,17 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public List<ProductCartEntity> cartAll(UserStoreEntity userstoreentity){
-		return mypageRepository.cartAll(userstoreentity.getUser_id());
+		return mypageRepository.cartAll(userstoreentity);
 	}
 
 	@Override
 	public List<PurchaseResultsEntity> purchasehistoryAll(UserStoreEntity userstoreentity){
-		return mypageRepository.purchasehistoryAll(userstoreentity.getUser_id());
+		return mypageRepository.purchasehistoryAll(userstoreentity);
 	}
 
 	@Override
 	public UserEntity accountInfo(UserStoreEntity userstoreentity) {
-		return mypageRepository.accountInfo(userstoreentity.getUser_id());
+		return mypageRepository.accountInfo(userstoreentity);
 	}
 
 	@Override
@@ -56,12 +56,12 @@ public class MypageServiceImpl implements MypageService {
 	// 9/5 13:00 豊泉 お支払情報表示
 	@Override
 	public List<PaymentMethodEntity> paymentInfo(UserStoreEntity userstoreentity){
-		return mypageRepository.paymentInfo(userstoreentity.getUser_id());
+		return mypageRepository.paymentInfo(userstoreentity);
 	}
 	// 9/5 13:00 豊泉 お届け先情報表示
 	@Override
 	public List<ShippingAddressEntity> shippingInfo(UserStoreEntity userstoreentity){
-		return mypageRepository.shippingInfo(userstoreentity.getUser_id());
+		return mypageRepository.shippingInfo(userstoreentity);
 	}
 
 	@Override
