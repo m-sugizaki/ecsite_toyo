@@ -175,14 +175,25 @@
 
 
 						</tr>
-						<c:forEach var="purchasehistory" items="${purchaselist}">
+						<c:forEach var="purchaselist" items="${purchaselist}">
 						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 						<!--  -->
 							<tr>
-								<td class="table">${purchasehistory.order_dt}</td>
-								<td class="table">${purchasehistory.order_no}</td>
-								<td class="table">${purchasehistory.product_id}</td>
+								<td class="table">${purchaselist.order_dt}</td>
+								<td class="table">${purchaselist.order_no}</td>
+								<td class="table">${purchaselist.product_id}</td>
+								<td class="table">${purchaselist.product_name}</td>
+								<td class="table">${purchaselist.order_status}</td>
+								<td class="table">${purchaselist.delivery_plan_dt}</td>
+								<td class="table"><input type="submit" name="addcart" value="同じ内容でカートに追加" ></td>
+								<td class="table"><input type="submit" name="cancelorder" value="同じ内容でレジに進む" ></td>
+								<td class="table">
+								  <c:choose>
+									<c:when test="${purchaselist.order_status == 注文キャンセル}">????????</c:when>
 
+									<c:otherwise><input type="submit" name="delete" value="注文をキャンセルする" ></c:otherwise>
+								 </c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

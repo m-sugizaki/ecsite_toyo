@@ -18,7 +18,7 @@
 </resultMap>
 
 <!-- 購入履歴の全件検索 -->
-<resultMap id="purchasehistoryAll" type="PurchaseResultsEntity">
+<resultMap id="purchasehistoryAll" type="ProductCartEntity">
 <result column="order_dt" property="order_dt"/>
 <result column="order_no" property="order_no"/>
 <result column="product_id" property="product_id"/>
