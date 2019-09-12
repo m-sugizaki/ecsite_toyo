@@ -1,5 +1,6 @@
 package jp.co.ecsite.ecsite.controller;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -89,9 +90,9 @@ public class PurchasemgrController {
 	public String toProductBuy(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 	ProductCartEntity cart = new ProductCartEntity();
-	cart.setProduct_cart_id(productCartModel.getProduct_cart_id());
+	cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 	cart.setProduct_name(productCartModel.getProduct_name());
-	cart.setPrice(productCartModel.getPrice());
+	cart.setPrice(new BigDecimal(productCartModel.getPrice()));
 	cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
 	cart.setSize(productCartModel.getSize());
 	cart.setColor(productCartModel.getColor());
@@ -136,6 +137,39 @@ public class PurchasemgrController {
 	//商品カートから一件データを削除する処理
 	this.deleteCart(productCartModel, userstoreentity, model);
 
+	}
+
+	//カートに追加する処理
+	@RequestMapping(value= {"/purchasehistory","delete"}, method=RequestMethod.POST, params="addcart")
+	public String addcart(@ModelAttribute("login") UserStoreEntity userstoreentity, @ModelAttribute ProductCartModel productCartModel, Model model) {
+			ProductCartEntity history = new ProductCartEntity();
+			history.setUser_id(userstoreentity.getUser_id());
+			history.setProduct_id(productCartModel.getProduct_id());
+			history.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
+			history.setSize(productCartModel.getSize());
+			history.setColor(productCartModel.getColor());
+
+			prodCartService.insertCart(history);
+
+			MypageController returncart = new MypageController();
+			returncart.toCart(userstoreentity, model);
+	}
+
+	//注文キャンセル確認画面に遷移させるメソッド
+	@RequestMapping(value="/purchasehistory", method=RequestMethod.POST, params="cancelorder")
+	public String toCancelOrder(@ModelAttribute ProductCartModel productCartModel, Model model) {
+		ProductCartEntity deleteconfirm = prodCartService.findResultOne(Integer.parseInt(productCartModel.getOrder_no()));
+		model.addAttribute("deleteconfirm", deleteconfirm);
+		return "deleteconfirm";
+	}
+
+	//注文キャンセルをするメソッド
+	@RequestMapping(value="/purchasehistory", method=RequestMethod.POST, params="delete")
+	public String cancelOrder(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
+		prodCartService.changeResultOne(Integer.parseInt(productCartModel.getOrder_no()));
+
+		MypageController returnpurchase = new MypageController();
+		returnpurchase.toPurchasehistory(userstoreentity, model);
 	}
 
 }
