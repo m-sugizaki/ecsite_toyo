@@ -142,15 +142,15 @@ function sum(){
 <table>
 	<tr>
 		<th>カートNo</th>
-		<td>${cart.product_cart_id}</td>
+		<td>${cart.product_cart_id}<form:hidden path="product_cart_id" value="${cart.product_cart_id}" /></td>
 	</tr>
 	<tr>
 		<th>商品コード</th>
-		<td>${cart.product_id}</td>
+		<td>${cart.product_id}<form:hidden path="product_id" value="${cart.product_id}" /></td>
 	</tr>
 	<tr>
 		<th>価格</th>
-		<td>${cart.price}</td>
+		<td>${cart.price}<form:hidden path="price" value="${cart.price}" /></td>
 	</tr>
 	<tr>
 		<th>数量</th>
