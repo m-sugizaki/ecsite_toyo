@@ -69,7 +69,7 @@ public class MypageController {
 	}
 
 	//ログインチェック
-	@RequestMapping(value= {"/home","/search"} , method=RequestMethod.POST, params="login")
+	@RequestMapping(value= {"/home","/search","/regist"} , method=RequestMethod.POST, params="login")
 	public String doLogin(@Validated @ModelAttribute UserModel uModel , BindingResult result ,  Model model) {
 		if(result.hasErrors()) {
 			return "mypage";
