@@ -178,7 +178,7 @@
 							<th>カートから出す&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 							<th>レジに進む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
-						<c:forEach var="cartlist" items="${cart}">
+						<c:forEach var="cartlist" items="${cartlist}">
 						<form:form modelAttribute="productCartModel">
 							<tr>
 								<td>${cartlist.product_cart_id}<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" /></td>
