@@ -107,7 +107,7 @@ public class MypageController {
 
 	//購入履歴画面への遷移処理
 	@RequestMapping(value="/purchasehistory" , method=RequestMethod.GET)
-	public String to(@ModelAttribute("login") UserStoreEntity userStoreEntity , Model model) {
+	public String toPurchasehistory(@ModelAttribute("login") UserStoreEntity userStoreEntity , Model model) {
 		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userStoreEntity);
 		model.addAttribute("purchaselist", purchaselist);
 		return "purchasehistory";
