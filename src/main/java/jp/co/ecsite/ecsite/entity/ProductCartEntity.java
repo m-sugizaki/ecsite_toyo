@@ -15,6 +15,7 @@ public class ProductCartEntity implements Serializable {
 	private int quantity;
 	private String size;
 	private String color;
+	private LocalDateTime order_dt;
 	private LocalDateTime cart_regist_dt;
 	private String payment_method;
 	private int payment_no;
@@ -69,6 +70,12 @@ public class ProductCartEntity implements Serializable {
 	}
 	public void setColor(String color) {
 		this.color = color;
+	}
+	public LocalDateTime getOrder_dt() {
+		return order_dt;
+	}
+	public void setOrder_dt(LocalDateTime order_dt) {
+		this.order_dt = order_dt;
 	}
 	public LocalDateTime getCart_regist_dt() {
 		return cart_regist_dt;
