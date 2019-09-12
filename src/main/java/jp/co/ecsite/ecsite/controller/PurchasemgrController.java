@@ -72,7 +72,7 @@ public class PurchasemgrController {
 		prodCartService.updateCart(cart);
 
 		MypageController returncart = new MypageController();
-		returncart.toCart(userstoreentity, model);
+		return returncart.toCart(userstoreentity, model);
 	}
 
 	//商品カートを削除するメソッド
@@ -82,7 +82,7 @@ public class PurchasemgrController {
 		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
 
 		MypageController returncart = new MypageController();
-		returncart.toCart(userstoreentity, model);
+		return returncart.toCart(userstoreentity, model);
 	}
 
 	//商品購入画面に遷移するメソッド
@@ -152,7 +152,7 @@ public class PurchasemgrController {
 			prodCartService.insertCart(history);
 
 			MypageController returncart = new MypageController();
-			returncart.toCart(userstoreentity, model);
+			return returncart.toCart(userstoreentity, model);
 	}
 
 	//注文キャンセル確認画面に遷移させるメソッド
@@ -169,7 +169,7 @@ public class PurchasemgrController {
 		prodCartService.changeResultOne(Integer.parseInt(productCartModel.getOrder_no()));
 
 		MypageController returnpurchase = new MypageController();
-		returnpurchase.toPurchasehistory(userstoreentity, model);
+		return returnpurchase.toPurchasehistory(userstoreentity, model);
 	}
 
 }
