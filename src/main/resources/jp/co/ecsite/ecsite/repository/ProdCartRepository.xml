@@ -67,7 +67,7 @@
 	<![CDATA[
 	SELECT
 		order_no, user_id, pr.product_id, quantity, pr.size, pr.color, order_dt, order_status,
-		payment_method, payment_no, shipping_address_no, delivery_plan_dt, price
+		payment_method, payment_no, shipping_address_no, delivery_plan_dt, price, product_name
 	FROM
 		purchase_results pr
 	JOIN
