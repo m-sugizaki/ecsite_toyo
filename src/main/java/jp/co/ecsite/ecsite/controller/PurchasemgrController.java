@@ -45,9 +45,9 @@ public class PurchasemgrController {
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="preupdate")
 	public String toCartUpdate(Model model, @ModelAttribute ProductCartModel productCartModel) {
 		ProductCartEntity cart = new ProductCartEntity();
-		cart.setProduct_cart_id(productCartModel.getProduct_cart_id());
+		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 		cart.setProduct_id(productCartModel.getProduct_id());
-		cart.setPrice(Integer.parseInt(productCartModel.getPrice()));
+		cart.setPrice(new BigDecimal(productCartModel.getPrice()));
 		cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
 		cart.setSize(productCartModel.getSize());
 		cart.setColor(productCartModel.getColor());
@@ -65,24 +65,24 @@ public class PurchasemgrController {
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="update")
 	public String updateCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		ProductCartEntity cart = new ProductCartEntity();
-		cart.setProduct_cart_id(productCartModel.getProduct_cart_id());
+		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 		cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
 		cart.setSize(productCartModel.getSize());
 		cart.setColor(productCartModel.getColor());
 		prodCartService.updateCart(cart);
 
 		MypageController returncart = new MypageController();
-		returncart.toCart(userstoreentity, model);
+		return returncart.toCart(userstoreentity, model);
 	}
 
 	//商品カートを削除するメソッド
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="delete")
-	public String deleteCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model)
+	public String deleteCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
 
 		MypageController returncart = new MypageController();
-		returncart.toCart(userstoreentity, model);
+		return returncart.toCart(userstoreentity, model);
 	}
 
 	//商品購入画面に遷移するメソッド
@@ -135,7 +135,7 @@ public class PurchasemgrController {
 	prodCartService.insertHistoryOne(cart);
 
 	//商品カートから一件データを削除する処理
-	this.deleteCart(productCartModel, userstoreentity, model);
+	return this.deleteCart(productCartModel, userstoreentity, model);
 
 	}
 
@@ -152,7 +152,7 @@ public class PurchasemgrController {
 			prodCartService.insertCart(history);
 
 			MypageController returncart = new MypageController();
-			returncart.toCart(userstoreentity, model);
+			return returncart.toCart(userstoreentity, model);
 	}
 
 	//注文キャンセル確認画面に遷移させるメソッド
@@ -169,7 +169,7 @@ public class PurchasemgrController {
 		prodCartService.changeResultOne(Integer.parseInt(productCartModel.getOrder_no()));
 
 		MypageController returnpurchase = new MypageController();
-		returnpurchase.toPurchasehistory(userstoreentity, model);
+		return returnpurchase.toPurchasehistory(userstoreentity, model);
 	}
 
 }
