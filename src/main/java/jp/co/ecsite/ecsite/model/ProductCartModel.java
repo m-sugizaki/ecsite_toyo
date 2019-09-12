@@ -10,6 +10,7 @@ public class ProductCartModel implements Serializable {
 
 	private String product_cart_id;
 	private String product_id;
+	private String product_name;
 	private String price;
 
 	@Min(1)
@@ -19,7 +20,7 @@ public class ProductCartModel implements Serializable {
 	private String color;
 	private String payment_method;
 	private String payment_no;
-	private String shiiping_address_no;
+	private String shipping_address_no;
 	private String order_no;
 	public String getProduct_cart_id() {
 		return product_cart_id;
@@ -32,6 +33,12 @@ public class ProductCartModel implements Serializable {
 	}
 	public void setProduct_id(String product_id) {
 		this.product_id = product_id;
+	}
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
 	public String getPrice() {
 		return price;
@@ -69,11 +76,11 @@ public class ProductCartModel implements Serializable {
 	public void setPayment_no(String payment_no) {
 		this.payment_no = payment_no;
 	}
-	public String getShiiping_address_no() {
-		return shiiping_address_no;
+	public String getShipping_address_no() {
+		return shipping_address_no;
 	}
-	public void setShiiping_address_no(String shiiping_address_no) {
-		this.shiiping_address_no = shiiping_address_no;
+	public void setShipping_address_no(String shipping_address_no) {
+		this.shipping_address_no = shipping_address_no;
 	}
 	public String getOrder_no() {
 		return order_no;
