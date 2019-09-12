@@ -45,9 +45,9 @@ public class PurchasemgrController {
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="preupdate")
 	public String toCartUpdate(Model model, @ModelAttribute ProductCartModel productCartModel) {
 		ProductCartEntity cart = new ProductCartEntity();
-		cart.setProduct_cart_id(productCartModel.getProduct_cart_id());
+		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 		cart.setProduct_id(productCartModel.getProduct_id());
-		cart.setPrice(Integer.parseInt(productCartModel.getPrice()));
+		cart.setPrice(new BigDecimal(productCartModel.getPrice()));
 		cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
 		cart.setSize(productCartModel.getSize());
 		cart.setColor(productCartModel.getColor());
@@ -65,7 +65,7 @@ public class PurchasemgrController {
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="update")
 	public String updateCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		ProductCartEntity cart = new ProductCartEntity();
-		cart.setProduct_cart_id(productCartModel.getProduct_cart_id());
+		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 		cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
 		cart.setSize(productCartModel.getSize());
 		cart.setColor(productCartModel.getColor());
@@ -77,7 +77,7 @@ public class PurchasemgrController {
 
 	//商品カートを削除するメソッド
 	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="delete")
-	public String deleteCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model)
+	public String deleteCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
 
