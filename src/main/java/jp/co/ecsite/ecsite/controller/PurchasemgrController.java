@@ -135,7 +135,7 @@ public class PurchasemgrController {
 	prodCartService.insertHistoryOne(cart);
 
 	//商品カートから一件データを削除する処理
-	this.deleteCart(productCartModel, userstoreentity, model);
+	return this.deleteCart(productCartModel, userstoreentity, model);
 
 	}
 
