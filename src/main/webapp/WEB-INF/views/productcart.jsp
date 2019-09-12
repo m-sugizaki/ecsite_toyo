@@ -183,7 +183,7 @@
 							<tr>
 								<td>${cartlist.product_cart_id}<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" /></td>
 								<td>${cartlist.product_id}<form:hidden path="product_id" value="${cartlist.product_id}" /></td>
-								<td>${cartlist.product_name}</td>
+								<td>${cartlist.product_name}<form:hidden path="product_name" value="${cartlist.product_name}" /></td>
 								<td>${cartlist.price}<form:hidden path="price" value="${cartlist.price}" /></td>
 								<td>${cartlist.quantity}<form:hidden path="quantity" value="${cartlist.quantity}" /></td>
 								<td>${cartlist.quantity * cartlist.price}</td>
