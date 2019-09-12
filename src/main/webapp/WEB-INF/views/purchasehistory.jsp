@@ -175,20 +175,14 @@
 
 
 						</tr>
-						<c:forEach var="purchasehistory" items="${productcartentity}">
+						<c:forEach var="purchasehistory" items="${purchaselist}">
 						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 						<!--  -->
 							<tr>
 								<td class="table">${purchasehistory.order_dt}</td>
 								<td class="table">${purchasehistory.order_no}</td>
 								<td class="table">${purchasehistory.product_id}</td>
-								<td class="table">${purchasehistory.product_name}</td>
-								<td class="table">${purchasehistory.order_statas}</td>
-								<td class="table">${purchasehistory.nickname}</td>
-								<td class="table">${purchasehistory.nickname}</td>
-								<td class="table">${purchasehistory.nickname}</td>
-								<td class="table">${purchasehistory.nickname}</td>
-								<td class="table">
+
 							</tr>
 						</c:forEach>
 					</table>
