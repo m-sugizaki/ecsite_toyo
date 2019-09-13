@@ -193,7 +193,9 @@
 								<input type="hidden" name="quantity" value="${purchaselist.quantity}" />
 								<input type="hidden" name="size" value="${purchaselist.size}" />
 								<input type="hidden" name="color" value="${purchaselist.color}" />
-								<input type="hidden" name="order_no" value="${purchaselist.order_no}"></td>
+								<input type="hidden" name="order_no" value="${purchaselist.order_no}">
+								<input type="hidden" name="price" value="${purchaselist.price}">
+								</td>
 								<td class="table"><input type="submit" name="prepurchase"
 									value="同じ内容でレジに進む"></td>
 								<td class="table"><input type="submit" name="cancelorder"
