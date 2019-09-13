@@ -71,8 +71,12 @@ public class PurchasemgrController {
 		cart.setColor(productCartModel.getColor());
 		prodCartService.updateCart(cart);
 
-		MypageController returncart = new MypageController();
-		return returncart.toCart(userstoreentity, model);
+		//MypageController returncart = new MypageController();
+		//return returncart.toCart(userstoreentity, model);
+
+		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+		model.addAttribute("cartlist" , cartlist);
+		return "productcart";
 	}
 
 	//商品カートを削除するメソッド
@@ -81,8 +85,12 @@ public class PurchasemgrController {
 
 		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
 
-		MypageController returncart = new MypageController();
-		return returncart.toCart(userstoreentity, model);
+		//MypageController returncart = new MypageController();
+		//return returncart.toCart(userstoreentity, model);
+
+		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+		model.addAttribute("cartlist" , cartlist);
+		return "productcart";
 	}
 
 	//商品購入画面に遷移するメソッド
@@ -140,7 +148,7 @@ public class PurchasemgrController {
 	}
 
 	//カートに追加する処理
-	@RequestMapping(value= {"/purchasehistory","delete"}, method=RequestMethod.POST, params="addcart")
+	@RequestMapping(value= {"/purchasehistory","/delete"}, method=RequestMethod.POST, params="addcart")
 	public String addcart(@ModelAttribute("login") UserStoreEntity userstoreentity, @ModelAttribute ProductCartModel productCartModel, Model model) {
 			ProductCartEntity history = new ProductCartEntity();
 			history.setUser_id(userstoreentity.getUser_id());
@@ -151,8 +159,9 @@ public class PurchasemgrController {
 
 			prodCartService.insertCart(history);
 
-			MypageController returncart = new MypageController();
-			return returncart.toCart(userstoreentity, model);
+			List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+			model.addAttribute("cartlist" , cartlist);
+			return "productcart";
 	}
 
 	//注文キャンセル確認画面に遷移させるメソッド
@@ -168,8 +177,12 @@ public class PurchasemgrController {
 	public String cancelOrder(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		prodCartService.changeResultOne(Integer.parseInt(productCartModel.getOrder_no()));
 
-		MypageController returnpurchase = new MypageController();
-		return returnpurchase.toPurchasehistory(userstoreentity, model);
+		//MypageController returnpurchase = new MypageController();
+		//return returnpurchase.toPurchasehistory(userstoreentity, model);
+
+		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userstoreentity);
+		model.addAttribute("purchaselist", purchaselist);
+		return "purchasehistory";
 	}
 
 }
