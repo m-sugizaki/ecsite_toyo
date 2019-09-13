@@ -98,7 +98,7 @@ public class PurchasemgrController {
 	public String toProductBuy(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 	ProductCartEntity cart = new ProductCartEntity();
-	cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
+	//cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
 	cart.setProduct_name(productCartModel.getProduct_name());
 	cart.setPrice(new BigDecimal(productCartModel.getPrice()));
 	cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
