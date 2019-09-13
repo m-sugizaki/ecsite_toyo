@@ -220,10 +220,12 @@ public class MypageController {
 
 		}
 
-	@RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
+	/*ボタン風のリンクにしたため不要
+	 * @RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
 	public String canselRegist() {
 		return "redirect:/home";
 	}
+*/
 
 	@RequestMapping(value="/account", method=RequestMethod.GET)
 	String toAccountmgr(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {

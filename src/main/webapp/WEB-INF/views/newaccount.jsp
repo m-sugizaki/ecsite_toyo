@@ -403,7 +403,7 @@
 
 
 		<input type="submit" name="regist" value="登録" class="login" />
-		<input type="submit" name="back" value="キャンセル" class="login" />
+		<a href="home" class="cancel">キャンセル</a>
 
 		</form:form>
 		</div>
