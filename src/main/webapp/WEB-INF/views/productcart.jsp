@@ -21,11 +21,13 @@
 }
 
 .view {
+	font-size: 12px;
 	border: none;
 	background-color: transparent;
 	color: blue;
 	text-decoration: underline;
 }
+
 
 #kensaku{
  font-size: 18px;
@@ -62,6 +64,25 @@
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
+}
+.cartpopup{
+position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: small;
+  font-weight: bold;
+  margin:10px;
+  width: 100px;
 }
 
 .form_input{
@@ -202,15 +223,15 @@
 											<div align="center" class="delete">
 											<p class="minititle">削除してよろしいですか。</p>
 											<br>
-												<form:button name="delete" class="view">削除</form:button>
-											<label for="triggerdel${cartlist.product_cart_id}" class="cancel"><span>キャンセル</span></label>
+												<form:button name="delete" class="cartpopup">削除</form:button>
+											<label for="triggerdel${cartlist.product_cart_id}" class="cartpopup"><span>キャンセル</span></label>
 										</div>
 									</div>
 									</div>
 								</div>
 									<p><label for="triggerdel${cartlist.product_cart_id}" class="open_btn" >削除</label></p>
 								</td>
-								<td class="table"><form:button name="prepurchase" class="view">レジに進む</form:button></td>
+								<td class="table"><form:button name="prepurchase" class="gopurchase">レジに進む</form:button></td>
 							</tr>
 						</form:form>
 						</c:forEach>

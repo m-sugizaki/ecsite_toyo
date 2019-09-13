@@ -12,6 +12,50 @@
 	.delete{
 		padding: 55px;
 	}
+.minititle{
+	font-size: 26px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+/*注文キャンセルの確認画面*/
+.ordercancel{
+	width: 50%;
+}
+.ordercancel th{
+	position:relative;
+	width: 1px;
+	text-align:right;
+	padding: 10px 0;
+	border-bottom: 4px solid #ccc;
+}
+.ordercancel td{
+	text-align: left;
+	width:60%;
+	text-align: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.open_btn{
+position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: small;
+  font-weight: bold;
+  margin:10px;
+  width: 100px;
+}
 </style>
 <title>注文取消確認</title>
 </head>
@@ -71,27 +115,27 @@
 	<!-- 取消確認画面ここから -->
 	<div class="contents">
 		<p class="minititle">注文取消確認</p>
+		<table border="0" class="ordercancel">
 
 		<form:form modelAttribute="productCartModel">
-		<table>
 		<tr>
-			<th>注文No</th>
+			<th>注文No：</th>
 			<td>${deleteconfirm.order_no }</td>
 		</tr>
 		<tr>
-			<th>商品コード</th>
-			<td>${deleteconfirm.order_no }&nbsp;&nbsp;&nbsp;&nbsp;${deleteconfirm.product_name }</td>
+			<th>商品コード：</th>
+			<td>${deleteconfirm.product_id }&nbsp;&nbsp;&nbsp;&nbsp;${deleteconfirm.product_name }</td>
 		</tr>
 		<tr>
-			<th>価格</th>
+			<th>価格：</th>
 			<td>${deleteconfirm.price }</td>
 		</tr>
 		<tr>
-			<th>数量</th>
+			<th>数量：</th>
 			<td>${deleteconfirm.quantity }</td>
 		</tr>
 		<tr>
-			<th>購入金額</th>
+			<th>購入金額：</th>
 				<td>
 				<script type="text/javascript">
 				var sum ;
@@ -101,17 +145,20 @@
 				</td>
 		</tr>
 		<tr>
-			<th>サイズ</th>
+			<th>サイズ：</th>
 			<td>${deleteconfirm.size }</td>
 		</tr>
 		<tr>
-			<th>色</th>
+			<th>色：</th>
 			<td>${deleteconfirm.color }</td>
 		</tr>
 		<tr>
-			<th>配送予定日</th>
+			<th>配送予定日：</th>
 			<td>${deleteconfirm.delivery_plan_dt }</td>
 		</tr>
+		</table>
+
+		<table border="0" class="canxelpopup">
 		<tr>
 			<td colspan="2">
 
