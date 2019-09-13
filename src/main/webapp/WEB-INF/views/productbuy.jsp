@@ -19,11 +19,11 @@ function sum(){
 }
 
 //支払い方法選択時にpayment_noに格納//
-//function setpayno(){
+function setpayno(){
 
-	//document.form1.payno.value = 2;
+	document.form1.payno.value = 2;
 
-//}
+}
 
 </script>
 
@@ -51,7 +51,7 @@ function sum(){
 		<th>購入金額</th>
 		<td>
 		<!-- 合計金額表示 -->
-		<input type="text"  id="payment_no" name="field" size="8" value="${cart.price} " readonly>
+		<input type="text" name="field" size="8" value="${cart.price} " readonly>
 		</td>
 	</tr>
 	<tr>
@@ -65,11 +65,16 @@ function sum(){
 	<tr>
 		<th>支払い方法</th>
 		<td>
-			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし"  /><br> <!-- onclick="setpayno()" -->
+			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし"  /><br> <!-- onclick="setpayno()"  -->
 			<form:radiobutton path="payment_method" value="商品代引き" label="商品代引き" /><br>
 			<form:radiobutton path="payment_method" value="クレジットカード" label="クレジットカード"/>
-			<form:select items="${paymentinfo}" itemLabel="payment_method" path="payment_method"/>
-			<!-- <input type="hidden" name="payno" id="pament_no" size="8" value="" readonly> -->
+			<c:forEach var="paylist" items="${paymentinfo}">
+					<input type="radio" name="payment_no" value="${paylist.payment_no}">${paylist.payment_method}
+					</c:forEach>
+			<!--<form:select path="payment_no">
+				<form:options items="${paymentinfo}" itemLabel="payment_method" itemvalue="payment_no"/>
+			</form:select>-->
+			<!--<form:hidden path="payment_no" name="payno" value="" />-->
 		</td>
 	</tr>
 
