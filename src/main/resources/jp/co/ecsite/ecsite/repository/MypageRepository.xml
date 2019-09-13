@@ -26,8 +26,10 @@
 <result column="order_status" property="order_status"/>
 <result column="delivery_plan_dt" property="delivery_plan_dt"/>
 <result column="delivery_completion_dt" property="delivery_completion_dt"/>
-<result column="evaluation" property="evaluation"/>
 <result column="user_id" property="user_id"/>
+<result column="size" property="size"/>
+<result column="color" property="color"/>
+<result column="quantity" property="quantity"/>
 </resultMap>
 
 
@@ -94,10 +96,10 @@
 
 
 <!-- 購入履歴全件検索 -->
-<select id="purchasehistoryAll" resultMap="cartAllResultMap">
+<select id="purchasehistoryAll" resultMap="purchasehistoryAll">
  <![CDATA[
 			SELECT
-				order_dt, order_no, pr.product_id, product_name, order_status, delivery_plan_dt, delivery_completion_dt, evaluation
+				order_dt, order_no, pr.product_id, product_name, order_status, delivery_plan_dt, delivery_completion_dt, pr.size, pr.color, pr.quantity
 			FROM
 				 purchase_results pr
 			LEFT JOIN product p
