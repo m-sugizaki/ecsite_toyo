@@ -19,7 +19,7 @@
 		<result property="price" column="price" />
 	</resultMap>
 
-	<!-- カート更新
+	<!-- カート更新 -->
 	<update id="updateCart" parameterType="ProductCartEntity">
 	<![CDATA[
 		UPDATE product_cart SET
@@ -27,9 +27,9 @@
 		WHERE
 			product_cart_id = #{product_cart_id}
 	]]>
-	</update> -->
+	</update>
 
-	<!-- カート削除
+	<!-- カート削除 -->
 	<delete id="deleteCart" parameterType="int">
 	<![CDATA[
 		DELETE FROM
@@ -37,9 +37,9 @@
 		WHERE
 			 product_cart_id = #{product_cart_id}
 	]]>
-	</delete> -->
+	</delete>
 
-	<!-- 購入履歴追加
+	<!-- 購入履歴追加 -->
 	<insert id="insertHistoryOne" parameterType="ProductCartEntity">
 	<![CDATA[
 		INSERT INTO purchase_results
@@ -49,9 +49,9 @@
 			(#{user_id}, #{product_id}, #{quantity}, #{size}, #{color}, now(), '注文確定',
 			#{payment_method}, #{payment_no}, #{shipping_address_no}, date_add(now(),interval 2 day))
 	]]>
-	</insert> -->
+	</insert>
 
-	<!-- カートに商品を追加
+	<!-- カートに商品を追加 -->
 	<insert id="insertCart" parameterType="ProductCartEntity">
 	<![CDATA[
 		INSERT INTO product_cart
@@ -59,10 +59,10 @@
 		VALUES
 			(#{user_id}, #{product_id}, #{quantity}, #{size}, #{color}, now())
 	]]>
-	</insert> -->
+	</insert>
 
 
-	<!-- 注文情報を1件取得
+	<!-- 注文情報を1件取得 -->
 	<select id="findResultOne" parameterType="int" resultMap="purchaseResultMap">
 	<![CDATA[
 	SELECT
@@ -77,9 +77,9 @@
 	WHERE
 		order_no = #{order_no}
 	]]>
-	</select> -->
+	</select>
 
-	<!-- 注文キャンセル(購入履歴画面)
+	<!-- 注文キャンセル(購入履歴画面) -->
 	<update id="changeResultOne" parameterType="int">
 	<![CDATA[
 		UPDATE purchase_results SET
@@ -87,6 +87,6 @@
 		WHERE
 			order_no = #{order_no}
 	]]>
-	</update> -->
+	</update>
 
 </mapper>
