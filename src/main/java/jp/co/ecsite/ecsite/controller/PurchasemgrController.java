@@ -42,7 +42,7 @@ public class PurchasemgrController {
 	MypageService mypageService;
 
 	//商品カート更新画面に遷移させるメソッド
-	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="preupdate")
+	@RequestMapping(value= {"/productcart","/purchasehistory"}, method=RequestMethod.POST, params="preupdate")
 	public String toCartUpdate(Model model, @ModelAttribute ProductCartModel productCartModel) {
 		ProductCartEntity cart = new ProductCartEntity();
 		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
@@ -62,7 +62,7 @@ public class PurchasemgrController {
 	}
 
 	//商品カートを更新するメソッド
-	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="update")
+	@RequestMapping(value= {"/productcart","/purchasehistory"}, method=RequestMethod.POST, params="update")
 	public String updateCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		ProductCartEntity cart = new ProductCartEntity();
 		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
@@ -80,7 +80,7 @@ public class PurchasemgrController {
 	}
 
 	//商品カートを削除するメソッド
-	@RequestMapping(value="/productcart", method=RequestMethod.POST, params="delete")
+	@RequestMapping(value= {"/productcart","/purchasehistory"}, method=RequestMethod.POST, params="delete")
 	public String deleteCart(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
@@ -173,7 +173,7 @@ public class PurchasemgrController {
 	}
 
 	//注文キャンセルをするメソッド
-	@RequestMapping(value="/purchasehistory", method=RequestMethod.POST, params="delete")
+	@RequestMapping(value="/purchasehistory", method=RequestMethod.POST, params="cancel")
 	public String cancelOrder(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 		prodCartService.changeResultOne(Integer.parseInt(productCartModel.getOrder_no()));
 
