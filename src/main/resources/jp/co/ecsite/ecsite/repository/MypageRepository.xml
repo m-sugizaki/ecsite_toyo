@@ -30,6 +30,7 @@
 <result column="size" property="size"/>
 <result column="color" property="color"/>
 <result column="quantity" property="quantity"/>
+<result column="price" property="price"/>
 </resultMap>
 
 
@@ -99,7 +100,7 @@
 <select id="purchasehistoryAll" resultMap="purchasehistoryAll">
  <![CDATA[
 			SELECT
-				order_dt, order_no, pr.product_id, product_name, order_status, delivery_plan_dt, delivery_completion_dt, pr.size, pr.color, pr.quantity
+				order_dt, order_no, pr.product_id, product_name, order_status, delivery_plan_dt, delivery_completion_dt, pr.size, pr.color, pr.quantity, price
 			FROM
 				 purchase_results pr
 			LEFT JOIN product p
