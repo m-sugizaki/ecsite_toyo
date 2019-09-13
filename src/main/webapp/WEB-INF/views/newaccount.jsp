@@ -50,7 +50,7 @@
   align-self: center;
   width: 90%;
   max-width: 40%;
-  height: 60%;
+  height: 70%;
   padding: 30px 30px 15px;
   box-sizing: border-box;
   background: #fff;
@@ -83,6 +83,9 @@
 	}
 
 </style>
+<script type="javascript">
+
+</script>
 </head>
 <body>
 <div class="all">
@@ -157,7 +160,7 @@
 										<tr><td><form:input type="hidden" path="hid" value="1"/>
 										<input type="submit" value="ログイン" name="login" class="login" />
 										<label for="trigger" class="cancel">キャンセル</label></td></tr>
-										<!-- <a href="home" class="cancel">キャンセル</a>-->    </td></tr>
+										<!-- <a href="home" class="cancel">キャンセル</a>-->
 										</form:form>
 									</table>
 								</div>
@@ -193,51 +196,80 @@
 		<div align="center">
 		<p class="title">アカウント情報登録</p>
 		<form:form modelAttribute="newUserModel">
+			<!-- エラーメッセージ ID被り&ポップアップ -->
+			<c:if test="${!empty message }">
+				<c:out value="${message }" />
+			</c:if>
+			<form:errors path="payment_method" elements="span" />
+			<form:errors path="card_number" elements="span" />
+			<form:errors path="card_holder_name" elements="span" />
+			<form:errors path="postal_code2" elements="span" />
+			<form:errors path="address3" elements="span" />
+			<form:errors path="address4" elements="span" />
+			<form:errors path="phone_number2" elements="span" />
+			<form:errors path="shipping_address_name" elements="span" />
 
 		<table id="table">
 			<tr>
 				<th>ユーザID</th>
-				<td><form:input path="user_id" placeholder="(例)abc" class="userid" /></td><td><form:errors path="user_id" elements="span" /></td>
+				<td><form:input path="user_id" placeholder="(例)abc" required="required" class="userid" /></td>
+				<!-- <td><form:errors path="user_id" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>パスワード</th>
-				<td><form:password path="password" placeholder="(例)def" class="userid"/></td><td><form:errors path="password" elements="span" /></td>
+				<td><form:password path="password" placeholder="(例)def" required="required" pattern="^[a-zA-Z\d]{8,100}$" class="userid"/></td>
+				<!-- <td><form:errors path="password" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>パスワード（確認用）</th>
-				<td><form:password path="password2"  class="userid"/></td><td><form:errors path="password2" elements="span" /></td>
+				<td><form:password path="password2" required="required" pattern="^[a-zA-Z\d]{8,100}$" class="userid"/></td>
+				<!-- <td><form:errors path="password2" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>氏名</th>
-				<td><form:input path="name" placeholder="(例)山田太郎" class="userid"/></td><td><form:errors path="name" elements="span" /></td>
+				<td><form:input path="name" placeholder="(例)山田太郎" required="required" class="userid"/></td>
+				<!-- <td><form:errors path="name" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>ﾆｯｸﾈｰﾑ</th>
-				<td><form:input path="nickname" placeholder="(例)たろう" class="userid"/></td><td><form:errors path="nickname" elements="span" /></td>
+				<td><form:input path="nickname" placeholder="(例)たろう" required="required" class="userid"/></td>
+				<!-- <td><form:errors path="nickname" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>郵便番号</th>
-				<td><form:input path="postal_code" placeholder="(例)000-0000" class="userid"/></td><td><form:errors path="postal_code" elements="span" /></td>
+				<td><form:input path="postal_code" placeholder="(例)000-0000" required="required" pattern="\d{3}-\d{4}" class="userid"/></td>
+				<!-- <td><form:errors path="postal_code" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>住所1</th>
-				<td><form:input path="address1" placeholder="(例)東京" class="userid"/></td><td><form:errors path="address1" elements="span" /></td>
+				<td><form:input path="address1" placeholder="(例)東京" required="required" class="userid"/></td>
+				<!-- <td><form:errors path="address1" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>住所２</th>
-				<td><form:input path="address2" placeholder="(例)大崎" class="userid" /></td><td><form:errors path="address2" elements="span" /></td>
+				<td><form:input path="address2" placeholder="(例)大崎" class="userid" /></td>
+				<!-- <td><form:errors path="address2" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>電話番号</th>
-				<td><form:input path="phone_number" placeholder="(例)000-0000-0000" class="userid"/></td><td><form:errors path="phone_number" elements="span" /></td>
+				<td><form:input path="phone_number" placeholder="(例)000-0000-0000" required="required" pattern="\d{2,4}-\d{3,4}-\d{3,4}" class="userid"/></td><td><form:errors path="phone_number" elements="span" /></td>
 			</tr>
 			<tr>
 				<th>E-mail</th>
-				<td><form:input path="email" placeholder="(例)xxxx@co.jp" class="userid"/></td><td><form:errors path="email" elements="span" /></td>
+				<td><form:input path="email" placeholder="(例)xxxx@co.jp" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="userid"/></td>
+				<!-- <td><form:errors path="email" elements="span" /></td> -->
 			</tr>
 			<tr>
 				<th>生年月日</th>
-				<td><form:input path="birthday" placeholder="(例)0000-00-00" class="userid"/></td><td><form:errors path="birthday" elements="span" /></td>
+				<td><!--<form:input path="birthday" required="required" class="userid"/>-->
+					<form:input path="birthday" type="date" required="required" class="userid"/>
+				</td>
+				<td>
+					<!--<form:errors path="birthday" elements="span" />
+							<c:if test="${!empty birthformat }">
+								<c:out value="${birthformat }" />
+							</c:if>-->
+				</td>
 			</tr>
 			<tr>
 				<th>会員ランク</th>
@@ -263,11 +295,13 @@
 				</tr>
 				<tr>
 				<th>カードの種類</th>
-				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" /></td><td><form:errors path="payment_method" elements="span" /></td>
+				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" /></td>
+				<!-- <td><form:errors path="payment_method" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>カード番号</th>
-				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" /></td><td><form:errors path="card_number" elements="span" /></td>
+				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" /></td>
+				<!-- <td><form:errors path="card_number" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>有効期限</th>
@@ -300,7 +334,8 @@
 
 				<tr>
 				<th>カード名義人</th>
-				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid" /></td><td><form:errors path="card_holder_name" elements="span" /></td>
+				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid" /></td>
+				<!-- <td><form:errors path="card_holder_name" elements="span" /></td> -->
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->
 
@@ -332,23 +367,28 @@
 				</tr>
 				<tr>
 				<th>郵便番号</th>
-				<td><form:input path="postal_code2" placeholder="(例)000-0000" class="userid" /></td><td><form:errors path="postal_code2" elements="span" /></td>
+				<td><form:input path="postal_code2" placeholder="(例)000-0000" class="userid" /></td>
+				<!-- <td><form:errors path="postal_code2" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>住所１</th>
-				<td><form:input path="address3" placeholder="(例)東京" class="userid" /></td><td><form:errors path="address3" elements="span" /></td>
+				<td><form:input path="address3" placeholder="(例)東京" class="userid" /></td>
+				<!-- <td><form:errors path="address3" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>住所２</th>
-				<td><form:input path="address4" placeholder="(例)大崎" class="userid" /></td><td><form:errors path="address4" elements="span" /></td>
+				<td><form:input path="address4" placeholder="(例)大崎" class="userid" /></td>
+				<!-- <td><form:errors path="address4" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>電話番号</th>
-				<td><form:input path="phone_number2" placeholder="(例)000-0000-0000" class="userid" /></td><td><form:errors path="phone_number2" elements="span" /></td>
+				<td><form:input path="phone_number2" placeholder="(例)000-0000-0000" class="userid" /></td>
+				<!-- <td><form:errors path="phone_number2" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>お届け先名</th>
-				<td><form:input path="shipping_address_name" placeholder="(例)abc" class="userid" /></td><td><form:errors path="shipping_address_name" elements="span" /></td>
+				<td><form:input path="shipping_address_name" placeholder="(例)abc" class="userid" /></td>
+				<!-- <td><form:errors path="shipping_address_name" elements="span" /></td> -->
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->
 
