@@ -105,8 +105,6 @@
 				 purchase_results pr
 			LEFT JOIN product p
 				ON pr.product_id = p.product_id
-			LEFT JOIN review r
-				ON pr.product_id = r.product_id
 			WHERE
 				pr.user_id = #{user_id}
 		]]>
