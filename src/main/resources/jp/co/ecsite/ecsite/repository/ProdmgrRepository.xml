@@ -47,10 +47,10 @@
 		price BETWEEN #{minprice} AND #{maxprice}
 	]]>
 		<if test="product_name != null">
-		AND product_name = #{product_name}
+		AND product_name LIKE '%' #{product_name} '%'
 		</if>
 		<if test="maker != null">
-		AND maker = #{maker}
+		AND maker LIKE '%' #{maker} '%'
 		</if>
 </select>
 
