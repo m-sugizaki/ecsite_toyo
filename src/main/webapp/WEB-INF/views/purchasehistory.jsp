@@ -7,51 +7,51 @@
 <head>
 <meta charset="UTF-8">
 <style>
-
-.minititle,contents{
+.minititle, contents {
 	font-size: 26px;
 }
 
-.table,review {
+.table, review {
 	font-size: 16px;
 	border: solid 1px #000000;
-	border-collapse: collapse;}
-
-.tabletitle,review{
-	font-size: 16px;
-	width: 150px;
-	align: center;
- 	background-color: lightblue;
- 	border: solid 1px #000000;
 	border-collapse: collapse;
 }
 
-.review td{
+.tabletitle, review {
+	font-size: 16px;
+	width: 150px;
+	align: center;
+	background-color: lightblue;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+
+.review td {
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
 }
 
-.review th{
+.review th {
 	height: 40px;
 	display: table-cell;
 	vertical-align: middle;
 }
 
 /*テキストボックスのデザイン*/
-.input_form{
-  position: relative;
-  display: block;
-  width: 100px;
-  margin-top: 6px;
-  padding: 2px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  color: black;
-  outline: none;
-  background: white;
-  border: 1px solid lightgray;
+.input_form {
+	position: relative;
+	display: block;
+	width: 100px;
+	margin-top: 6px;
+	padding: 2px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: black;
+	outline: none;
+	background: white;
+	border: 1px solid lightgray;
 }
 </style>
 <title>購入履歴</title>
@@ -128,13 +128,13 @@
 																	class="userid" /></td>
 														</tr>
 														<tr>
-															<td><form:password path="password" placeholder="パスワード"
-																	class="userid" /></td>
+															<td><form:password path="password"
+																	placeholder="パスワード" class="userid" /></td>
 														</tr>
 														<tr>
 															<td><form:input type="hidden" path="hid" value="3" />
-															<input type="submit" value="ログイン" name="login"
-																class="login"  /> <label for="trigger" class="cancel">キャンセル</label></td>
+																<input type="submit" value="ログイン" name="login"
+																class="login" /> <label for="trigger" class="cancel">キャンセル</label></td>
 														</tr>
 													</form:form>
 												</table>
@@ -143,7 +143,7 @@
 									</div>
 								</div>
 								<!-- 右上ユーザー情報続き -->
-								<label for="trigger" class="open_btn" for="login" >ログイン</label>
+								<label for="trigger" class="open_btn" for="login">ログイン</label>
 
 							 / <a href="regist">新規登録</a>
 							</c:when>
@@ -156,50 +156,56 @@
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-			<br>
-			<p class= "minititle">購入履歴</p>
 				<br>
-				<br>
-			 <!-- 購入履歴の表示テーブル-->
-					<table class ="review" >
-						<tr>
-							<th class="tabletitle">注文日時</th>
-							<th class="tabletitle">注文No.</th>
-							<th class="tabletitle">商品コード</th>
-							<th class="tabletitle">商品名</th>
-							<th class="tabletitle">注文状況</th>
-							<th class="tabletitle">配送予定日</th>
-							<th class="tabletitle">カートに入れる</th>
-							<th class="tabletitle">レジに進む</th>
-							<th class="tabletitle">注文キャンセル</th>
+				<p class="minititle">購入履歴</p>
+				<br> <br>
+				<!-- 購入履歴の表示テーブル-->
+
+				<table class="review">
+					<tr>
+						<th class="tabletitle">注文日時</th>
+						<th class="tabletitle">注文No.</th>
+						<th class="tabletitle">商品コード</th>
+						<th class="tabletitle">商品名</th>
+						<th class="tabletitle">注文状況</th>
+						<th class="tabletitle">配送予定日</th>
+						<th class="tabletitle">カートに入れる</th>
+						<th class="tabletitle">レジに進む</th>
+						<th class="tabletitle">注文キャンセル</th>
 
 
-						</tr>
-						<c:forEach var="purchaselist" items="${purchaselist}">
-						<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
-						<!--  -->
-							<tr>
+					</tr>
+					<c:forEach var="purchaselist" items="${purchaselist}">
+					<tr>
+						<form:form ModelAttribute="productCartModel" action="purchasehistory">
+							<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
+							<!--  -->
 								<td class="table">${purchaselist.order_dt}</td>
 								<td class="table">${purchaselist.order_no}</td>
 								<td class="table">${purchaselist.product_id}</td>
 								<td class="table">${purchaselist.product_name}</td>
 								<td class="table">${purchaselist.order_status}</td>
 								<td class="table">${purchaselist.delivery_plan_dt}</td>
-								<td class="table"><input type="submit" name="addcart" value="同じ内容でカートに追加" ></td>
-								<td class="table"><input type="submit" name="cancelorder" value="同じ内容でレジに進む" ></td>
-								<td class="table">
-								  <c:choose>
-									<c:when test="${purchaselist.order_status == 注文キャンセル}">????????</c:when>
-
-									<c:otherwise><input type="submit" name="delete" value="注文をキャンセルする" ></c:otherwise>
-								 </c:choose>
-								</td>
+								<td class="table"><input type="submit" name="addcart"
+									value="同じ内容でカートに追加">
+								<input type="hidden" name="product_id" value="${purchaselist.product_id}" />
+								<input type="hidden" name="product_name" value="${purchaselist.product_name}" />
+								<input type="hidden" name="quantity" value="${purchaselist.quantity}" />
+								<input type="hidden" name="size" value="${purchaselist.size}" />
+								<input type="hidden" name="color" value="${purchaselist.color}" />
+								<input type="hidden" name="order_no" value="${purchaselist.order_no}"></td>
+								<td class="table"><input type="submit" name="prepurchase"
+									value="同じ内容でレジに進む"></td>
+								<td class="table"><input type="submit" name="cancelorder"
+									value="注文をキャンセルする"> </td>
+								</form:form>
 							</tr>
-						</c:forEach>
-					</table>
+						<br>
+					</c:forEach>
+				</table>
 				<br>
 			</div>
-			</div>
 		</div>
+	</div>
 </body>
 </html>
