@@ -127,7 +127,7 @@
 							<br>
 							<form:form modelAttribute="productCartModel">
 								<form:button name="cancel" class="login">削除</form:button>
-								<form:hidden path="shipping_address_no" value="${deleteconfirm.order_no}"/>
+								<form:hidden path="order_no" value="${deleteconfirm.order_no}"/>
 								<label for="trigger" class="cancel"><span>キャンセル</span></label>
 							</form:form>
 						</div>
