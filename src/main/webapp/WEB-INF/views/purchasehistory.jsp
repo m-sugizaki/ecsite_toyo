@@ -187,7 +187,14 @@
 
 								</td>
 								<td class="table">${purchaselist.order_no}</td>
-								<td class="table">${purchaselist.product_id}</td>
+
+								<form:form modelAttribute="prodmgrModel">
+								<td class="table">
+									<form:button name="detail" class="view"> ${purchaselist.product_id}</form:button>
+									<form:hidden path="product_id" value="${purchaselist.product_id}" />
+								</td>
+								</form:form>
+
 								<td class="table">${purchaselist.product_name}</td>
 								<td class="table">${purchaselist.order_status}</td>
 								<td class="table">    		<fmt:formatDate value="${purchaselist.delivery_plan_dt}" pattern="yyyy/MM/dd" /></td>
