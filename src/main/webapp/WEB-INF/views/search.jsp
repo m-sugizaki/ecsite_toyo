@@ -185,7 +185,7 @@
 							<td>価格帯&nbsp;&nbsp;&nbsp;</td>
 							<td><form:input path="minprice" placeholder="下限価格　（例）0" class="form_input" />&nbsp;&nbsp;～&nbsp;&nbsp;</td>
 							<td><form:input path="maxprice"
-									placeholder="上限価格  （例）5,000,000" class="form_input" /></td>
+									placeholder="上限価格  （例）5000000" class="form_input" /></td>
 							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku" class="login">検索</form:button></td>
 						</tr>
 						<tr>
