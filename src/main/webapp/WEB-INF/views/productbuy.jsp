@@ -4,11 +4,64 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.Date, java.text.DateFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="resources/mypage.css">
+<link rel="stylesheet" type="text/css" href="resources/reset.css">
+<style type="text/css">
+	.delete{
+		padding: 55px;
+	}
+.minititle{
+	font-size: 26px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+/*商品購入画面*/
+.ordercancel{
+	width: 50%;
+}
+.ordercancel th{
+	position:relative;
+	width: 1px;
+	text-align:right;
+	padding: 10px 0;
+	border-bottom: 4px solid #ccc;
+}
+.ordercancel td{
+	text-align: left;
+	width:60%;
+	text-align: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.open_btn{
+position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: small;
+  font-weight: bold;
+  margin:10px;
+  width: 100px;
+}
+</style>
+<title>商品購入画面</title>
 
 <!-- 商品合計金額計算用 -->
 <script type="text/javascript">
@@ -21,11 +74,73 @@ function sum(){
 
 </head>
 <body>
+
+
+<div class="all">
+	<!-- サイドバー -->
+		<aside class="sidebar">
+			<ul style="list-style:none">
+					<li class="sidebartitle">MENU</li>
+					<li><a href="home">マイページ</a></li>
+					<li><a href="search">商品検索</a></li>
+				<c:if test="${not empty  login.name}">
+					<li><a href="productcart">商品カート</a></li>
+					<li><a href="purchasehistory">購入履歴</a></li>
+					<li><a href="account">アカウント</a></li>
+				</c:if>
+			</ul>
+		</aside>
+	<!-- メイン(サイドバー横)の要素 -->
+	<div class="main">
+	<!-- ヘッダー -->
+	<div class="headder">
+		<div class="head">
+		<p class="title">アジャイル開発実践ECサイト</p>
+		</div>
+			<!-- 右上ユーザー情報 -->
+			<div class="head log">
+				<p>
+					ようこそ
+					<c:choose>
+						<c:when test="${empty login.name}">
+				ゲスト
+			</c:when>
+						<c:otherwise>
+							<c:out value="${ login.name}" />
+						</c:otherwise>
+					</c:choose>
+					さま
+				<c:if test="${not empty  login.name}" >
+				<br>
+					ログイン最終日時：
+						<c:out value="${ login.login_dt}" />
+				</c:if>
+				<c:if test="${!empty login.name }">
+				<br>
+					商品カートの有無：
+					<c:choose>
+						<c:when test="${login.product_cart_id == 0 }"> 無</c:when>
+						<c:otherwise> 有</c:otherwise>
+					</c:choose>
+				</c:if>
+						<br>
+							<a href="logout">ログアウト</a>
+			</div>
+	</div>
+
+
+<!-- 商品購入画面はここから -->
+
+<div class="contents">
+		<p class="minititle">商品購入</p>
+		<table border="0" class="ordercancel">
+
+
 <form:form modelAttribute="productCartModel" name="form1">
 <table>
 	<tr>
 		<th>カートNo</th>
-		<td>${cart.product_cart_id}<form:hidden path="product_cart_id" value="${cart.product_cart_id}" /></td>
+		<td>${cart.product_cart_id}</td>
 	</tr>
 	<tr>
 		<th>商品コード</th>
@@ -33,7 +148,8 @@ function sum(){
 	</tr>
 	<tr>
 		<th>価格</th>
-		<td>${cart.price}</td>
+		<td><fmt:formatNumber value="${cart.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /></td>
 	</tr>
 	<tr>
 		<th>数量</th>
@@ -57,7 +173,7 @@ function sum(){
 	<tr>
 		<th>支払い方法</th>
 		<td>
-			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし" checked="checked" /><br>
+			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし"  /><br>
 			<form:radiobutton path="payment_method" value="商品代引き" label="商品代引き" /><br>
 			<form:radiobutton path="payment_method" value="クレジットカード" label="クレジットカード"/>
 			<c:forEach var="paylist" items="${paymentinfo}" >
@@ -72,7 +188,7 @@ function sum(){
 	<tr>
 		<th>お届け先</th>
 		<td>
-			<form:radiobutton path="shipping_address_no" value="0" label="現住所" checked="checked" /><br>
+			<form:radiobutton path="shipping_address_no" value="0" label="現住所"  /><br>
 			別のお届け先
 			<c:forEach var="shiplist" items="${shippinginfo}">
 					<input type="radio" name="shipping_address_no" value="${shiplist.shipping_address_no}">${shiplist.address1}${shiplist.address2}<br>
@@ -81,8 +197,8 @@ function sum(){
 	</tr>
 
 	</table>
-	<form:button name="purchase">注文する&nbsp;</form:button>
-			<a href="productcart">キャンセル</a>
+	<form:button name="purchase" class="open_btn">注文する&nbsp;</form:button>
+			<a href="productcart" class="cancel">キャンセル</a>
 </form:form>
 
 
