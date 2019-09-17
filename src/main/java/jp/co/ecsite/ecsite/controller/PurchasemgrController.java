@@ -98,7 +98,12 @@ public class PurchasemgrController {
 	public String toProductBuy(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 	ProductCartEntity cart = new ProductCartEntity();
-	//cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
+
+	if(productCartModel.getProduct_cart_id() == null) {
+		cart.setProduct_cart_id(0);
+	}else {
+		cart.setProduct_cart_id(Integer.parseInt(productCartModel.getProduct_cart_id()));
+	}
 	cart.setProduct_name(productCartModel.getProduct_name());
 	cart.setPrice(new BigDecimal(productCartModel.getPrice()));
 	cart.setQuantity(Integer.parseInt(productCartModel.getQuantity()));
@@ -126,7 +131,7 @@ public class PurchasemgrController {
 	}
 
 	//注文ボタンを押したとき。
-	@RequestMapping(value="/productcart",method=RequestMethod.POST,params="purchase")
+	@RequestMapping(value= {"/productcart","/purchasehistory","/detail"},method=RequestMethod.POST,params="purchase")
 	public String purchase(@ModelAttribute("login") UserStoreEntity userstoreentity, @ModelAttribute ProductCartModel productCartModel, Model model) {
 
 	//購入履歴に一件データを挿入する処理
@@ -137,18 +142,45 @@ public class PurchasemgrController {
 	cart.setSize(productCartModel.getSize());
 	cart.setColor(productCartModel.getColor());
 	cart.setPayment_method(productCartModel.getPayment_method());
-	cart.setPayment_no(Integer.parseInt(productCartModel.getPayment_no()));
+
+	if(productCartModel.getPayment_method().equals("クレジット")) {
+		if(productCartModel.getPayment_no() == null) {
+			model.addAttribute("message", "クレジットカードの種類を選択してください。");
+			return "productbuy";
+		}else {
+			cart.setPayment_no(Integer.parseInt(productCartModel.getPayment_no()));
+		}
+	}else {
+		cart.setPayment_no(0);
+	}
+	//cart.setPayment_no(Integer.parseInt(productCartModel.getPayment_no()));
 	cart.setShipping_address_no(Integer.parseInt(productCartModel.getShipping_address_no()));
 
 	prodCartService.insertHistoryOne(cart);
 
 	//商品カートから一件データを削除する処理
-	return this.deleteCart(productCartModel, userstoreentity, model);
+	if(productCartModel.getProduct_cart_id().equals("0")) {
+		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+		model.addAttribute("cartlist" , cartlist);
+		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userstoreentity);
+		model.addAttribute("purchaselist", purchaselist);
+		return "purchasehistory";
+	}
+		prodCartService.deleteCart(Integer.parseInt(productCartModel.getProduct_cart_id()));
+
+		//MypageController returncart = new MypageController();
+		//return returncart.toCart(userstoreentity, model);
+
+		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
+		model.addAttribute("cartlist" , cartlist);
+		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userstoreentity);
+		model.addAttribute("purchaselist", purchaselist);
+		return "purchasehistory";
 
 	}
 
 	//カートに追加する処理
-	@RequestMapping(value= {"/purchasehistory","/delete"}, method=RequestMethod.POST, params="addcart")
+	@RequestMapping(value= {"/purchasehistory","/detail"}, method=RequestMethod.POST, params="addcart")
 	public String addcart(@ModelAttribute("login") UserStoreEntity userstoreentity, @ModelAttribute ProductCartModel productCartModel, Model model) {
 			ProductCartEntity history = new ProductCartEntity();
 			history.setUser_id(userstoreentity.getUser_id());

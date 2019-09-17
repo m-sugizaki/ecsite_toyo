@@ -25,7 +25,7 @@ function sum(){
 <table>
 	<tr>
 		<th>カートNo</th>
-		<td>${cart.product_cart_id}</td>
+		<td>${cart.product_cart_id}<form:hidden path="product_cart_id" value="${cart.product_cart_id}" /></td>
 	</tr>
 	<tr>
 		<th>商品コード</th>
@@ -57,7 +57,7 @@ function sum(){
 	<tr>
 		<th>支払い方法</th>
 		<td>
-			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし"  /><br>
+			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし" checked="checked" /><br>
 			<form:radiobutton path="payment_method" value="商品代引き" label="商品代引き" /><br>
 			<form:radiobutton path="payment_method" value="クレジットカード" label="クレジットカード"/>
 			<c:forEach var="paylist" items="${paymentinfo}" >
@@ -72,7 +72,7 @@ function sum(){
 	<tr>
 		<th>お届け先</th>
 		<td>
-			<form:radiobutton path="shipping_address_no" value="0" label="現住所"  /><br>
+			<form:radiobutton path="shipping_address_no" value="0" label="現住所" checked="checked" /><br>
 			別のお届け先
 			<c:forEach var="shiplist" items="${shippinginfo}">
 					<input type="radio" name="shipping_address_no" value="${shiplist.shipping_address_no}">${shiplist.address1}${shiplist.address2}<br>
