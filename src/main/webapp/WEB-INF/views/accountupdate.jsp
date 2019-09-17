@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.Date, java.text.DateFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
  Date date = new Date();
  int year = date.getYear() + 1900;     // 0 = 1900 年
@@ -313,7 +314,11 @@
 				<tr>
 					<td class="table">${pay.payment_method}</td>
 					<td class="table">${pay.card_number}</td>
-					<td class="table">${pay.expiration_date}</td>
+					<td class="table">
+						<fmt:formatDate value="${pay.expiration_date}" pattern="MM"/>
+			    		/
+			    		<fmt:formatDate value="${pay.expiration_date}" pattern="YY"/>
+					</td>
 					<td class="table">${pay.card_holder_name}</td>
 					<td class="table">
 						<!-- 支払方法削除ポップアップ -->
