@@ -234,8 +234,8 @@ function sum(){
 	</tr>
 </table>
 
-	<form:button name="update" class=cart>更新&nbsp;</form:button>
-			<a href="productcart" class=cart>キャンセル</a>
+	<form:button name="update" class="cart">更新&nbsp;</form:button>
+			<a href="productcart" class="cart">キャンセル</a>
 
 </form:form>
 </div>
