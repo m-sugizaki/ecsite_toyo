@@ -127,7 +127,7 @@
 				<c:if test="${not empty  login.name}" >
 				<br>
 					ログイン最終日時：
-						<c:out value="${ login.login_dt}" />
+						<c:out value="${formatedlogin_dt}" />
 				</c:if>
 				<c:if test="${!empty login.name }">
 				<br>
