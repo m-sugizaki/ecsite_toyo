@@ -149,7 +149,7 @@ public class ProductmgrController {
 	}
 
 	//商品詳細画面表示
-	@RequestMapping(value= {"/search","/purchasehistory"}, method=RequestMethod.POST, params="detail")
+	@RequestMapping(value= {"/search","/purchasehistory","/productcart"}, method=RequestMethod.POST, params="detail")
 	public String detail(@ModelAttribute ProdmgrModel prodmgrModel, Model model, RedirectAttributes attributes) {
 		ProductEntity productentity =prodmgrService.productDetail(prodmgrModel.getProduct_id());
 		List<ReviewEntity> reviewentity = prodmgrService.productReview(prodmgrModel.getProduct_id());

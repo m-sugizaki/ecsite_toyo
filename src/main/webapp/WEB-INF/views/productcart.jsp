@@ -22,7 +22,7 @@
 }
 
 .view {
-	font-size: 12px;
+	font-size: 15px;
 	border: none;
 	background-color: transparent;
 	color: blue;
@@ -41,20 +41,45 @@
 	margin-top: 30px;
 }
 .table, kensakuresult{
-	font-size: 16px;
+	font-size: 14px;
 	border: solid 1px #000000;
 	border-collapse: collapse;
 }
-
+.table2, kensakuresult{
+	font-size: 14px;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+.table3, kensakuresult{
+	font-size: 14px;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
 .tabletitle, kensakuresult {
-	font-size: 16px;
+	font-size: 12px;
 	align: center;
-	width: 150px;
+	width: 170px;
 	background-color: lightblue;
 	border: solid 1px #000000;
 	border-collapse: collapse;
 }
 
+.tabletitle2, kensakuresult {
+	font-size: 12px;
+	align: center;
+	width: 70px;
+	background-color: lightblue;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
+.tabletitle3, kensakuresult {
+	font-size: 12px;
+	align: center;
+	width: 110px;
+	background-color: lightblue;
+	border: solid 1px #000000;
+	border-collapse: collapse;
+}
 .kensakuresult td{
 	height: 40px;
 	display: table-cell;
@@ -150,6 +175,7 @@ button.gopurchase:hover{
 .delete{
 	padding: 55px;
 }
+
 </style>
 </head>
 <body>
@@ -200,30 +226,38 @@ button.gopurchase:hover{
 <p class="minititle">商品カート</p>
 <table id="kensakuresult" border="1">
 						<tr>
-							<th class="tabletitle">カートNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">購入金額&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">サイズ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">カート追加日時&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">更新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">カートから出す&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle">レジに進む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >カートNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle" >商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle" >商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle3" >価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle3" >購入金額&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >サイズ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle3" >色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle" >カート追加日時&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >更新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >カートから出す&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle3" >レジに進む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 						<c:forEach var="cartlist" items="${cartlist}">
 						<form:form modelAttribute="productCartModel">
 							<tr>
-								<td class="table">${cartlist.product_cart_id}<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" /></td>
-								<td class="table">${cartlist.product_id}<form:hidden path="product_id" value="${cartlist.product_id}" /></td>
+								<td class="table2">${cartlist.product_cart_id}<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" /></td>
+
+								<form:form modelAttribute="prodmgrModel">
+								<td class="table">
+									<form:button name="detail" class="gopurchase"> ${cartlist.product_id}</form:button>
+									<form:hidden path="product_id" value="${cartlist.product_id}" />
+								</td>
+								</form:form>
+
 								<td class="table">${cartlist.product_name}<form:hidden path="product_name" value="${cartlist.product_name}" /></td>
-								<td class="table" align="right"><fmt:formatNumber value="${cartlist.price}" groupingUsed="true"
+								<td class="table3" align="right"><fmt:formatNumber value="${cartlist.price}" groupingUsed="true"
 								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /><form:hidden path="price" value="${cartlist.price}" /></td>
-								<td class="table" align="right">${cartlist.quantity}<form:hidden path="quantity" value="${cartlist.quantity}" /></td>
-								<td class="table" align="right">${cartlist.quantity * cartlist.price}</td>
-								<td class="table">${cartlist.size}<form:hidden path="size" value="${cartlist.size}" /></td>
+								<td class="table2" align="right">${cartlist.quantity}<form:hidden path="quantity" value="${cartlist.quantity}" /></td>
+								<td class="table2" align="right"><fmt:formatNumber value="${cartlist.quantity * cartlist.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /><form:hidden path="price" value="${cartlist.price}" /><form:hidden path="price" value="${cart.price}" /></td>
+								<td class="table3">${cartlist.size}<form:hidden path="size" value="${cartlist.size}" /></td>
 								<td class="table">${cartlist.color}<form:hidden path="color" value="${cartlist.color}" /></td>
 								<td class="table">${cartlist.cart_regist_dt}</td>
 
