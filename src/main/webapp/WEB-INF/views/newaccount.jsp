@@ -217,7 +217,7 @@
 			</tr>
 			<tr>
 				<th>パスワード</th>
-				<td><form:password path="password" placeholder="(例)def" required="required" pattern="^[a-zA-Z\d]{8,100}$" class="userid"/></td>
+				<td><form:password path="password" placeholder="英数字8文字以上" required="required" pattern="^[a-zA-Z\d]{8,100}$" class="userid"/></td>
 				<!-- <td><form:errors path="password" elements="span" /></td> -->
 			</tr>
 			<tr>
