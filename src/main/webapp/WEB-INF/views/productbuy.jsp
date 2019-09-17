@@ -140,7 +140,7 @@ function sum(){
 <table>
 	<tr>
 		<th>カートNo</th>
-		<td>${cart.product_cart_id}<form:hidden path="cart.product_cart_id" value="${cart.product_cart_id}" /></td>
+		<td>${cart.product_cart_id}<form:hidden path="product_cart_id" value="${cart.product_cart_id}" /></td>
 	</tr>
 	<tr>
 		<th>商品名</th>
