@@ -108,7 +108,7 @@ function sum(){
 						<c:if test="${not empty  login.name}">
 							<br>
 					ログイン最終日時：
-						<c:out value="${ login.login_dt}" />
+						<c:out value="${ formatedlogin_dt}" />
 						</c:if>
 						<c:if test="${!empty login.name }">
 							<br>
@@ -188,6 +188,7 @@ function sum(){
 						<tr>
 							<td>価格&nbsp;&nbsp;&nbsp;</td><td><fmt:formatNumber value="${productentity.price}" groupingUsed="true"
 								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
+								<form:hidden path="price" value="${productentity.price}"/>
 						</td>
 							</tr>
 						<tr><td>&nbsp;</td></tr>
@@ -278,8 +279,6 @@ function sum(){
 								　		<br>
 										<br>
 									<p>カートに追加しますか？</p>
-									<form method="get" action="">
-									</form>
 									<table>
 
 										<tr><td><input type="submit" value="カートに追加" class="cancel" name="addcart"/></td>
@@ -296,7 +295,8 @@ function sum(){
 							</div>
 						<!-- カートに進む・レジに進のボタン -->
 							<label for="trigger_c" class="tocart" for="tocart">カートに入れる</label>
-							 <a href="regist" class="tocart">レジに進む</a>
+							 <!-- <a href="regist" class="tocart">レジに進む</a> -->
+							 <form:button class="cancel" name="prepurchase">レジに進む</form:button>
 							 <!-- lレジに進むはｊｓｐ -->
 
 
