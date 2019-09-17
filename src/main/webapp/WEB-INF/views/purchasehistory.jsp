@@ -178,7 +178,7 @@
 					</tr>
 					<c:forEach var="purchaselist" items="${purchaselist}">
 					<tr>
-						<form:form ModelAttribute="productCartModel" action="purchasehistory">
+
 							<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 							<!--  -->
 								<td class="table">
@@ -194,6 +194,8 @@
 									<form:hidden path="product_id" value="${purchaselist.product_id}" />
 								</td>
 								</form:form>
+
+								<form:form modelAttribute="productCartModel" action="purchasehistory">
 
 								<td class="table">${purchaselist.product_name}</td>
 								<td class="table">${purchaselist.order_status}</td>
@@ -213,8 +215,8 @@
 								<td class="table">
 
 								<c:choose>
-									<c:when test="${purchaselist.order_status.equals('注文キャンセル')}"></c:when>
-									<c:otherwise><input type="submit" name="cancelorder"value="注文をキャンセルする"></c:otherwise>
+									<c:when test="${!purchaselist.order_status.equals('注文確定')}"></c:when>
+									<c:otherwise><form:button name="cancelorder">注文をキャンセルする</form:button></c:otherwise>
 								</c:choose>
 								</td>
 								</form:form>
