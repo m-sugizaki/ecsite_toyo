@@ -18,6 +18,8 @@ import jp.co.ecsite.ecsite.entity.ProductEntity;
 import jp.co.ecsite.ecsite.entity.ShippingAddressEntity;
 import jp.co.ecsite.ecsite.entity.UserEntity;
 import jp.co.ecsite.ecsite.entity.UserStoreEntity;
+import jp.co.ecsite.ecsite.model.PaymentMethodModel;
+import jp.co.ecsite.ecsite.model.ProdmgrModel;
 import jp.co.ecsite.ecsite.model.ProductCartModel;
 import jp.co.ecsite.ecsite.service.MypageService;
 import jp.co.ecsite.ecsite.service.ProdCartService;
@@ -30,6 +32,16 @@ public class PurchasemgrController {
 	@ModelAttribute("productCartModel")
 	public ProductCartModel setUpProductCartModel() {
 		return new ProductCartModel();
+	}
+
+	@ModelAttribute("prodmgrModel")
+	public ProdmgrModel setUpProdmgrModel() {
+		return new ProdmgrModel();
+	}
+
+	@ModelAttribute("paymentMethodModel")
+	public PaymentMethodModel setUpPaymentMethodModel() {
+		return new PaymentMethodModel();
 	}
 
 	@Autowired
