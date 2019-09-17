@@ -213,6 +213,8 @@ position: relative;
 								<td>${cartlist.size}<form:hidden path="size" value="${cartlist.size}" /></td>
 								<td>${cartlist.color}<form:hidden path="color" value="${cartlist.color}" /></td>
 								<td>${cartlist.cart_regist_dt}</td>
+
+
 								<td class="table"><form:button name="preupdate" class="view">更新</form:button></td>
 								<td class="table">
 										<!-- 商品カート削除ポップアップ -->

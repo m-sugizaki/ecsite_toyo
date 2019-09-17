@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,7 +186,7 @@
 								<td class="table">${purchaselist.product_id}</td>
 								<td class="table">${purchaselist.product_name}</td>
 								<td class="table">${purchaselist.order_status}</td>
-								<td class="table">${purchaselist.delivery_plan_dt}</td>
+								<td class="table">    		<fmt:formatDate value="${purchaselist.delivery_plan_dt}" pattern="yyyy/MM/dd" /></td>
 								<td class="table"><input type="submit" name="addcart"
 									value="同じ内容でカートに追加">
 								<input type="hidden" name="product_id" value="${purchaselist.product_id}" />
