@@ -240,9 +240,9 @@ button.gopurchase:hover{
 							<th class="tabletitle3" >レジに進む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 						<c:forEach var="cartlist" items="${cartlist}">
-						<form:form modelAttribute="productCartModel">
+
 							<tr>
-								<td class="table2">${cartlist.product_cart_id}<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" /></td>
+								<td class="table2">${cartlist.product_cart_id}</td>
 
 								<form:form modelAttribute="prodmgrModel">
 								<td class="table">
@@ -251,15 +251,19 @@ button.gopurchase:hover{
 								</td>
 								</form:form>
 
+								<form:form modelAttribute="productCartModel">
+								<form:hidden path="product_id" value="${cartlist.product_id}"/>
+								<form:hidden path="product_cart_id" value="${cartlist.product_cart_id}" />
 								<td class="table">${cartlist.product_name}<form:hidden path="product_name" value="${cartlist.product_name}" /></td>
 								<td class="table3" align="right"><fmt:formatNumber value="${cartlist.price}" groupingUsed="true"
-								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /><form:hidden path="price" value="${cartlist.price}" /></td>
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /></td>
 								<td class="table2" align="right">${cartlist.quantity}<form:hidden path="quantity" value="${cartlist.quantity}" /></td>
 								<td class="table2" align="right"><fmt:formatNumber value="${cartlist.quantity * cartlist.price}" groupingUsed="true"
-								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /><form:hidden path="price" value="${cartlist.price}" /><form:hidden path="price" value="${cart.price}" /></td>
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /><form:hidden path="price" value="${cartlist.price}" /></td>
 								<td class="table3">${cartlist.size}<form:hidden path="size" value="${cartlist.size}" /></td>
 								<td class="table">${cartlist.color}<form:hidden path="color" value="${cartlist.color}" /></td>
-								<td class="table">${cartlist.cart_regist_dt}</td>
+								<td class="table"> <fmt:parseDate var="registdate" value="${cartlist.cart_regist_dt}" pattern="yyyy-MM-dd HH:mm" />
+　                                                                                    <fmt:formatDate value="${registdate}" pattern="yyyy/MM/dd  HH:mm" /> </td>
 
 
 								<td class="table"><form:button name="preupdate" class="view">更新</form:button></td>
@@ -283,8 +287,9 @@ button.gopurchase:hover{
 									<p><label for="triggerdel${cartlist.product_cart_id}" class="open_btn" >削除</label></p>
 								</td>
 								<td class="table"><form:button name="prepurchase" class="gopurchase">レジに進む</form:button></td>
+								</form:form>
 							</tr>
-						</form:form>
+
 						</c:forEach>
 					</table>
 			</div>
