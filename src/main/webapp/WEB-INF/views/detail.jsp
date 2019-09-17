@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +64,7 @@
 <script type="text/javascript">
 function sum(){
 
-	var price = document.form1.quantity.value * ${productentity.price};
+	var price = document.form1.quantity.value * ${productentity.price} ;
 	document.form1.field.value = price;
 
 }
@@ -184,8 +186,10 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>価格&nbsp;&nbsp;&nbsp;</td><td>${productentity.price}</td>
-						</tr>
+							<td>価格&nbsp;&nbsp;&nbsp;</td><td><fmt:formatNumber value="${productentity.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
+						</td>
+							</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>サイズ&nbsp;&nbsp;&nbsp;</td>
@@ -218,7 +222,7 @@ function sum(){
 							<td>合計購入価格&nbsp;&nbsp;&nbsp;</td>
 							<td >
 							<!-- 合計金額表示 -->
-							<input type="text" name="field" size="8" value="${productentity.price} " class="input_form" readonly>
+							<input type="text" name="field" size="8" value="${productentity.price}" class="input_form" readonly>
 							</td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>

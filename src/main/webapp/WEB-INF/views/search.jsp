@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 .tabletitle, results {
 	font-size: 16px;
 	align: center;
-	width: 150px;
+	width: 180px;
 	background-color: lightblue;
 	border: solid 1px #000000;
 	border-collapse: collapse;
@@ -184,7 +185,7 @@
 							<td>価格帯&nbsp;&nbsp;&nbsp;</td>
 							<td><form:input path="minprice" placeholder="下限価格　（例）0" class="form_input" />&nbsp;&nbsp;～&nbsp;&nbsp;</td>
 							<td><form:input path="maxprice"
-									placeholder="上限価格  （例）5000000" class="form_input" /></td>
+									placeholder="上限価格  （例）5,000,000" class="form_input" /></td>
 							<td>&nbsp;&nbsp;&nbsp;<form:button name="kensaku" class="login">検索</form:button></td>
 						</tr>
 						<tr>
@@ -215,7 +216,8 @@
 								</td>
 								<td class="table">${product.product_name}</td>
 								<td class="table">${product.maker}</td>
-								<td class="table">${product.price}</td>
+								<td class="table" align="right"><fmt:formatNumber value="${product.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /></td>
 							</tr>
 						</form:form>
 					</c:forEach>
