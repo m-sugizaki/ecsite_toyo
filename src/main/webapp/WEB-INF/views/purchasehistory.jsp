@@ -198,8 +198,13 @@
 								</td>
 								<td class="table"><input type="submit" name="prepurchase"
 									value="同じ内容でレジに進む"></td>
-								<td class="table"><input type="submit" name="cancelorder"
-									value="注文をキャンセルする"> </td>
+								<td class="table">
+
+								<c:choose>
+									<c:when test="${purchaselist.order_status.equals('注文キャンセル')}"></c:when>
+									<c:otherwise><input type="submit" name="cancelorder"value="注文をキャンセルする"></c:otherwise>
+								</c:choose>
+								</td>
 								</form:form>
 							</tr>
 						<br>
