@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -193,7 +194,19 @@
 		<tr>
 			<td class="table">${pay.payment_method}</td>
 			<td class="table">${pay.card_number}</td>
-			<td class="table">${pay.expiration_date}</td>
+
+
+			<td class="table">
+
+
+			    		<fmt:formatDate value="${pay.expiration_date}" pattern="MM"/>
+			    		/
+			    		<fmt:formatDate value="${pay.expiration_date}" pattern="YY"/>
+			</td>
+
+
+
+
 			<td class="table">${pay.card_holder_name}</td>
 		</tr>
 	</c:forEach>
