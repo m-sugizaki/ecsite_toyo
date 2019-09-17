@@ -43,6 +43,25 @@
 	border-bottom: 1px solid #ccc;
 }
 
+/*商品カート更新の確認画面*/
+.orderupdate{
+	width: 50%;
+}
+.orderupdate th{
+	position:relative;
+	width: 1px;
+	text-align:right;
+	padding: 10px 0;
+	border-bottom: 4px solid #ccc;
+}
+.orderupdate td{
+	text-align: left;
+	width:60%;
+	text-align: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+
 	/*支払い&お届け先情報テーブル*/
 .results td{
 	height: 40px;
@@ -66,6 +85,25 @@
 	background-color: lightblue;
 	border: 1px solid  #000000;
 	border-collapse: separate;
+}
+.cart{
+position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: small;
+  font-weight: bold;
+  margin:10px;
+  width: 100px;
 }
 </style>
 
@@ -139,42 +177,42 @@ function sum(){
 <p class="minititle">商品カート更新</p>
 <form:form modelAttribute="productCartModel" name="form1">
 
-<table>
+<table border="0" class="orderupdate">
 	<tr>
-		<th>カートNo</th>
+		<th>カートNo：</th>
 		<td>${cart.product_cart_id}<form:hidden path="product_cart_id" value="${cart.product_cart_id}" /></td>
 	</tr>
 	<tr>
-		<th>商品コード</th>
+		<th>商品コード：</th>
 		<td>${cart.product_id}<form:hidden path="product_id" value="${cart.product_id}" /></td>
 	</tr>
 	<tr>
-		<th>価格</th>
+		<th>価格：</th>
 		<td>${cart.price}<form:hidden path="price" value="${cart.price}" /></td>
 	</tr>
 	<tr>
-		<th>数量</th>
+		<th>数量：</th>
 		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" name="quantity" class="input_form" /></td><!--  -->
 	</tr>
 	<tr>
-		<th>購入金額</th>
+		<th>購入金額：</th>
 		<td>
 		<!-- 合計金額表示 -->
 		<input type="text" name="field" size="8" value="${cart.price} " class="input_form" readonly>
 		</td>
 	</tr>
 	<tr>
-		<th>サイズ</th>
+		<th>サイズ：</th>
 		<td><form:select path="size" items="${sizelist}" /></td>
 	</tr>
 	<tr>
-		<th>色</th>
+		<th>色：</th>
 		<td><form:select path="color" items="${colorlist}" /></td>
 	</tr>
 </table>
 
-	<form:button name="update">更新&nbsp;</form:button>
-			<a href="productcart">キャンセル</a>
+	<form:button name="update" >更新&nbsp;</form:button>
+			<a href="productcart" class=cart>キャンセル</a>
 
 </form:form>
 </div>
