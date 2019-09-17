@@ -106,6 +106,25 @@ position: relative;
   margin:10px;
   width: 100px;
 }
+.cart2{
+position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-size: small;
+  font-weight: bold;
+  margin:10px;
+  width: 100px;
+}
 </style>
 
 <title>カート更新画面</title>
@@ -158,7 +177,7 @@ function sum(){
 				<c:if test="${not empty  login.name}" >
 				<br>
 					ログイン最終日時：
-						<c:out value="${ login.login_dt}" />
+						<c:out value="${formatedlogin_dt}" />
 				</c:if>
 				<c:if test="${!empty login.name }">
 				<br>
@@ -201,6 +220,8 @@ function sum(){
 		<td>
 		<!-- 合計金額表示 -->
 		<input type="text" name="field" size="8" value="${cart.price} " class="input_form" readonly>
+		<fmt:formatNumber value="${cart.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
 		</td>
 	</tr>
 	<tr>
@@ -213,7 +234,7 @@ function sum(){
 	</tr>
 </table>
 
-	<form:button name="update" >更新&nbsp;</form:button>
+	<form:button name="update" class=cart>更新&nbsp;</form:button>
 			<a href="productcart" class=cart>キャンセル</a>
 
 </form:form>
