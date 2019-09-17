@@ -8,6 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <style>
+.view {
+	border: none;
+	background-color: transparent;
+	color: blue;
+	text-decoration: underline;
+}
+
 .minititle, contents {
 	font-size: 26px;
 }
