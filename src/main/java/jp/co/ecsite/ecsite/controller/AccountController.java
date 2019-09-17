@@ -26,7 +26,7 @@ import jp.co.ecsite.ecsite.service.AccountService;
 import jp.co.ecsite.ecsite.service.MypageService;
 
 @Controller
-@SessionAttributes("login")           // 引数のキーワードでセッションオブジェクトを格納
+@SessionAttributes({"login","formatedlogin_dt"})           // 引数のキーワードでセッションオブジェクトを格納
 public class AccountController  {
 
 	@Autowired

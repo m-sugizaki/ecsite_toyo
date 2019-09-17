@@ -1,6 +1,7 @@
 package jp.co.ecsite.ecsite.controller;
 
 import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.List;
 
@@ -33,7 +34,7 @@ import jp.co.ecsite.ecsite.service.MypageService;
 
 
 @Controller                               // /homeのアクセスでクラスが動作
-@SessionAttributes("login")           // 引数のキーワードでセッションオブジェクトを格納
+@SessionAttributes({"login","formatedlogin_dt"})           // 引数のキーワードでセッションオブジェクトを格納
 public class MypageController {
 
 	@Autowired
@@ -79,6 +80,16 @@ public class MypageController {
 			model.addAttribute("errormessage" , "ユーザーIDもしくはパスワードが間違っています。");
 			return "mypage";
 		}
+
+	    //ログイン日時の表示書式の変更///////////////////////////////////////////////////
+		//書式を指定
+		DateTimeFormatter datetimeformatter = DateTimeFormatter.ofPattern("yyyy/MM/dd  HH:mm");
+		//指定の書式に日付データを渡す
+		String formatedlogin_dt = datetimeformatter.format(login.getLogin_dt());
+        //フォーマットした日付データをmodelに登録（セッション）
+		model.addAttribute("formatedlogin_dt",formatedlogin_dt);
+		/////////////////////////////////////////////////////
+
 		mypageService.dateUpdate(login);
 		model.addAttribute("login",login);
 
@@ -92,10 +103,6 @@ public class MypageController {
 
 	}
 
-	/*@RequestMapping(value="/home", method=RequestMethod.POST, params="out")
-	public String cansel() {
-		return "redirect:/home";
-	}*/
 
 	//カート画面への遷移処理
 	@RequestMapping(value="/productcart" , method=RequestMethod.GET)
@@ -107,19 +114,11 @@ public class MypageController {
 
 	//購入履歴画面への遷移処理
 	@RequestMapping(value="/purchasehistory" , method=RequestMethod.GET)
-	public String toPurchasehistory(@ModelAttribute("login") UserStoreEntity userStoreEntity , Model model) {
+	public String toPurchasehistory(@ModelAttribute("login") UserStoreEntity userStoreEntity, Model model) {
 		List<ProductCartEntity> purchaselist = mypageService.purchasehistoryAll(userStoreEntity);
 		model.addAttribute("purchaselist", purchaselist);
 		return "purchasehistory";
 	}
-
-	/*@RequestMapping(value="/home" , method=RequestMethod.GET , params="account")
-	public String to(@ModelAttribute UserStoreEntity userStoreEntity , Model model) {
-		UserEntity account = MypageService.accountInfo(userStoreEntity);
-		model.addAttribute("account", account);
-		 //ユーザーIDに一致する支払方法と届け先を取得するものを加える
- 		return "account";
-	}*/
 
 
 
@@ -220,12 +219,7 @@ public class MypageController {
 
 		}
 
-	/*ボタン風のリンクにしたため不要
-	 * @RequestMapping(value="/regist" , method=RequestMethod.POST, params="back")
-	public String canselRegist() {
-		return "redirect:/home";
-	}
-*/
+
 
 	@RequestMapping(value="/account", method=RequestMethod.GET)
 	String toAccountmgr(@ModelAttribute("login") UserStoreEntity userstoreentity , Model model) {

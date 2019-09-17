@@ -24,7 +24,7 @@ import jp.co.ecsite.ecsite.service.ProdCartService;
 import jp.co.ecsite.ecsite.service.ProdmgrService;
 
 @Controller
-@SessionAttributes("login")
+@SessionAttributes({"login","formatedlogin_dt"})
 public class PurchasemgrController {
 
 	@ModelAttribute("productCartModel")
