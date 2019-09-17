@@ -90,7 +90,7 @@ public class PurchasemgrController {
 
 		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
 		model.addAttribute("cartlist" , cartlist);
-		return "productcart";
+		return "redirect:/productcart";
 	}
 
 	//商品購入画面に遷移するメソッド
