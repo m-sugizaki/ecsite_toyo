@@ -99,6 +99,8 @@ public class PurchasemgrController {
 
 	ProductCartEntity cart = new ProductCartEntity();
 
+	cart.setProduct_id(productCartModel.getProduct_id());
+
 	if(productCartModel.getProduct_cart_id() == null) {
 		cart.setProduct_cart_id(0);
 	}else {
