@@ -181,7 +181,11 @@
 						<form:form ModelAttribute="productCartModel" action="purchasehistory">
 							<!-- varはitemから取り出した要素を格納する変数　itemsはループする配列、または、コレクション(キー)。　-->
 							<!--  -->
-								<td class="table">${purchaselist.order_dt}</td>
+								<td class="table">
+								　<fmt:parseDate var="date" value="${purchaselist.order_dt}" pattern="yyyy-MM-dd HH:mm" />
+　                                                                                    <fmt:formatDate value="${date}" pattern="yyyy/MM/dd  HH:mm" />
+
+								</td>
 								<td class="table">${purchaselist.order_no}</td>
 								<td class="table">${purchaselist.product_id}</td>
 								<td class="table">${purchaselist.product_name}</td>
