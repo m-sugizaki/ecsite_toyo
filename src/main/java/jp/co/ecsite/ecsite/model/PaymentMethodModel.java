@@ -9,21 +9,11 @@ public class PaymentMethodModel implements Serializable {
 
 	private String user_id;
 	private String payment_no;
-	
-	@NotEmpty(message = "支払い方法が未入力です。")
 	private String payment_method;
-	
-	@CreditCardNumber(message = "書式が違います。")
-	@NotEmpty(message = "カード番号が未入力です。")
 	private String card_number;
-	
 	private String expiration_month;
-	
 	private String expiration_year;
-	
-	@NotEmpty(message = "カードの名義人が未入力です。")
 	private String card_holder_name;
-	
 	private String topage;
 
 	public String getUser_id() {
