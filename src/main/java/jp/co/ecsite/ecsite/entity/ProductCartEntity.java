@@ -2,7 +2,6 @@ package jp.co.ecsite.ecsite.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 //11:20 フィールドの追加（升岡）
@@ -14,7 +13,7 @@ public class ProductCartEntity implements Serializable {
 	private int quantity;
 	private String size;
 	private String color;
-	private LocalDateTime cart_regist_dt;
+	private String cart_regist_dt;
 	//購入履歴で使用するフィールド
 	private int order_no;
 	private String order_dt;
@@ -63,10 +62,10 @@ public class ProductCartEntity implements Serializable {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public LocalDateTime getCart_regist_dt() {
+	public String getCart_regist_dt() {
 		return cart_regist_dt;
 	}
-	public void setCart_regist_dt(LocalDateTime cart_regist_dt) {
+	public void setCart_regist_dt(String cart_regist_dt) {
 		this.cart_regist_dt = cart_regist_dt;
 	}
 	public int getOrder_no() {
