@@ -26,7 +26,7 @@ import jp.co.ecsite.ecsite.service.ProdmgrService;
 //テスト
 
 @Controller
-@SessionAttributes({"productsearchresultsentity","productentity","reviewentity","colorlist","sizelist","formatedlogin_dt"})
+@SessionAttributes({"productsearchresultsentity","productentity","reviewentity","colorlist","sizelist"})
 public class ProductmgrController {
 
 	@Autowired
