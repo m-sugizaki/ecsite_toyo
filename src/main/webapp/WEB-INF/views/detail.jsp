@@ -62,6 +62,7 @@
 
 <!-- 商品合計金額計算用 -->
 <script type="text/javascript">
+
 function sum(){
 
 	var price = document.form1.quantity.value * ${productentity.price} ;
@@ -223,12 +224,17 @@ function sum(){
 							<td>合計購入価格&nbsp;&nbsp;&nbsp;</td>
 							<td >
 							<!-- 合計金額表示 -->
-							<input type="text" name="field" size="8" value="${productentity.price}" class="input_form" readonly>
+							<input type="text" name="field" size="8"  class="input_form" readonly>
 							</td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 
 				</table>
+<script type="text/javascript">
+ var preprice = document.form1.quantity.value * ${productentity.price} ;
+ document.form1.field.value = preprice;
+
+</script>
 
 				<!-- カートに入れる　レジに進む　のポップアップ -->
 				　　　<!-- ログインしていないときはログインポップアップ -->
