@@ -94,7 +94,7 @@ public class PurchasemgrController {
 	}
 
 	//商品購入画面に遷移するメソッド
-	@RequestMapping(value= {"/productcart", "/purchasehistory", "/detail"}, method=RequestMethod.POST, params="prepurchase")
+	@RequestMapping(value= {"/productcart", "/purchasehistory", "/search"}, method=RequestMethod.POST, params="prepurchase")
 	public String toProductBuy(@ModelAttribute ProductCartModel productCartModel, @ModelAttribute("login") UserStoreEntity userstoreentity, Model model) {
 
 	ProductCartEntity cart = new ProductCartEntity();
