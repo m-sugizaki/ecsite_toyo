@@ -183,11 +183,11 @@ function sum(){
 			<c:forEach var="paylist" items="${paymentinfo}" >
 					<input type="radio" name="payment_no" value="${paylist.payment_no}">${paylist.payment_method}
 					</c:forEach>
-			<!--<form:select path="payment_no">
-				<form:options items="${paymentinfo}" itemLabel="payment_method" itemvalue="payment_no"/>
-			</form:select>-->
-			<!--<form:hidden path="payment_no" name="payno" value="" />-->
 		</td>
+	</tr>
+	<tr>
+		<th></th>
+		<td><a href="accountupdate">支払い情報を追加/更新する</a></td>
 	</tr>
 	<tr>
 		<th>お届け先</th>
@@ -199,7 +199,10 @@ function sum(){
 					</c:forEach>
 		</td>
 	</tr>
-
+	<tr>
+		<th></th>
+		<td><a href="accountupdate">お届け先情報を追加/更新する</a></td>
+	</tr>
 	</table>
 	<form:button name="purchase" class="login">注文する</form:button>
 			<a href="productcart" class="cancel">キャンセル</a>
