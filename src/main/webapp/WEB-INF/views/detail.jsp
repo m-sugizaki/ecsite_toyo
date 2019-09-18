@@ -180,6 +180,7 @@ function sum(){
 						<tr><td>&nbsp;</td></tr>
 						<tr>
 							<td>商品名&nbsp;&nbsp;</td><td>${productentity.product_name}</td>
+							<form:hidden path="product_name" value="${productentity.product_name}"/>
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
