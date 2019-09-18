@@ -81,6 +81,9 @@
 	.space{
 		padding: 5px;
 	}
+.error{
+ color:red;
+}
 
 </style>
 <script type="javascript">
@@ -200,15 +203,6 @@
 			<c:if test="${!empty message }">
 				<c:out value="${message }" />
 			</c:if>
-			<form:errors path="payment_method" elements="span" />
-			<form:errors path="card_number" elements="span" />
-			<form:errors path="card_holder_name" elements="span" />
-			<form:errors path="postal_code2" elements="span" />
-			<form:errors path="address3" elements="span" />
-			<form:errors path="address4" elements="span" />
-			<form:errors path="phone_number2" elements="span" />
-			<form:errors path="shipping_address_name" elements="span" />
-
 		<table id="table">
 			<tr>
 				<th>ユーザID</th>
@@ -295,12 +289,12 @@
 				</tr>
 				<tr>
 				<th>カードの種類</th>
-				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" required="required"/></td>
+				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" /></td>
 				<!-- <td><form:errors path="payment_method" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>カード番号</th>
-				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" required="required" pattern="\d{4}-\d{4}-\d{4}-\d{4}"/></td>
+				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" /></td>
 				<!-- <td><form:errors path="card_number" elements="span" /></td> -->
 				</tr>
 				<tr>
@@ -334,7 +328,7 @@
 
 				<tr>
 				<th>カード名義人</th>
-				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid" required="required"/></td>
+				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid"/></td>
 				<!-- <td><form:errors path="card_holder_name" elements="span" /></td> -->
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->
@@ -346,8 +340,8 @@
 		</div>
 		</div>
 		</div>
-		<p class="space"><label for="trigger2" class="open_btn lavel_to_link" >支払い方法登録</label></p>
 
+		<p class="space"><label for="trigger2" class="open_btn lavel_to_link" >支払い方法登録</label></p>
 		<!-- お届け先のポップアップ -->
 		<div class="popup_wrap">
 		<input id="trigger3" type="checkbox" class="payment">
@@ -399,13 +393,24 @@
 		</div>
 		</div>
 		</div>
+
 		<p class="space"><label for="trigger3" class="open_btn lavel_to_link">お届け先登録</label></p>
-
-
+		<p>※支払い方法登録とお届け先登録は必須です。</p>
 		<input type="submit" name="regist" value="登録" class="login" />
 		<a href="home" class="cancel">キャンセル</a>
+		<br>
+		<form:errors path="payment_method" elements="span" class="error" /><br>
+			<form:errors path="card_number" elements="span"  class="error"/><br>
+			<form:errors path="card_holder_name" elements="span"  class="error"/><br>
+			<form:errors path="postal_code2" elements="span"  class="error"/><br>
+			<form:errors path="address3" elements="span"  class="error"/><br>
+			<form:errors path="address4" elements="span"  class="error"/><br>
+			<form:errors path="phone_number2" elements="span"  class="error"/><br>
+			<form:errors path="shipping_address_name" elements="span"  class="error"/><br>
 
 		</form:form>
+
+
 		</div>
 	</div>
 	</div>

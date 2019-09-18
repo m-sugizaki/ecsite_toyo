@@ -31,24 +31,35 @@ public class NewUserModel implements Serializable {
 
 	private String member_rank;
 
+	@NotEmpty(message = "支払方法のカードの種類は必須入力です。")
 	private String payment_method;
 
+	@NotEmpty(message = "支払方法のカード番号は必須入力です。")
+	@Pattern(regexp = "[0-9] {4}-[0-9]{4}-[0-9]{4}-[0-9]{4}", message="支払い方法のカード番号の書式が違います。")
 	private String card_number;
+
 
 	private String expiration_month;
 
 	private String expiration_year;
 
+	@NotEmpty(message = "支払方法のカード名義人は必須入力です。")
 	private String card_holder_name;
 
+	@NotEmpty(message = "お届け先の郵便番号は必須入力です。")
+	@Pattern(regexp = "[0-9] {3}-[0-9] {4}", message="お届け先の郵便番号の書式が違います。")
 	private String postal_code2;  //お届け先情報の郵便番号
 
+	@NotEmpty(message = "お届け先の住所1は必須入力です。")
 	private String address3;  //お届け先情報の住所1
 
 	private String address4;  //お届け先情報の住所2
 
+	@NotEmpty(message = "お届け先の電話番号は必須入力です。")
+	@Pattern(regexp = "0[0-9] {9,10}", message="お届け先の電話番号の書式が違います。")
 	private String phone_number2;  //お届け先情報の電話番号
 
+	@NotEmpty(message = "お届け先名は必須入力です。")
 	private String shipping_address_name;
 
 
@@ -85,6 +96,7 @@ public class NewUserModel implements Serializable {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 	public String getPostal_code() {
 		return postal_code;
 	}
