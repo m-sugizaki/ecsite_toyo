@@ -213,15 +213,15 @@ function sum(){
 	</tr>
 	<tr>
 		<th>数量：</th>
-		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" name="quantity" class="input_form" /></td><!--  -->
+		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" name="quantity" class="input_form" size="8"/></td><!--  -->
 	</tr>
 	<tr>
 		<th>購入金額：</th>
 		<td>
 		<!-- 合計金額表示 -->
-		<input type="text" name="field" size="8" value="${cart.price} " class="input_form" readonly>
-		<fmt:formatNumber value="${cart.price}" groupingUsed="true"
-								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
+		<input type="text" name="field" value="${cart.quantity * cart.price}" size="8" class="input_form" readonly>
+		<!--<fmt:formatNumber value="${cart.price}" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />-->
 		</td>
 	</tr>
 	<tr>
@@ -234,7 +234,13 @@ function sum(){
 	</tr>
 </table>
 
-	<form:button name="update" class="cart">更新&nbsp;</form:button>
+<script type="text/javascript">
+ var preprice = document.form1.quantity.value * ${cart.price} ;
+ document.form1.field.value = preprice;
+
+</script>
+
+<form:button name="update" class="cart">更新&nbsp;</form:button>
 			<a href="productcart" class="cart">キャンセル</a>
 
 </form:form>
