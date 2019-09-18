@@ -71,6 +71,11 @@ function sum(){
 	document.form1.field.value = price;
 }
 </script>
+<script type="text/javascript">
+ var preprice = document.form1.quantity.value * ${productentity.price} ;
+ document.form1.field.value = preprice;
+
+</script>
 
 </head>
 <body>
@@ -157,7 +162,7 @@ function sum(){
 	</tr>
 	<tr>
 		<th>数量</th>
-		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" name="quantity" /></td>
+		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" name="quantity" pattern="[0-9]{1,5}" required="required"/></td>
 	</tr>
 	<tr>
 		<th>購入金額</th>
@@ -179,10 +184,12 @@ function sum(){
 		<td>
 			<form:radiobutton path="payment_method" value="銀行引き落とし" label="銀行引き落とし" checked="checked"  /><br>
 			<form:radiobutton path="payment_method" value="商品代引き" label="商品代引き" /><br>
-			<form:radiobutton path="payment_method" value="クレジットカード" label="クレジットカード"/>
+			<form:radiobutton path="payment_method" value="クレジットカード" label="クレジットカード"/><br>
+			<br>
+			<p>カード会社</p>
 			<c:forEach var="paylist" items="${paymentinfo}" >
 					<input type="radio" name="payment_no" value="${paylist.payment_no}">${paylist.payment_method}
-					</c:forEach>
+			</c:forEach>
 		</td>
 	</tr>
 	<tr>
@@ -193,10 +200,10 @@ function sum(){
 		<th>お届け先</th>
 		<td>
 			<form:radiobutton path="shipping_address_no" value="0" label="現住所" checked="checked" /><br>
-			別のお届け先
+			別のお届け先<br>
 			<c:forEach var="shiplist" items="${shippinginfo}">
 					<input type="radio" name="shipping_address_no" value="${shiplist.shipping_address_no}">${shiplist.address1}${shiplist.address2}<br>
-					</c:forEach>
+			</c:forEach>
 		</td>
 	</tr>
 	<tr>
