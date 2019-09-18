@@ -27,6 +27,7 @@
 	background-color: transparent;
 	color: blue;
 	text-decoration: underline;
+	cursor : pointer;
 }
 
 
@@ -232,18 +233,18 @@ button.gopurchase:hover{
 <p class="minititle">商品カート</p>
 <table id="kensakuresult" border="1">
 						<tr>
-							<th class="tabletitle2" >カートNo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle" >商品コード&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle" >商品名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle3" >価格&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle2" >数量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle3" >購入金額&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle2" >サイズ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle3" >色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle" >カート追加日時&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle2" >更新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle2" >カートから出す&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-							<th class="tabletitle3" >レジに進む&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+							<th class="tabletitle2" >カートNo</th>
+							<th class="tabletitle" >商品コード</th>
+							<th class="tabletitle" >商品名</th>
+							<th class="tabletitle3" >価格（円）</th>
+							<th class="tabletitle2" >数量</th>
+							<th class="tabletitle3" >購入金額</th>
+							<th class="tabletitle2" >サイズ</th>
+							<th class="tabletitle3" >色</th>
+							<th class="tabletitle" >カート追加日時</th>
+							<th class="tabletitle2" >更新</th>
+							<th class="tabletitle2" >カートから出す</th>
+							<th class="tabletitle3" >レジに進む</th>
 						</tr>
 						<c:forEach var="cartlist" items="${cartlist}">
 

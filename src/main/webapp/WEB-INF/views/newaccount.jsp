@@ -295,18 +295,18 @@
 				</tr>
 				<tr>
 				<th>カードの種類</th>
-				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" /></td>
+				<td><form:input path="payment_method" placeholder="(例)クレジットカード" class="userid" required="required"/></td>
 				<!-- <td><form:errors path="payment_method" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>カード番号</th>
-				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" /></td>
+				<td><form:input path="card_number" placeholder="(例)0000-0000-0000-0000" class="userid" required="required" pattern="\d{4}-\d{4}-\d{4}-\d{4}"/></td>
 				<!-- <td><form:errors path="card_number" elements="span" /></td> -->
 				</tr>
 				<tr>
 				<th>有効期限</th>
 				<td>
-					<form:select path="expiration_month" class="userid">
+					<form:select path="expiration_month" class="userid" >
 					<option value="1">01</option>
 					<option value="2">02</option>
 					<option value="3">03</option>
@@ -334,7 +334,7 @@
 
 				<tr>
 				<th>カード名義人</th>
-				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid" /></td>
+				<td><form:input path="card_holder_name" placeholder="(例)abc" class="userid" required="required"/></td>
 				<!-- <td><form:errors path="card_holder_name" elements="span" /></td> -->
 				</tr>
 				<!-- <tr><td><input type="submit" name="forward"  value="登録"/><input type="submit" name="cancel"  value="キャンセル"/></td></tr> -->

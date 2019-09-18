@@ -13,6 +13,7 @@
 	background-color: transparent;
 	color: blue;
 	text-decoration: underline;
+	cursor : pointer;
 }
 
 #kensaku{
@@ -206,7 +207,7 @@
 						<th class="tabletitle">商品コード</th>
 						<th class="tabletitle">商品名</th>
 						<th class="tabletitle">メーカー</th>
-						<th class="tabletitle">価格</th>
+						<th class="tabletitle">価格（円）</th>
 					</tr>
 					<c:forEach var="product" items="${productsearchresultsentity}">
 						<form:form modelAttribute="prodmgrModel">
