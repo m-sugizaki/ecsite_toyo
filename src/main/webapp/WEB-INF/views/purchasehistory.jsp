@@ -204,7 +204,7 @@
 								<td class="table">${purchaselist.product_name}</td>
 								<td class="table">${purchaselist.order_status}</td>
 								<td class="table">    		<fmt:formatDate value="${purchaselist.delivery_plan_dt}" pattern="yyyy/MM/dd" /></td>
-								<td class="table"><input type="submit" name="addcart"
+								<td class="table"><input type="submit" name="addcart" class="view"
 									value="同じ内容でカートに追加">
 								<input type="hidden" name="product_id" value="${purchaselist.product_id}" />
 								<input type="hidden" name="product_name" value="${purchaselist.product_name}" />
@@ -214,13 +214,13 @@
 								<input type="hidden" name="order_no" value="${purchaselist.order_no}">
 								<input type="hidden" name="price" value="${purchaselist.price}">
 								</td>
-								<td class="table"><input type="submit" name="prepurchase"
+								<td class="table"><input type="submit" name="prepurchase" class="view"
 									value="同じ内容でレジに進む"></td>
 								<td class="table">
 
 								<c:choose>
 									<c:when test="${!purchaselist.order_status.equals('注文確定')}"></c:when>
-									<c:otherwise><form:button name="cancelorder">注文をキャンセルする</form:button></c:otherwise>
+									<c:otherwise><form:button name="cancelorder" class="view" >注文をキャンセルする</form:button></c:otherwise>
 								</c:choose>
 								</td>
 								</form:form>
