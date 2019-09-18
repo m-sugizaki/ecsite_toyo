@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -114,7 +115,7 @@ position: relative;
 
 	<!-- 取消確認画面ここから -->
 	<div class="contents">
-		<p class="minititle">注文取消確認</p>
+		<p class="minititle">注文キャンセル確認</p>
 		<table border="0" class="ordercancel">
 
 		<form:form modelAttribute="productCartModel">
@@ -124,11 +125,18 @@ position: relative;
 		</tr>
 		<tr>
 			<th>商品コード：</th>
-			<td>${deleteconfirm.product_id }&nbsp;&nbsp;&nbsp;&nbsp;${deleteconfirm.product_name }</td>
+			<td>${deleteconfirm.product_id }</td>
+		</tr>
+		<tr>
+			<th>商品名：</th>
+			<td>${deleteconfirm.product_name }</td>
 		</tr>
 		<tr>
 			<th>価格：</th>
-			<td>${deleteconfirm.price }</td>
+			<td>
+			<fmt:formatNumber value="${deleteconfirm.price }" groupingUsed="true"
+								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
+			</td>
 		</tr>
 		<tr>
 			<th>数量：</th>
@@ -154,7 +162,7 @@ position: relative;
 		</tr>
 		<tr>
 			<th>配送予定日：</th>
-			<td>${deleteconfirm.delivery_plan_dt }</td>
+			<td><fmt:formatDate value="${deleteconfirm.delivery_plan_dt }" pattern="yyyy/MM/dd" /></td>
 		</tr>
 		</table>
 
@@ -168,23 +176,24 @@ position: relative;
 					<div class="popup_overlay">
 					<label for="trigger" class="popup_trigger"></label>
 					<div class="popup_content">
-						<!-- 注文取消ポップアップ中身 -->
+						<!-- 注文ポップアップ中身 -->
 						<div align="center" class="delete">
-							<p class="minititle">取消してよろしいですか。</p>
+							<p class="minititle">注文をキャンセルしてよろしいですか。</p>
 							<br>
 							<form:form modelAttribute="productCartModel">
-								<form:button name="cancel" class="login">削除</form:button>
+								<form:button name="cancel" class="login">はい</form:button>
 								<form:hidden path="order_no" value="${deleteconfirm.order_no}"/>
-								<label for="trigger" class="cancel"><span>キャンセル</span></label>
+								<label for="trigger" class="cancel"><span>いいえ</span></label>
 							</form:form>
 						</div>
 					</div>
 					</div>
 					</div>
-						<label for="trigger${address.shipping_address_no}" class="open_btn" >取消</label>
+						<label for="trigger${address.shipping_address_no}" class="open_btn" >キャンセル
+						</label>
 
 					<!-- キャンセルボタン -->
-					<a href="purchasehistory" class="cancel">キャンセル</a>
+					<a href="purchasehistory" class="cancel">戻る</a>
 			</td>
 		</tr>
 		</table>
