@@ -250,7 +250,7 @@
 			</tr>
 			<tr>
 				<th>E-mail</th>
-				<td><form:input path="email" placeholder="(例)xxxx@co.jp" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="userid"/></td>
+				<td><form:input path="email" placeholder="(例)xxxx@co.jp" required="required" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" class="userid"/></td>
 				<!-- <td><form:errors path="email" elements="span" /></td> -->
 			</tr>
 			<tr>

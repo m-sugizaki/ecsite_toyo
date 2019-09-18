@@ -76,7 +76,7 @@ public class MypageController {
 			return "mypage";
 		}
 		UserStoreEntity login = mypageService.login(uModel.getUser_id() , uModel.getPassword());
-		if(login.getName() == null) {
+		if(login.getName() == null || !(uModel.getUser_id().equals(login.getUser_id())) || !(uModel.getPassword().equals(login.getPassword()))) {
 			model.addAttribute("errormessage" , "ユーザーIDもしくはパスワードが間違っています。");
 			return "mypage";
 		}
@@ -154,6 +154,7 @@ public class MypageController {
 			userstoreentity.setPassword(nuModel.getPassword());
 
 			UserEntity logincheck = mypageService.accountInfo(userstoreentity);
+		
 			if(logincheck != null) {
 				model.addAttribute("message" , "既に登録されたユーザーです。");
 				return "newaccount";
