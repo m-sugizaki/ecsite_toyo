@@ -87,44 +87,6 @@
 	border: 1px solid  #000000;
 	border-collapse: separate;
 }
-.cart{
-position: relative;
-  display: inline-block;
-  cursor: pointer;
-  padding: 0.25em 0.5em;
-  height: 27px;
-  line-height: 27px;
-  text-align: center;
-  text-decoration: none;
-  color: #FFF;
-  background: #fd9535;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-size: small;
-  font-weight: bold;
-  margin:10px;
-  width: 100px;
-}
-.cart2{
-position: relative;
-  display: inline-block;
-  cursor: pointer;
-  padding: 0.25em 0.5em;
-  height: 27px;
-  line-height: 27px;
-  text-align: center;
-  text-decoration: none;
-  color: #FFF;
-  background: #fd9535;/*背景色*/
-  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
-  border-radius: 4px;/*角の丸み*/
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
-  font-size: small;
-  font-weight: bold;
-  margin:10px;
-  width: 100px;
-}
 </style>
 
 <title>カート更新画面</title>
@@ -240,8 +202,8 @@ function sum(){
 
 </script>
 
-<form:button name="update" class="cart">更新&nbsp;</form:button>
-			<a href="productcart" class="cart">キャンセル</a>
+<form:button name="update" class="login">更新&nbsp;</form:button>
+			<a href="productcart" class="cancel">キャンセル</a>
 
 </form:form>
 </div>

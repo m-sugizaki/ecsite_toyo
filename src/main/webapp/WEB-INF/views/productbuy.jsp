@@ -201,7 +201,7 @@ function sum(){
 	</tr>
 
 	</table>
-	<form:button name="purchase" class="open_btn">注文する&nbsp;</form:button>
+	<form:button name="purchase" class="login">注文する</form:button>
 			<a href="productcart" class="cancel">キャンセル</a>
 </form:form>
 

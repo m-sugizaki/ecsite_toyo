@@ -302,7 +302,7 @@ function sum(){
 						<!-- カートに進む・レジに進のボタン -->
 							<label for="trigger_c" class="tocart" for="tocart">カートに入れる</label>
 							 <!-- <a href="regist" class="tocart">レジに進む</a> -->
-							 <form:button class="cancel" name="prepurchase">レジに進む</form:button>
+							 <form:button class="login" name="prepurchase">レジに進む</form:button>
 							 <!-- lレジに進むはｊｓｐ -->
 
 

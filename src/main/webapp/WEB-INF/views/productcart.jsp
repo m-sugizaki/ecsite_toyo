@@ -92,23 +92,29 @@
 	vertical-align: middle;
 }
 .cartpopup{
-position: relative;
+  position: relative;
   display: inline-block;
   cursor: pointer;
   padding: 0.25em 0.5em;
-  height: 27px;
-  line-height: 27px;
-  text-align: center;
+  height: 35px;
   text-decoration: none;
   color: #FFF;
   background: #fd9535;/*背景色*/
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 0px;
   border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
   border-radius: 4px;/*角の丸み*/
   box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
   font-size: small;
   font-weight: bold;
-  margin:10px;
+  margin: 10px;
   width: 100px;
+}
+
+.cartpopup:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 button.gopurchase{
@@ -279,7 +285,7 @@ button.gopurchase:hover{
 											<p class="minititle">削除してよろしいですか。</p>
 											<br>
 												<form:button name="delete" class="cartpopup">削除</form:button>
-											<label for="triggerdel${cartlist.product_cart_id}" class="cartpopup"><span>キャンセル</span></label>
+											<label for="triggerdel${cartlist.product_cart_id}" class="cancel"><span>キャンセル</span></label>
 										</div>
 									</div>
 									</div>
