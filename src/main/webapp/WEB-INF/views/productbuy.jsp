@@ -168,7 +168,7 @@ function sum(){
 		<th>購入金額</th>
 		<td>
 		<!-- 合計金額表示 -->
-		<input type="text" name="field" size="8" value="${cart.price} " readonly>
+		<input type="text" name="field" size="8" value="${cart.price * cart.quantity}" readonly>
 		</td>
 	</tr>
 	<tr>
