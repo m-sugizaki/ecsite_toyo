@@ -218,7 +218,7 @@ function sum(){
 						</tr>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" name="quantity" class="input_form" pattern="[0-9]{1,5}" required="required"/></td>
+							<td>数量&nbsp;&nbsp;&nbsp;</td><td><form:input path="quantity" value="1" onChange="sum()" type="number" min="1" name="quantity" class="input_form" pattern="[0-9]{1,5}" required="required"/></td>
 						</tr>
 						<tr><td>&nbsp;</td><tr>
 						<tr>
