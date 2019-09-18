@@ -31,34 +31,24 @@ public class NewUserModel implements Serializable {
 
 	private String member_rank;
 
-	@NotEmpty(message= "支払い方法を入力してください。")
 	private String payment_method;
 
-	@NotEmpty(message= "カード番号を入力してください。")
-	@Pattern(regexp = "\\d{4}-\\d{4}-\\d{4}-\\d{4}", message="カード番号が不正です。")
 	private String card_number;
 
 	private String expiration_month;
 
 	private String expiration_year;
 
-	@NotEmpty(message= "カード名義名を入力してください。")
 	private String card_holder_name;
 
-	@NotEmpty(message= "郵便番号を入力してください。")
-	@Pattern(regexp = "^\\d{3}\\-?\\d{4}$", message="郵便番号の値が不正です。")
 	private String postal_code2;  //お届け先情報の郵便番号
 
-	@NotEmpty(message= "住所を入力してください。")
 	private String address3;  //お届け先情報の住所1
 
 	private String address4;  //お届け先情報の住所2
 
-	@NotEmpty(message= "電話番号を入力してください。")
-	@Pattern(regexp = "^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$", message="電話番号の値が不正です。")
 	private String phone_number2;  //お届け先情報の電話番号
 
-	@NotEmpty(message= "お届き先名を入力してください。")
 	private String shipping_address_name;
 
 
