@@ -287,7 +287,7 @@ function sum(){
 									<p>カートに追加しますか？</p>
 									<table>
 
-										<tr><td><input type="submit" value="カートに追加" class="cancel" name="addcart"/></td>
+										<tr><td><input type="submit" value="カートに追加" class="login" name="addcart"/></td>
 										<td><form:input type="hidden" path="product_id" value="${productentity.product_id}" />
 											</td>
 									　　　　　　　<td><label for="trigger_c" class="cancel">キャンセル</label></td>
