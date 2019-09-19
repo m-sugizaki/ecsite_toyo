@@ -116,7 +116,7 @@ position: relative;
 
 	<!-- 取消確認画面ここから -->
 	<div class="contents">
-		<p class="minititle">注文キャンセル確認</p>
+		<p class="minititle">注文取消確認</p>
 		<table border="0" class="ordercancel">
 
 		<form:form modelAttribute="productCartModel">
@@ -133,7 +133,7 @@ position: relative;
 			<td>${deleteconfirm.product_name }</td>
 		</tr>
 		<tr>
-			<th>価格：</th>
+			<th>価格（円）：</th>
 			<td>
 			<fmt:formatNumber value="${deleteconfirm.price }" groupingUsed="true"
 								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" />
@@ -144,7 +144,7 @@ position: relative;
 			<td>${deleteconfirm.quantity }</td>
 		</tr>
 		<tr>
-			<th>購入金額：</th>
+			<th>購入金額（円）：</th>
 				<td>
 				<script type="text/javascript">
 				var sum ;
@@ -179,7 +179,7 @@ position: relative;
 					<div class="popup_content">
 						<!-- 注文ポップアップ中身 -->
 						<div align="center" class="delete">
-							<p class="minititle">注文をキャンセルしてよろしいですか。</p>
+							<p class="minititle">注文を取消してよろしいですか。</p>
 							<br>
 							<form:form modelAttribute="productCartModel">
 								<form:button name="cancel" class="login">はい</form:button>
@@ -190,7 +190,7 @@ position: relative;
 					</div>
 					</div>
 					</div>
-						<label for="trigger${address.shipping_address_no}" class="open_btn" >キャンセル
+						<label for="trigger${address.shipping_address_no}" class="open_btn" >取消
 						</label>
 
 					<!-- キャンセルボタン -->

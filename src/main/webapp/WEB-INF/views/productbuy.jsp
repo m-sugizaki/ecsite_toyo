@@ -156,7 +156,7 @@ function sum(){
 		<td>${cart.product_id}<form:hidden path="product_id" value="${cart.product_id}" /></td>
 	</tr>
 	<tr>
-		<th>価格</th>
+		<th>価格（円）</th>
 		<td><fmt:formatNumber value="${cart.price}" groupingUsed="true"
 								maxIntegerDigits="17" maxFractionDigits="1" minIntegerDigits="0" minFractionDigits="0" /></td>
 	</tr>
@@ -165,7 +165,8 @@ function sum(){
 		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" type="number" min="1" name="quantity" pattern="[0-9]{1,5}" required="required"/></td>
 	</tr>
 	<tr>
-		<th>購入金額</th>
+		<th>購入金額（円）
+		</th>
 		<td>
 		<!-- 合計金額表示 -->
 		<input type="text" name="field" size="8" value="${cart.price * cart.quantity}" readonly>
