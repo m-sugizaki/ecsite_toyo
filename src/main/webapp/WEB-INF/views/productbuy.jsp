@@ -134,6 +134,9 @@ function sum(){
 
 <div class="contents">
 		<p class="minititle">商品購入</p>
+		<br>
+		<hr class="style13">
+		<br>
 		<table border="0" class="ordercancel">
 
 
