@@ -88,6 +88,7 @@ public class PurchasemgrController {
 
 		List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
 		model.addAttribute("cartlist" , cartlist);
+		model.addAttribute("cartmessage", "カートを更新しました。");
 		return "productcart";
 	}
 
@@ -207,6 +208,7 @@ public class PurchasemgrController {
 
 			List<ProductCartEntity> cartlist = mypageService.cartAll(userstoreentity);
 			model.addAttribute("cartlist" , cartlist);
+			model.addAttribute("cartmessage","正常にカートに追加しました。");
 			return "productcart";
 	}
 
