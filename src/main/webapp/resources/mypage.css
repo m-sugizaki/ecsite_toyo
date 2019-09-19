@@ -267,3 +267,10 @@ li > a:hover{
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
+hr.style13 {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
+
