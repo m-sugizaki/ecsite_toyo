@@ -225,6 +225,7 @@
 			<form:button name="cancel" class="login">キャンセル</form:button>
 		</form:form>
 		<br>
+		<hr>
 
 		<p class="minititle">支払方法情報</p>
 
