@@ -71,10 +71,12 @@ li > a:hover{
 
 .title{
 	font-size: 30px;
+	line-height:200px;
+  text-align:center;
 }
 
 .head{
-	display: table-cell;
+	/*display: table-cell;*/
 	vertical-align: middle;
 	text-align: center;
 	position: relative;

@@ -30,7 +30,7 @@
 	<!-- ヘッダー -->
 	<div class="headder">
 		<div class="head">
-		<p class="title">アジャイル開発実践ECサイト</p>
+		<span class="title">アジャイル開発実践ECサイト</span>
 		</div>
 			<!-- 右上ユーザー情報 -->
 			<div class="head log">
@@ -113,8 +113,7 @@
 					</form:form>
 			<!-- メインコンテンツ -->
 			<div class="contents">
-				<p>新着情報</p>
-				<p>工事中・・・</p>
+				<img src="resources/image.PNG" alt="ロゴ" height="300px" width="340px"/>
 			</div>
 	</div>
 	</div>
