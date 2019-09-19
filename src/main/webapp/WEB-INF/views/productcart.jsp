@@ -249,7 +249,7 @@ button.gopurchase:hover{
 						<c:forEach var="cartlist" items="${cartlist}">
 
 							<tr>
-								<td class="table2">${cartlist.product_cart_id}</td>
+								<td class="table2" style="text-align:center">${cartlist.product_cart_id}</td>
 
 								<form:form modelAttribute="prodmgrModel">
 								<td class="table">

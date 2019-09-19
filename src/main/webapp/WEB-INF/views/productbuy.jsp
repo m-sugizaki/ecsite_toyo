@@ -240,7 +240,7 @@ function sum(){
 			<a href="productcart" class="cancel">キャンセル</a>
 </form:form>
 <script type="text/javascript">
- var preprice = document.form1.quantity.value * ${productentity.price} ;
+ var preprice = document.form1.quantity.value * ${cart.price} ;
  document.form1.field.value = preprice;
 
 </script>

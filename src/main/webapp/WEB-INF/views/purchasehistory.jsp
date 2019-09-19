@@ -190,7 +190,7 @@
 　                                                                                    <fmt:formatDate value="${date}" pattern="yyyy/MM/dd  HH:mm" />
 
 								</td>
-								<td class="table">${purchaselist.order_no}</td>
+								<td class="table" style="text-align:center">${purchaselist.order_no}</td>
 
 								<form:form modelAttribute="prodmgrModel">
 								<td class="table">
