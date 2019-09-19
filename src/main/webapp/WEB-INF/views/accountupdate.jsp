@@ -168,7 +168,7 @@
 	</div>
 	<!-- メインコンテンツ -->
 	<div class="contents">
-		<br><p class="minititle">アカウント情報更新</p>
+		<br><p class="minititle">アカウント情報更新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="-1" style="color:blue">${accountmessage}</font></p>
 		<br>
 		<form:form modelAttribute="accountModel">
 			<table class="account_update">

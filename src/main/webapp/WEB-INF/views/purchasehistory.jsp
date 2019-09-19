@@ -177,7 +177,7 @@
 						<th class="tabletitle">配送予定日</th>
 						<th class="tabletitle">カートに入れる</th>
 						<th class="tabletitle">レジに進む</th>
-						<th class="tabletitle">注文キャンセル</th>
+						<th class="tabletitle">注文取消</th>
 
 					</tr>
 					<c:forEach var="purchaselist" items="${purchaselist}">
@@ -220,7 +220,7 @@
 
 								<c:choose>
 									<c:when test="${!purchaselist.order_status.equals('注文確定')}"></c:when>
-									<c:otherwise><form:button name="cancelorder" class="view" >注文をキャンセルする</form:button></c:otherwise>
+									<c:otherwise><form:button name="cancelorder" class="view" >注文を取り消しする</form:button></c:otherwise>
 								</c:choose>
 								</td>
 								</form:form>

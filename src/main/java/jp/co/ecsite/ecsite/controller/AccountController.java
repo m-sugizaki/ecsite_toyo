@@ -210,7 +210,6 @@ public class AccountController  {
 		model.addAttribute("accountinfo" ,accountinfo);
 		model.addAttribute("shippinginfo" ,shippinginfo);
 		model.addAttribute("paymentinfo" ,paymentinfo);
-
 		return "accountupdate";
 	}
 
@@ -332,6 +331,7 @@ public class AccountController  {
 			model.addAttribute("accountinfo" ,accountinfo);
 			model.addAttribute("shippinginfo" ,shippinginfo);
 			model.addAttribute("paymentinfo" ,paymentinfo);
+			model.addAttribute("accountmessage", "アカウント情報を更新しました。");
 			return "accountupdate";
 		}
 
