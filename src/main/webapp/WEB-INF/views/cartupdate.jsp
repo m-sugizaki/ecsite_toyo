@@ -188,11 +188,22 @@ function sum(){
 	</tr>
 	<tr>
 		<th>サイズ：</th>
-		<td><form:select path="size" items="${sizelist}" /></td>
+		<td>
+		<c:choose>
+			<c:when test="${sizelist.size() == 0}"><form:hidden path="size" value="${sizelist}"/></c:when>
+			<c:when test="${sizelist.size() == 1}">${sizelist[0]}<form:hidden path="size" value="${sizelist[0]}"/></c:when>
+			<c:otherwise><form:select path="size" items="${sizelist}" class="input_form" /></c:otherwise>
+		</c:choose></td>
 	</tr>
 	<tr>
 		<th>色：</th>
-		<td><form:select path="color" items="${colorlist}" /></td>
+		<td>
+		<c:choose>
+			<c:when test="${colorlist.size() == 0}"><form:hidden path="color" value="${colorlist}"/></c:when>
+			<c:when test="${colorlist.size() == 1}">${colorlist[0]}<form:hidden path="color" value="${colorlist[0]}"/></c:when>
+			<c:otherwise><form:select path="color" items="${colorlist}" class="input_form" /></c:otherwise>
+		</c:choose>
+		</td>
 	</tr>
 </table>
 
