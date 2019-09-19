@@ -71,11 +71,7 @@ function sum(){
 	document.form1.field.value = price;
 }
 </script>
-<script type="text/javascript">
- var preprice = document.form1.quantity.value * ${productentity.price} ;
- document.form1.field.value = preprice;
 
-</script>
 
 </head>
 <body>
@@ -162,7 +158,7 @@ function sum(){
 	</tr>
 	<tr>
 		<th>数量</th>
-		<td><form:input path="quantity" value="${cart.quantity}" onChange="sum()" type="number" min="1" name="quantity" pattern="[0-9]{1,5}" required="required"/></td>
+		<td><form:input path="quantity" size="8" value="${cart.quantity}" onChange="sum()" type="number" min="1" name="quantity" pattern="[0-9]{1,5}" required="required"/></td>
 	</tr>
 	<tr>
 		<th>購入金額</th>
@@ -214,7 +210,11 @@ function sum(){
 	<form:button name="purchase" class="login">注文する</form:button>
 			<a href="productcart" class="cancel">キャンセル</a>
 </form:form>
+<script type="text/javascript">
+ var preprice = document.form1.quantity.value * ${productentity.price} ;
+ document.form1.field.value = preprice;
 
+</script>
 
 </body>
 </html>
