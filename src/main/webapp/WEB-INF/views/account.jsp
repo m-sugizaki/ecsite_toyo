@@ -127,7 +127,10 @@
 	<!-- メインコンテンツ -->
 <div class="contents">
 <p class="minititle">アカウント情報</p>
-
+	<br>
+	<hr class="style13">
+	<br>
+<p class="minititle">ユーザー情報</p>
 <table border="0" class="accounttable">
 	<tr>
 		<th>ユーザーID:</th>

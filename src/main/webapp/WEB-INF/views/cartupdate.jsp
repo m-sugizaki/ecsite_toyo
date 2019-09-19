@@ -157,6 +157,9 @@ function sum(){
 <!-- メインコンテンツ -->
 <div align="center">
 <p class="minititle">商品カート更新</p>
+	<br>
+	<hr class="style13">
+	<br>
 <form:form modelAttribute="productCartModel" name="form1">
 
 <table border="0" class="orderupdate">

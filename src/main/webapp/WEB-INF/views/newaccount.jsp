@@ -198,6 +198,9 @@
 	<div class="contents">
 		<div align="center">
 		<p class="title">アカウント情報登録</p>
+			<br>
+				<hr class="style13">
+				<br>
 		<form:form modelAttribute="newUserModel">
 			<!-- エラーメッセージ ID被り&ポップアップ -->
 			<c:if test="${!empty message }">

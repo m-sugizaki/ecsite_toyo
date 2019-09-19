@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>アカウント情報更新画面</title>
+<title>アカウント情報更新</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
 <link rel="stylesheet" type="text/css" href="resources/reset.css">
 <style type="text/css">
@@ -169,7 +169,12 @@
 	<!-- メインコンテンツ -->
 	<div class="contents">
 		<br><p class="minititle">アカウント情報更新&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="-1" style="color:blue">${accountmessage}</font></p>
-		<br>
+			    <br>
+				<hr class="style13">
+				<br>
+			<p class="minititle">ユーザー情報</p>
+		　　　<br>
+　　　　　　　　　<br>
 		<form:form modelAttribute="accountModel">
 			<table class="account_update">
 				<tr>
@@ -419,9 +424,12 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<br>
 
+　　　　　　<br>
+		<hr>
+　　　　　　<br>
 		<p class="minititle">お届け先情報</p>
-
 		<!-- 届け先情報追加ポップアップ -->
 						<div class="popup_wrap">
 							<input id="triggerupaddadd" type="checkbox" class="payment">

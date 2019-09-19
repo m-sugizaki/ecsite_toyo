@@ -165,7 +165,11 @@
 			</div>
 			<!-- メインコンテンツ -->
 			<div class="contents">
+				<br>
 				<p class="minititle">購入履歴</p>
+				<br>
+				<hr class="style13">
+				<br>
 				<!-- 購入履歴の表示テーブル-->
 				<table class="review">
 					<tr>

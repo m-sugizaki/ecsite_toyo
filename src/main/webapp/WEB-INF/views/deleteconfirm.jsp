@@ -117,6 +117,9 @@ position: relative;
 	<!-- 取消確認画面ここから -->
 	<div class="contents">
 		<p class="minititle">注文取消確認</p>
+			    <br>
+				<hr class="style13">
+				<br>
 		<table border="0" class="ordercancel">
 
 		<form:form modelAttribute="productCartModel">

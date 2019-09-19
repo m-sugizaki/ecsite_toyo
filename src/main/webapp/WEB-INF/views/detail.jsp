@@ -170,6 +170,7 @@ function sum(){
 			<br>
 			<p class= "minititle">商品詳細</p>
 				<br>
+				<hr class="style13">
 				<br>
 		      <!-- 商品詳細の表示 -->
 		      <form:form modelAttribute="productCartModel" name="form1" action="purchasehistory">

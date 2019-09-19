@@ -66,6 +66,8 @@
 	border-bottom: 2px solid lightgray;
 	background: transparent;
 }
+
+
 </style>
 <title>商品検索</title>
 <link rel="stylesheet" type="text/css" href="resources/mypage.css">
@@ -170,6 +172,8 @@
 			<div class="contents">
 				<br>
 				<p class="minititle">商品検索</p>
+				<br>
+				<hr class="style13">
 				<br>
 				<form:form modelAttribute="prodmgrModel">
 					<table id="kensaku">

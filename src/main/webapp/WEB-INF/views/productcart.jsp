@@ -231,6 +231,9 @@ button.gopurchase:hover{
 	</div>
 <!-- メインコンテンツ -->
 <p class="minititle">商品カート&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="-1" style="color:blue">${cartmessage}</font></p>
+				<br>
+				<hr class="style13">
+				<br>
 <table id="kensakuresult" border="1">
 						<tr>
 							<th class="tabletitle2" >カートNo</th>
