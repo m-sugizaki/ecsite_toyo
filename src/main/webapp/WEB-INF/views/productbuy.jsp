@@ -170,11 +170,39 @@ function sum(){
 	</tr>
 	<tr>
 		<th>サイズ</th>
-		<td><form:select path="size" items="${sizelist}" /></td>
+		<td>
+			<c:choose>
+			<c:when test="${sizelist.size()==0}">
+				<form:hidden path="size" value=""/>
+				<form:select path="size" items="${sizelist}" />
+			</c:when>
+				<c:when test="${sizelist.size()==1}">
+				<form:hidden path="size" value="${sizelist[0]}"/>
+				${sizelist[0]}
+			</c:when>
+			<c:otherwise>
+				<form:select path="size" items="${sizelist}" />
+			</c:otherwise>
+			</c:choose>
+		</td>
 	</tr>
 	<tr>
 		<th>色</th>
-		<td><form:select path="color" items="${colorlist}" /></td>
+		<td>
+			<c:choose>
+			<c:when test="${colorlist.size()==0}">
+				<form:hidden path="color" value=""/>
+				<form:select path="color" items="${colorlist}" />
+			</c:when>
+				<c:when test="${colorlist.size()==1}">
+				<form:hidden path="color" value="${colorlist[0]}"/>
+				${colorlist[0]}
+			</c:when>
+			<c:otherwise>
+				<form:select path="color" items="${colorlist}" />
+			</c:otherwise>
+			</c:choose>
+		</td>
 	</tr>
 	<tr>
 		<th>支払い方法</th>
